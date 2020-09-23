@@ -1,0 +1,28 @@
+A Domain Registrar is a company that has been accredited by the Internet Corporation for Assigned Names and Numbers (ICANN), the domain name registration industry oversight body, to register and maintain domain name information for customers.
+
+TL;DR
+ - Buy name from a cira.ca certified domain registrar
+ - Make a free Cloudflare account, setting up a CNAME record that points your name to your website host
+ - Change the name servers to the Cloudflare ones
+
+
+Go to cira.ca, find a domain name you like
+Register it with one of their certified Domain Registrars
+ - I used HostPapa
+HostPapa will charge you $15/year. What they do:
+ - reserve the name for you
+ - keep your details on file as required by the internet people
+ - If you don't sign up for website hosting, they don't actually do anything with the name for you, like point it anywhere
+Make a free Cloudflare account.
+In your HostPapa account, change the name servers to the ones Cloudlfare provides during your account creation.
+
+During Cloudflare signup, you have a chance to create a CNAME record that points adamgulyas.ca to taburn.github.io
+ - a CNAME record points one name to another
+ - a A record points one name to an IP address
+
+https://who.is/whois/adamgulyas.ca will show you the current name servers.
+
+
+
+https://docs.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain
+Follow steps 1-3 under Configuring an apex domain
