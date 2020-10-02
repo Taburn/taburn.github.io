@@ -40,11 +40,35 @@
       </div>
       <div id="content">
         <!-- insert the page content here -->
-        <h1>Photography</h1>
-        <p>I have experience as an amateur photographer. My full album can be found at <a href="https://www.deviantart.com/taburnssummer">Deviant Art</a>.</p>
-		<span class="left"><img src="photography/LowLight.png" alt="Low Light" /></span>
-		<span class="left"><img src="photography/Age.png" alt="Age" /></span>
-		<span class="left"><img src="photography/Breath.png" alt="Breath" /></span>
+        <h1>Journal</h1>
+		<hr style="border: 2px solid black;" />
+		
+        <h4>Feedback on the KiCad Page Layout Editor</h4>
+		<h5>October 2, 2020</h5>
+		<p>I no longer have access to Altium through work, so I'm learning KiCad (v5.1.6). I just made a custom title block and found the interface was awkward. However, given how rare it is to make a new title block, all the things mentioned here are probably low priority.
+		<br><br>To place a line, I have to go into a menu to select "place a line", then type in the end point coordinates. The coordinate fields are in the order: Y start, X start, X end, Y end. It would be easier if X was always first. These values are only important in a relative sense because after clicking OK it takes me to the main screen where I can move the line around with the mouse. Why not just let me optionally specify a length or width?
+		<br><br>After the line was placed, there was an error with the coordinates. I would place something at (50,75) and it would show in the properties window as something like (50.007,75.003). Not a big deal, but why is this ever a thing?
+		<br><br>If I want to place a line, there should be either a toolbar button or a hotkey listed in the Place menu. To actually place the line, I should be able to click two places on the screen to place the line end points.
+		<br><br>It's hard to move line end points once they exist. I can't drag individual end points and have to instead edit the coordinate fields manually (which are thankfully in a sensible order).
+		<br><br>The default move command seems to be to drag to select the thing you want to move. There was a case where I wanted to move two text objects, but not the line between them. I had to move the line as well then move it back because there's no concept of shift clicking to select multiple things.
+		<br><br>There's also no way to have nothing selected. This isn't an actual issue, just a bit annoying.
+		<br><br>In the design panel, it lists all the entities (like lines, text, ect.). However, it just lists them by "text11:Text" or "segm8:Line" I have to click through each one if I want to find something. I also can't drag them to change the order or sort by entity type. It would be nice if, at least for text, it listed the first few characters in the text string.
+		<br><br>You can only select already existing lines by clicking on the endpoint, not anywhere on the line. if two lines have the same end point, a window pops up asking which one of the two you want, but the names you have to select from aren't helpful. I have no idea if the line I want is line 11 or 15.
+		<br><br>One neat feature is that you can select the origin location for line end point coordinates, so you can have the bottom left be (0,0) if you want (as opposed to the KiCad standard upper left).
+		<br><br>Each line also has an intrinsic repeat/patterning option, which was something of a saving grace.
+		<br><br>The process of saving a template file and loading it into a schematic was very intuitive. However, I made a change to the template, saved it, and tried to reload it into the schematic, which didn't change. I'm guessing it saw that the file path didn't change, so it didn't reload the template.</p>
+		
+		<hr style="border: 2px solid black;" />
+		
+		<h4>SnapEDA Plugins for ECAD</h4>
+		<h5>October 2, 2020</h5>
+		<p>SnapEDA just sent me a newsletter about their (beta) plugins for Altium and KiCAD. I haven't tried them yet, but they sound like they could be really useful for easily importing 3D models.</p>
+		
+		<hr style="border: 2px solid black;" />
+		
+		<h4>Mechanical Parts from Haizol</h4>
+		<h5>September 8, 2020</h5>
+		<p>I recently became aware of <a href="https://haizol.com" target="_blank">Haizol</a>. It seems like you can upload mechanical designs and then have factories in China bid on them. Hopefully it will be as easy to use as JLCPCB. I'm trying to look around their website to learn more, but their page isn't loading :/</p>
       </div>
     </div>
     <div id="footer">
