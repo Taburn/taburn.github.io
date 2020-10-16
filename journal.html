@@ -42,8 +42,25 @@
       <div id="content">
         <!-- insert the page content here -->
         <h1>Journal</h1>
+		
 		<hr style="border: 1px solid black;" />
-				
+		
+		<h4>Bit Specific Addressing</h4>
+		<h5>October 15, 2020</h5>
+		<p>The standard way to write to a microcontroller's GPIO output is to perform a read-modify-write operation on the port's data register. 
+		Using a mask to modify the read value ensures that you aren't changing the state of any unintended GPIO. The downside is that it ties up 
+		the bus for several clock cycles. Ideally you would be able to write directly to specific bits in the register individually and only preform 
+		one operation instead of three.</p>
+		<p>This problem can be solved using set-only and reset-only registers, but there is another way called "bit specific addressing" that the TM4C uses. 
+		The address itself is used as a mask. A base address is defined for each port, and then specific bits are set for each GPIO you want to be able to affect. 
+		For example, the base address for port A is 0x40004000. In order to set PA0 high without affecting the other port A pins, you would write 0x1 to address 0x40004004. 
+		To set PA2 you write 0x4 to 0x40004010. Since specific address bits are assigned to each GPIO, you can combine them. In order to set PA0 and PA2 at the same time, 
+		you would write 0x5 to 0x40004014.</p>
+		<p>This method does require 256 addresses for each port in order to write to each combination of port pins, but in a system with millions of addresses this isn't too large of a cost.</p>
+		<p>For more information, see Section 10.2.1.2 of the <a href="https://www.ti.com/product/TM4C123GH6PM" target="_blank">TM4C123GH6PM datasheet</a>.
+		
+		<hr style="border: 1px solid black;" />
+		
 		<h5>October 12, 2020</h5>
 		<p>My favorite email I've received was from a client. It reads as follows:</p>
 		<p>I'M AVAILABLE, BUT THIS MEETING ONLY MAKES SENSE IF (nAME) IS ALSO. XCUSE CAPS.. TOO LAZY TO RETYPE</p>
