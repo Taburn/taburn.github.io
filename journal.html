@@ -56,7 +56,7 @@
 		For example, the base address for port A is 0x40004000. In order to set PA0 high without affecting the other port A pins, you would write 0x1 to address 0x40004004. 
 		To set PA2 you write 0x4 to 0x40004010. Since specific address bits are assigned to each GPIO, you can combine them. In order to set PA0 and PA2 at the same time, 
 		you would write 0x5 to 0x40004014.</p>
-		<p>This method does require 256 addresses for each port in order to write to each combination of port pins, but in a system with millions of addresses this isn't too large of a cost.</p>
+		<p>This method does require 256 addresses for each port in order to write to each combination of port pins, but in a system with billions of addresses this isn't too large of a cost.</p>
 		<p>For more information, see Section 10.2.1.2 of the <a href="https://www.ti.com/product/TM4C123GH6PM" target="_blank">TM4C123GH6PM datasheet</a>.
 		
 		<hr style="border: 1px solid black;" />
