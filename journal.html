@@ -71,6 +71,46 @@
         <h1>Journal</h1>
 		
 		<hr style="border: 1px solid black;" />
+		<h4>Saving Data From An Old HP VNA</h4>
+		<h5>December 12, 2020</h5>
+		
+		<p>At a previous job we had on old vector network analyzer. I don't remember the exact part number, but it was
+		similar to the HP 8753D.</p>
+			
+		<span class="center"><img src="pictures/HP-8753D.jpg" alt="HP 8753D" /></span>			
+		<p style="text-align:center">HP 8753-D (picture from ebay)</p>
+			
+		<p>It was fairly old, but like most old RF equipment it was built to last. (Although I think there's some selection bias in
+		that statement.) We used it for trimming the length of antennas until they were resonant in the 2.4 GHz ISM band. In other words, 
+		"make the antenna shorter until the S11 valley was centred at 2.44 GHz". The final length was recorded and the antenna design was
+		changed in the next PCB release.</p>
+		<p>Unfortunately the VNA was so old that it didn't have a USB port or any other easy way to save data. An antenna would be tuned,
+		but the only data that was saved was the final antenna length. Things like resonant frequency, bandwidth, or input impedance were
+		lost.</p>
+		<p>What the VNA did have was a floppy disk drive. I found some floppy disks burried in storage and borrowed our greybeard tech's
+		USB floppy disk reader. The VNA mas meant to output to a plotter, a device that's basically a CNC machine holding a pen.
+		<a href="https://www.youtube.com/channel/UCKB8dn85XFXTqpymt03P0VA" target="_blank">Here's a video showing one in action.</a>
+		This meant that the VNA could output HPGL (Hewlett-Packard Graphics Language) files to the floppy disk. HPGL is kind of interesting
+		because it's pretty human readable. The commands are all abbreviations of their names, unlike G-code.
+		<a href="https://www.isoplotec.co.jp/HPGL/eHPGL.htm" target="_blank">Here's a handy reference guide.</a></p>
+		<p>So with the floppy reader I was able to get plotter output from the VNA onto my computer. But how to render it? I tried a few
+		different programs, both installed and online, and the most useful one was
+		<a href="https://service-hpglview.web.cern.ch/" target="_blank">HP-GL Viewer</a>, which is maintained by CERN. After tweaking the
+		output a bit I was able to print to PDF and then convert to an image. The end result is shown below. Markers are used to record
+		important numerical values.</p>
+		
+		<span class="center"><img src="pictures/VNA_S11_output.png" alt="output exported from VNA" /></span>
+		
+		<p>This method produces plots that are the same size, so you can flip through a folder of them in an image viewer and the plot axis
+		won't move. This makes it easy to compare different outputs.</p>
+		<p>One cool thing about the HPGL output is that the section of code that draws the data line is a series of goto commands for the pen.
+		It's a bunch of x,y coordinates that can easily be cleaned up in a spreadsheet, then input into a plotting program like
+		<a href="https://www.padowan.dk/download/" target="_blank">Graph</a>. The data is in "plotter units" instead of frequency and dB, but
+		you can use the marker values to scale it if you want. Although if you're going to go to all that effort, you'll probably just want to
+		poke around the VNA until you find the export data command.</p>
+		
+		
+		<hr style="border: 1px solid black;" />
 		<h4>An Old Joke</h4>
 		<h5>November 3, 2020</h5>
 		<p>A horse walks into a bar. The bartender says "Why the long face?" The horse says "I've just realized I'm a metaphysical concept 
