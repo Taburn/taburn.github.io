@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Adam Gulyas - Audio IO Switch</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
+</head>
+
+		<!--
+		Add picture with grill off. Talk about passive radiator.
+		Add picture with front off.
+		-->
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Adam<span class="logo_colour"> Gulyas</span></a></h1>
+          <h2>Embedded Hardware Engineer (EIT)</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Home</a></li>
+          <li class="selected"><a href="../projects.html">Projects</a></li>
+          <li><a href="../photography.html">Photography</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+		<span class="center"><img src="../pictures/logo/logo.png" alt="logo" /></span>
+        <h3>Contact</h3>
+		<p>gulyas@ualberta.ca</p>
+		<p>adam.photonic@gmail.com</p>
+		<p><a href="https://hackaday.io/adamgulyas" target="_blank">Hackaday</a></p>
+		<p><a href="https://github.com/Taburn" target="_blank">GitHub</a></p>
+		<p><a href="https://www.youtube.com/channel/UCKB8dn85XFXTqpymt03P0VA" target="_blank">Youtube</a></p>
+		<p><a href="https://www.linkedin.com/in/adam-gulyas-ee/" target="_blank">LinkedIn</a></p>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+		
+        <h1>Audio IO Switch</h1>
+		<p>
+		I found I was switching my headphones between my phone and computer a lot, which was kind of annoying. This was a quick project
+		to make it easier that became more complicated than it should have.
+		</p>
+		
+		<h2>Version 1</h2>
+		<span class="center"><img src="../pictures/projects/Audio_IO_Switch/inside_v1.jpg" alt="Inside" /></span>
+		<span class="center"><img src="../pictures/projects/Audio_IO_Switch/top_v1.jpg" alt="Top" /></span>
+		<span class="center"><img src="../pictures/projects/Audio_IO_Switch/UI_v1.jpg" alt="UI" /></span>
+		
+		<p>The label is a full sheet sticker that I ran through a printer and cut out. A rocker switch was chosen for its low profile and
+		satisfying click, and I already had the enclosure.</p>
+		
+		<p>I ordered a bunch of cheap TRS jacks from china, which proved to be a really bad idea. They came without nuts and the thread was a 
+		non-standard one. I took them to both the machine shop at the UofA and a custom audio system business, but they couldn't identify it.
+		However, the guy at the audio place did pull a nut off a cheap mixing console with similar jacks that fit mine. Whatever
+		this thread was, it seems to be a chinese standard. Since I couldn't find nuts for them, I ended up just hot gluing them into the enclosure.
+		The hot glue ended up failing (like it usually does) from the insertion force of the cable.</p>
+		
+		<p>The potentiometer was also disappointing. When I turned the knob, the left and right audio channel volume would change at different rates.
+		I didn't know this before, but apparently manufacturers have a hard time matching the resistive wafers inside dual gang pots.</p>
+		
+		<p>This version also took a lot of effort to solder. I definitely wouldn't want to do a batch of 10, or even 5, of them. There had to be a better way.</p>
+		
+		<h2>Version 2</h2>
+		
+		<span class="center"><img src="../pictures/projects/Audio_IO_Switch/inside_v2.jpg" alt="Inside" /></span>
+		<span class="center"><img src="../pictures/projects/Audio_IO_Switch/top_v2.jpg" alt="Top" /></span>
+		<span class="center"><img src="../pictures/projects/Audio_IO_Switch/UI_v2.jpg" alt="UI" /></span>
+		
+		<p>Version 2 focused around making everything easy to assemble, which meant the only soldering I wanted to do was on a PCB.</p>
+		
+		<p>I came across the idea of using a PCB as a face plate, which seemed promising. It's easy to add holes in precise locations in an ECAD program,
+		and you get free text and art in the silkscreen layer. The enclosure I was using had a 1.6 mm thick face plates, which is a standard PCB thickness.</p>
+		
+		<p>I measured the face plate that came with the enclosure and reproduced the outline. The corner curvature took a few tries to get right, comparing
+		it with the 3D model of the enclosure I imported into Altium. The hole Y locations were derived from the component datasheets, then checked by exporting
+		the PCB as a step file and importing it into the main board's PCB file. </p>
+		
+		<p>The graphic is <a href="https://commons.wikimedia.org/wiki/File:Mandala_52.svg" target="_blank">Mandala_52</a> from Wikipedia, which is available
+		under the CC A-SA license.</p>
+		
+		<p>The main board's outline was given in the datasheet for the enclosure. There were no rocker switches that were both through hole and panel mount,
+		so I used a toggle switch. Putting it between the TRS jacks will hopefully let the cables protect it a bit.</p>
+		
+		<p>Assembly was pretty easy. I put all the parts together, minus the top of the enclosure, then tightened the nuts on the jacks and switches. Then I put
+		the top on and took the bottom off, which exposed the solder pads while keeping everything lined up. Soldering took ~5 minutes and I was able to put the
+		bottom back and screw it closed.</p>
+		
+		<h3>Testing</h3>
+		<p>Everything beeped out correctly, but what I really want to do is measure the channel isolation. Ideally I would connect it to an 
+		<a href="https://www.ap.com/" target="_blank">Audio Precision</a> system and measure all the transfer functions vs frequency, but I don't have access
+		to one right now. I do have some TRS to BNC cables coming, but they were delayed by Covid and won't arrive until next month, and I'm not in enough of a
+		rush to hack my own cables.</p>
+		
+		<h3>BOM</h3>
+		<table>
+		<thead>
+		  <tr>
+		    <th>Part</th>
+		    <th>Manufacturer</th>
+		    <th>Part Number</th>
+		    <th>Digi-Key Part Number</th>
+			<th>Quantity</th>
+			<th>Price/unit (CAD)</th>			
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>Enclosure</td>
+		    <td>Hammond Manufacturing</td>
+		    <td>1593KBK</td>
+		    <td>HM355-ND</td>
+			<td>1</td>
+			<td>$5.42</td>
+		  </tr>
+		  <tr>
+		    <td>Switch</td>
+		    <td>E-Switch</td>
+		    <td>100DP1T1B1M6QE</td>
+		    <td>100DP1T1B1M6QE-ND</td>
+			<td>2</td>
+			<td>$4.74</td>
+		  </tr>
+		  <tr>
+		    <td>TRS Jack</td>
+		    <td>Switchcraft Inc.</td>
+		    <td>35RAPC2BV4</td>
+		    <td>SC1460-ND</td>
+			<td>4</td>
+			<td>$3.19</td>
+		  </tr>
+		  <tr>
+		    <td>Face Plate</td>
+		    <td>JLCPCB</td>
+		    <td>-</td>
+		    <td>-</td>
+			<td>2</td>
+			<td>$0.61</td>
+		  </tr>
+		  <tr>
+		    <td>Main Board</td>
+		    <td>JLCPCB</td>
+		    <td>-</td>
+		    <td>-</td>
+			<td>1</td>
+			<td>$0.49</td>
+		  </tr>
+		</tbody>
+		</table>
+		
+		<p>The PCBs came from <a href="https://jlcpcb.com/" target="_blank">JLCPCB</a> as part of a larger order, so the shipping and import fees cost maybe $5
+		per set of 3 boards?</p>
+		
+		<p>In total, the unit cost of one Audio IO Switch was $35. However, if I built a run of 100, it would drop to $26.50. According to 
+		<a href="https://www.youtube.com/watch?v=UwrkfHadeQQ&t=57s" target="_blank">Dave from EEVblog</a>, that means I should charge $65/unit. I think
+		the build quality is high enough that it will last years (the weakest link is probably the jacks), but I'm not sure if there would be enough demand.
+		I suppose I could try selling on <a href="https://www.tindie.com/" target="_blank">Tindie</a> to see if anyone else was interested.</p>
+		
+		<p>If I did start selling, I'd probably try to get a plastic label of some sort. The paper sticker one isn't water proof.</p>
+		
+		<p>In any case, I'm really pleased with how it came together. I think it's really polished.</p>
+		
+		
+		<a href="../projects.html">Back to Projects.</a>
+		
+		  </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a>
+    </div>
+  </div>
+</body>
+</html>
