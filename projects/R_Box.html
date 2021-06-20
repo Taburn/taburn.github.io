@@ -1,0 +1,424 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Adam Gulyas - R Box</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Adam<span class="logo_colour"> Gulyas</span></a></h1>
+          <h2>Embedded Hardware Engineer (EIT)</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Home</a></li>
+          <li class="selected"><a href="../projects.html">Projects</a></li>
+		  <li><a href="../theory.html">Theory</a></li>
+          <li><a href="../photography.html">Photography</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../book_list.html">Book List</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+		<span class="center"><img src="../pictures/logo/logo.png" alt="logo" /></span>
+        <h3>Contact</h3>
+		<p>gulyas@ualberta.ca</p>
+		<p>adam.photonic@gmail.com</p>
+		<p><a href="https://hackaday.io/adamgulyas" target="_blank">Hackaday</a></p>
+		<p><a href="https://github.com/Taburn" target="_blank">GitHub</a></p>
+		<p><a href="https://www.youtube.com/channel/UCKB8dn85XFXTqpymt03P0VA" target="_blank">Youtube</a></p>
+		<p><a href="https://www.linkedin.com/in/adam-gulyas-ee/" target="_blank">LinkedIn</a></p>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+		
+        <h1>R Box</h1>
+		
+		<p><a href="https://github.com/Taburn/R-Box" target="_blank">Github repo.</a><br>
+		This project isn't done yet. It will be assembled and tested when the parts arrive.</p>
+		
+		<h2>Background</h2>
+		
+		<p>
+		I used to design a lot of voltage regulators at a previous job. Part of the bring-up 
+		process was load testing them, which involved scrounging around	the office for power resistors and hoping they were the right
+		value. Money was tight, so we couldn't afford the $300 for an electronic load.<br><br>
+		
+		I ended up buying a bunch of 10W TH power resistors (like these: 
+		<a href="https://www.digikey.ca/en/products/detail/te-connectivity-passive-product/SQPW101R0J/2365783" target="_blank">SQPW101R0J</a>),
+		ziptying them to a piece of acrylic, then wiring them in series with banana jacks at each connection. I had two units, one with 1Ω
+		and one with 10Ω resistors. By measuring the power input and output while changing the load resistance, I could
+		make some okay efficiency graphs for the voltage regulators.<br><br>
+		
+		Apart from the form factor issues (they took up a lot of desk space and were kind of cumbersome), there was an unexpected restriction.
+		When measuring a 12V rail, I couldn't use the 11Ω configuration. Connecting a 1Ω and 10Ω resistor in series across 12V results in 11.9W
+		dissipating in the 10Ω 10W resistor. Here's a spreadsheet I made that shows the possible resistor combinations and the power dissipation
+		in each one, with the meltdown prone combinations highlighted in red:
+		
+		<span class="center"><img src="../pictures/projects/R_Box/Power_diss_10W_12V.png" alt="10W 12V Dissipation" /></span>
+		
+		It was even worse for 24V, where the 10Ω resistor has to dissipate 48W:
+		
+		<span class="center"><img src="../pictures/projects/R_Box/Power_diss_10W_24V.png" alt="10W 24V Dissipation" /></span>
+		
+		The efficiency graph had to jump from 1A to 2.4A output current, missing about half the data for a 24V 3A regulator.<br><br>
+		
+		However, when you add a second 10Ω resistor you double the power rating and halve the current, so each only dissipated 12W. Only the
+		first 10Ω resistor has to be beefy. <br><br>
+		
+		With all that in mind, let's try again.
+		</p>
+		
+		<h2>Project Goals</h2>
+		<p>
+		
+		<ul>
+			<li>Draw up to 3A from a 24V rail without blowing any of the resistors or skipping any resistor combinations.</li>
+			<li>Be precise. I'd like to use 1% resistors if they're not too expensive.</li>
+			<li>Be easy to manufacture. One factor will be avoiding wires and cables since those are a big time sink to assemble.</li>
+			<li>Take up less space. The first version was mounted on two A4 sized pieces of acrylic.</li>
+			<li>Be easy to store. I'd like to be able to stack other thing on top when not in use.</li>
+		</ul>
+		</p>
+		
+		<H2>Resistor Power Ratings</h2>
+		<p>
+		Here are the required resistor power ratings for up to 3A at 24V, taken from the previous table with an added safety factor.
+		</p>
+		
+		<table>
+			<thead>
+			<tr>
+				<th>Resistor</th>
+				<th>Max P @ 24V [W]</th>
+				<th>Derate 25% [W]</th>
+			</tr>	
+			</thead>	
+			<tbody>	
+			<tr>
+				<td>&nbsp;1Ω</td>
+				<td>9</td>
+				<td>&nbsp;12</td>
+			</tr>
+			<tr>
+				<td>&nbsp;10Ω #1</td>
+				<td>&nbsp;47.6</td>
+				<td>&nbsp;60</td>
+			</tr>
+			<tr>
+				<td>&nbsp;10Ω #2-10</td>
+				<td>&nbsp;&leq;13.1</td>
+				<td>&nbsp;17</td>
+			</tr>
+			</tbody>
+		</table>
+		
+		
+		<h2>Sourcing Parts</h2>
+		<h4>Resistors</h4>
+		<p>
+		There's three main ways to mount a resistor: surface mount, through hole, and chassis mount. Chassis mount is out because it
+		requires wiring, and through hole power resistors are dominated by TO-220 package variants that
+		either want heat sinks which take up room or need to have
+		their legs bent so you can bolt them flat against the bare copper of the PCB with thermal paste. Both those options are labour
+		intensive, so I'll be sticking with surface mount parts.<br><br>
+		
+		For the 1Ω resistors, there were only two options after filtering for everything: a chip type (PFC10) and a DPAK. I chose the
+		DPAK even though it was slightly more expensive because it will be easier to confirm it's soldered correctly. The same thing
+		happened with the low power 10Ω resistors.<br><br>
+		
+		There's more options for the high power 10Ω resistor since I don't mind some extra assembly time for this single resistor.
+		It's also dissipating the most heat by far of any resistor so the heat sinking strategy should be more robust. Ideally it will
+		be bolted directly to the wall of the enclosure. After looking at a lot of enclosures and making a rough PCB layout to estimate
+		the needed area, I chose two 5Ω chassis mount resistors in series, those golden ones with two tabs for bolts. I'll bolt it to
+		the bottom of the metal enclosure with some thermal paste, which should hopefully be enough to keep them cool.
+		</p>
+		
+		<h4>Jacks</h4>
+		<p>
+		I used banana jacks in the first version and they worked really well. Banana cables are cheap, make a relatively low impedance
+		connection, and have a high enough ampacity. Cheap and robust jacks are available, and I already had some from a previous order.
+		You can also plug a banana cable directly into a multimeter, which is really convenient for the current measurements I'll be making.
+		</p>
+		
+		<h4>Enclosure</h4>
+		<p>
+		I originally wanted to use an enclosure similar to my 
+		<a href="http://adamgulyas.ca/projects/Audio_IO_Switch.html" target="_blank">Audio IO Switch</a>. It 
+		lets me use a PCB for the faceplate, so I don't have to do any machining, and having the UI
+		forward facing is nice for lab equipment. However, I spent a few hours looking through Digi-Key and I couldn't find one with a
+		faceplate that was wide enough to fit the banana jacks without being needlessly tall. They're also generally plastic, which isn't
+		as good as metal for heat dissipation.<br><br>
+		
+		I considered just having the device open to the air with a small faceplate holding the banana jacks:
+		
+		<span class="center"><img src="../pictures/projects/R_Box/open_concept.jpg" alt="Rejected Design Idea" /></span>
+		
+		However I rejected this idea because it	would get really dusty and not be easy to store. The heat sinks would scratch
+		anything that rested on them. It also didn't seem like a finished product.<br><br>
+		
+		I found a more standard metal box-with-lid type enclosure that isn't too much larger than I need it to be. However, since it's metal
+		and I don't want to hand file 22 holes for the banana jacks, I'll have to find a CNC mill somewhere.
+		</p>
+		
+		<h2>Design</h2>
+		<h4>Schematic</h4>
+		<p>Here's the (very simple) schematic. A higher quality version is available on
+		<a href="https://github.com/Taburn/R-Box/blob/main/Releases/R%20Box%20-%20v1.0.0%2020210619/R%20Box%20-%20SCH%20v1.0.0%2020210619.pdf" target="_blank">Github</a>.</p>
+		<span class="center"><img src="../pictures/projects/R_Box/schematic.png" alt="R Box Schematic" /></span>
+		
+		<h4>Heatsinking</h4>
+		<p>
+		I ended up using short aluminum standoffs to hold the PCB to the lid, with one next to each resistor. Heat
+		should travel up the standoff and dissipate off the lid. I would have liked to make the standoffs shorter, but I had to choose ones
+		long enough to accommodate the banana jacks.<br><br>
+		
+		The high power resistors are bolted directly to the bottom of the enclosure, which is lifted off the desk by small plastic feet.
+		This should increase airflow around the enclosure, increasing heat dissipation.<br><br>
+		
+		Unfortunately, I don't have a really good way to simulate the thermal design. I'd like a program that I can just load some 3D models
+		into, assign material properties and heat sources, then run, but I haven't found a program that works well and isn't expensive.
+		I'll have to default to trying to over design it and then testing the result.
+		</p>
+		
+		<h4>PCB</h4>
+		<p>
+		The PCB design focuses on reducing resistance between the resistors and then trying to increase thermal dissipation. I could have removed
+		the thermals from the resistors and added heat transfer vias under them, but I wanted at least a chance of hand soldering.<br><br>
+		
+		I made the banana jack tabs horizontal in order to make the copper areas smaller.<br><br>
+		
+		The via stitching grid was set to a multiple of the resistor spacing so the vias between them would be uniform. 
+		</p>
+		
+		<span class="center"><img src="../pictures/projects/R_Box/PCB_top.png" alt="R Box PCB Top" /></span>
+		
+		<span class="center"><img src="../pictures/projects/R_Box/PCB_bottom.png" alt="R Box PCB Bottom" /></span>
+		
+		<h4>Mechanical</h4>
+		
+		<span class="center"><img src="../pictures/projects/R_Box/3D_top_iso.png" alt="R Box Top Iso" /></span>
+		
+		<span class="center"><img src="../pictures/projects/R_Box/3D_bottom_iso.png" alt="R Box Bottom Iso" /></span>
+		
+		<span class="center"><img src="../pictures/projects/R_Box/3D_top.png" alt="R Box Top" /></span>
+		
+		<span class="center"><img src="../pictures/projects/R_Box/3D_front.png" alt="R Box Front" /></span>
+		
+		<span class="center"><img src="../pictures/projects/R_Box/3D_side.png" alt="R Box Side" /></span>
+
+		
+		<h4>Faceplate</h4>
+		<p>
+		I put the project name and website at the bottom so it would be less intrusive, but also be visible if the edge is peaking out from under
+		a pile of stuff. There's no colour because I only have a laser printer. The border has a black line so that, even if you cut it
+		out a bit crooked there will still be a crisp border. Also, a crooked edge should show up less against the black box.
+		</p>
+		
+		<span class="center"><img src="../pictures/projects/R_Box/faceplate_label.png" alt="Faceplate label" /></span>
+		
+		<span class="center"><img src="../pictures/projects/R_Box/faceplate_dimensions.png" alt="Faceplate dimensions" /></span>
+		
+		<h2>Assembly</h2>
+		<p>Forthcoming when parts arrive.</p>
+		
+		<h2>Qualification</h2>
+		
+		<p>The below graph shows 4 point resistance measurements for each resistor combination plotted against an ideal curve.</p>
+		<p>(add data here)</p>
+		
+		<p>
+		The below table shows the internal temperature rise at different operating conditions. The system was left at steady state
+		for one hour in each case (or longer if it seems necessary). Since higher temperatures increase resistances, I also calculated
+		the effective resistance after an hour.
+		</p>
+		
+		<table>
+		<thead>
+		  <tr>
+		    <th>Resistance</th>
+		    <th>Voltage</th>
+		    <th>Current</th>
+		    <th>Internal Temperature</th>
+			<th>Heated Resistance</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>3Ω</td>
+		    <td>24V</td>
+		    <td>(measure)</td>
+		    <td>?? °C</td>
+			<td>(calculate)</td>
+		  </tr>
+		    <tr>
+		    <td>4Ω</td>
+		    <td>24V</td>
+		    <td>(measure)</td>
+		    <td>?? °C</td>
+			<td>(calculate)</td>
+		  </tr>
+		  <tr>
+		    <td>10Ω</td>
+		    <td>24V</td>
+		    <td>(measure)</td>
+		    <td>?? °C</td>
+			<td>(calculate)</td>
+		  </tr>
+		  <tr>
+		    <td>11Ω</td>
+		    <td>24V</td>
+		    <td>(measure)</td>
+		    <td>?? °C</td>
+			<td>(calculate)</td>
+		  </tr>
+		  <tr>
+		    <td>110Ω</td>
+		    <td>24V</td>
+		    <td>(measure)</td>
+		    <td>?? °C</td>
+			<td>(calculate)</td>
+		  </tr>
+		  <tr>
+		    <td>(and others)</td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+			<td></td>
+		  </tr>
+		</tbody>
+		</table>
+		
+		
+		<h3>BOM</h3>
+		<table>
+		<thead>
+		  <tr>
+		    <th>Part</th>
+		    <th>Manufacturer</th>
+		    <th>Part Number</th>
+		    <th>Digi-Key Part Number</th>
+			<th>Quantity</th>
+			<th>Price/unit (CAD)</th>			
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>1Ω Resistor</td>
+		    <td>Bourns Inc.</td>
+		    <td>PWR163S-25-1R00FE</td>
+		    <td>118-PWR163S-25-1R00FECT-ND</td>
+			<td>10</td>
+			<td>$4.69</td>
+		  </tr>
+		  <tr>
+		    <td>10Ω Low Power Resistor</td>
+		    <td>Bourns Inc.</td>
+		    <td>PWR163S-25-10R0F</td>
+		    <td>PWR163S-25-10R0F-ND</td>
+			<td>9</td>
+			<td>$3.66</td>
+		  </tr>
+		  <tr>
+		    <td>10Ω High Power Resistor</td>
+		    <td>Stackpole Electronics Inc</td>
+		    <td>KAL50FB5R00</td>
+		    <td>KAL50FB5R00-ND</td>
+			<td>2</td>
+			<td>$4.84</td>
+		  </tr>
+		  <tr>
+		    <td>Banana Jack</td>
+		    <td>Cinch Connectivity Solutions Johnson</td>
+		    <td>108-0904-001</td>
+		    <td>J153-ND</td>
+			<td>22</td>
+			<td>$1.10</td>
+		  </tr>
+		  <tr>
+		    <td>Standoff</td>
+		    <td>Keystone Electronics</td>
+		    <td>24434</td>
+		    <td>36-24434-ND</td>
+			<td>20</td>
+			<td>$0.56</td>
+		  </tr>
+		  <tr>
+		    <td>Feet</td>
+		    <td>Keystone Electronics</td>
+		    <td>720</td>
+		    <td>36-720-ND</td>
+			<td>4</td>
+			<td>$0.44</td>
+		  </tr>
+		  <tr>
+		    <td>Enclosure</td>
+		    <td>Hammond Manufacturing</td>
+		    <td>1590DD</td>
+		    <td>HM347-ND</td>
+			<td>1</td>
+			<td>$25.11</td>
+		  </tr>
+		  <tr>
+		    <td>PCB</td>
+		    <td>JLCPCB</td>
+		    <td>-</td>
+		    <td>-</td>
+			<td>1</td>
+			<td>???</td>
+		  </tr>
+		</tbody>
+		</table>
+				
+		<a href="../projects.html">Back to Projects.</a>
+		
+		  </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a>
+    </div>
+  </div>
+</body>
+</html>
