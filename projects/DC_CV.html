@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Adam Gulyas - DC CV</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Adam<span class="logo_colour"> Gulyas</span></a></h1>
+          <h2>Embedded Hardware Engineer (EIT)</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Home</a></li>
+          <li class="selected"><a href="../projects.html">Projects</a></li>
+		  <li><a href="../theory.html">Theory</a></li>
+          <li><a href="../photography.html">Photography</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../book_list.html">Book List</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+		<span class="center"><img src="../pictures/logo/logo.png" alt="logo" /></span>
+        <h3>Contact</h3>
+		<p>gulyas@ualberta.ca</p>
+		<p>adam.photonic@gmail.com</p>
+		<p><a href="https://hackaday.io/adamgulyas" target="_blank">Hackaday</a></p>
+		<p><a href="https://github.com/Taburn" target="_blank">GitHub</a></p>
+		<p><a href="https://www.youtube.com/channel/UCKB8dn85XFXTqpymt03P0VA" target="_blank">Youtube</a></p>
+		<p><a href="https://www.linkedin.com/in/adam-gulyas-ee/" target="_blank">LinkedIn</a></p>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+		
+        <h1>DC CV</h1>
+		
+		<p><a href="https://github.com/Taburn/DC-CV" target="_blank">Github repo.</a></p>
+		
+		<p>
+		When testing Eurorack modules I often need a few controllable DC voltage sources. I had been using 
+		pots connected with alligator cables, but they were a bit chaotic and annoying to work with.<br><br>
+		
+		This module provides 4 separately controllable voltages, each with two parallel outputs. The upper and lower
+		voltage limits are selected with two toggle switches.
+		</p>
+		
+		<span class="center"><img src="../pictures/projects/DC_CV/front.jpg" alt="DC CV Schematic" /></span>
+		
+		<h3>Schematic</h3>
+		<span class="center"><img src="../pictures/projects/DC_CV/schematic.png" alt="DC CV Schematic" /></span>
+		<p>
+		I only showed one pot to simplify the schematic. The full schematic can be found		
+		<a href="https://github.com/Taburn/DC-CV/blob/main/Releases/v1.0/DC%20CV%20-%20SCH%20v1.0%2020211002.pdf" target="_blank">here</a>.
+		</p>
+		
+		<p>
+		The outputs are current limited with 470Ω resistors (25 mA @ 12V) which also form part of an RC filter.
+		Adjusting the capacitance value lets you choose how much noise immunity/slew you want when turning the pot.<br><br>
+		
+		Synth inputs are usually almost directly into an op-amp with a high input impedance or a relatively high
+		impedance voltage divider, so the current draw shouldn't ever get high enough to either change the output
+		voltage or draw too much current from the power rails.<br><br>
+		
+		Information about Eurorack power connectors can be found <a href="https://division-6.com/learn/eurorack-power/" target="_blank">here</a>.<br><br>
+		
+		There is a case where the output high rail is set to 5V and all the outputs are pulled down to -12 V simultaneously
+		with the pots turned all the way up. In that case the total current draw from the 5V regulator would be 289 mA. 
+		(17V across eight 470Ω resistors) However, the regulator is only rated to 100 mA. Instead of choosing a regulator
+		that had three times the output current, I just made sure it had over current protection.<br><br>
+		
+		I chose a linear regulator instead of a buck because under normal use there shouldn't be enough current drawn
+		for the inefficiency to matter and I didn't want to deal with switching noise or including an inductor.<br><br>
+		
+		I didn't make any effort to disable the 5V regulator when it wasn't used, but its quiescent current is only 2.5µA
+		which is too small to care about for a synthesizer system that draws hundreds or thousands of mA.
+		</p>
+		
+		<h3>BOM</h3>
+		<table>
+		<thead>
+		  <tr>
+		    <th>Description</th>
+		    <th>Manufacturer</th>
+		    <th>Part Number</th>
+		    <th>Digi-Key Part Number</th>
+			<th>Quantity</th>
+			<th>Price/unit (CAD)</th>			
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>CAP CER 10UF 16V X5R 0805</td>
+		    <td>Yageo</td>
+		    <td>CC0805MKX5R7BB106</td>
+		    <td><a href="https://www.digikey.ca/en/products/detail/yageo/CC0805MKX5R7BB106/5884266" target="_blank">311-3430-1-ND</a></td>
+			<td>10</td>
+			<td>0.2438</td>
+		  </tr>
+		  <tr>
+		    <td>CAP CER 0.1UF 16V X7R 0603</td>
+		    <td>Yageo</td>
+		    <td>CC0603KRX7R7BB104</td>
+		    <td><a href="https://www.digikey.ca/en/products/detail/yageo/CC0603KRX7R7BB104/302822" target="_blank">311-1088-1-ND</a></td>
+			<td>8</td>
+			<td>0.0374</td>
+		  </tr>
+		  <tr>
+		    <td>CONN HEADER VERT 10POS 2.54MM</td>
+		    <td>3M</td>
+		    <td>30310-6002HB</td>
+		    <td><a href="https://www.digikey.ca/en/products/detail/3m/30310-6002HB/1237393" target="_blank">30310-6002HB-ND</a></td>
+			<td>1</td>
+			<td>0.9120</td>
+		  </tr>
+		  <tr>
+		    <td>3.5MM MONO PHONE JACK WITH SWITCH</td>
+		    <td>Tayda Electronics</td>
+		    <td><a href="https://www.taydaelectronics.com/pj-3001f-3-5-mm-mono-phone-jack.html" target="_blank">PJ-3001F</a></td>
+		    <td>(direct from Tayda)</td>
+			<td>8</td>
+			<td>0.23</td>
+		  </tr>
+		  <tr>
+		    <td>POT 100K OHM 1/20W PLASTIC LIN</td>
+		    <td>TT Electronics</td>
+		    <td>P0915N-FC15BR100K</td>
+		    <td><a href="https://www.digikey.ca/en/products/detail/tt-electronics-bi/P0915N-FC15BR100K/5957453" target="_blank">987-1709-ND</a></td>
+			<td>4</td>
+			<td>1.8170</td>
+		  </tr>
+		  <tr>
+		    <td>RES SMD 470 OHM 5% 1/10W 0603</td>
+		    <td>Yageo</td>
+		    <td>RC0603JR-07470RL</td>
+		    <td><a href="https://www.digikey.ca/en/products/detail/yageo/RC0603JR-07470RL/726791" target="_blank">311-470GRCT-ND</a></td>
+			<td>8</td>
+			<td>0.0290</td>
+		  </tr>
+		  <tr>
+		    <td>SWITCH TOGGLE SPDT 5A 120V</td>
+		    <td>E-Switch</td>
+		    <td>100SP1T1B1M1QEH</td>
+		    <td><a href="https://www.digikey.ca/en/products/detail/e-switch/100SP1T1B1M1QEH/378819" target="_blank">EG2350-ND</a></td>
+			<td>2</td>
+			<td>3.1930</td>
+		  </tr>
+		  <tr>
+		    <td>IC REG LINEAR 5V 100MA 5TSOP</td>
+		    <td>onsemi</td>
+		    <td>NCV8711ASN500T1G</td>
+		    <td><a href="https://www.digikey.ca/en/products/detail/onsemi/NCV8711ASN500T1G/13145354" target="_blank">488-NCV8711ASN500T1GCT-ND</a></td>
+			<td>1</td>
+			<td>0.9230</td>
+		  </tr>
+		</tbody>
+		</table>
+		
+		BOM cost (without the PCBs) was $20.30 CAD.
+		
+		<h3>PCB</h3>
+		<h4>Motherboard</h4>
+		<span class="center"><img src="../pictures/projects/DC_CV/outer_layers.png" alt="MB PCB outer layers" /></span>
+		<span class="center"><img src="../pictures/projects/DC_CV/inner_layers.png" alt="MB PCB inner layers" /></span>
+		<span class="center"><img src="../pictures/projects/DC_CV/MB.png" alt="Motherboard render" /></span>
+		<span class="center"><img src="../pictures/projects/DC_CV/iso_MB.png" alt="Motherboard render" /></span>
+		
+		<p>
+		Usually I use three PCBs:<br>
+		&nbsp;&nbsp;&nbsp;- Face plate<br>
+		&nbsp;&nbsp;&nbsp;- UI board with expensive user interface hardware like pots and switches<br>
+		&nbsp;&nbsp;&nbsp;- Motherboard with electronics<br><br>
+		
+		This lets me swap out a broken motherboard without paying for the hardware again. In this case
+		there were few enough electronic components that I just combined the UI board and the Motherboard.<br><br>
+		
+		Because I wanted all the UI elements in specific places, I couldn't rearrange them to optimize routing.
+		I started with two layers, but the connections required by the UI layout resulted in a pretty weak/circuitous
+		ground connection from the power header to the jacks. Since this is a personal project where I don't have to pinch
+		pennies like in the consumer electronics industry, I just went to 4 layers.<br><br>
+		
+		Looking at it now, I could have done something like the picture below and had a good ground connection with just two layers.
+		I think I was obsessing too much over not changing layers.<br>
+		
+		<span class="center"><img src="../pictures/projects/DC_CV/better_routing.png" alt="Better routing" /></span>
+		
+		The grounded through hole pads are connected to only one of the ground planes to help with soldering.<br><br>
+		
+		I almost certainly used too many vias but they didn't increase the price from JLCPCB, so I let it go.<br><br>
+		
+		The switch pads double as test points for the different voltage rails.
+		</p>
+		
+		<h4>Faceplate</h4>
+		<span class="center"><img src="../pictures/projects/DC_CV/FP.png" alt="Face plate render" /></span>
+		<span class="center"><img src="../pictures/projects/DC_CV/iso_full.png" alt="Assembled render" /></span>
+		
+		<p>
+		Art from 
+		<a href="https://www.vecteezy.com/vector-art/370657-hand-drawn-sketched-line-border-wedding-art-vector-illustration" target="_blank">Vecteezy.com</a>
+		then modified, used under their Free License.<br><br>
+		
+		Since this is a Eurorack module, the face plate is <a href="https://learningmodular.com/glossary/3u/" target="_blank">3U (128.5 mm) tall</a>
+		and <a href="https://doepfer.de/a100_man/a100m_e.htm" target="_blank">10HP (2" or 50.8mm) wide</a>.
+		</p>
+		
+		<h3>Assembly</h3>
+		<p>
+		There were no issues during assembly.
+		</p>
+		<span class="center"><img src="../pictures/projects/DC_CV/front.jpg" alt="Front" /></span>
+		<span class="center"><img src="../pictures/projects/DC_CV/back.jpg" alt="Back" /></span>
+		
+		<h3>Testing</h3>
+		<p>
+		The functionality is pretty simple so testing was easy. I got the connections for the pots and switches right,
+		so turning the pots clockwise increases the output voltage and the switch position matches the faceplate labels.
+		I also got the polarity of the power header right so I didn't immediately burn the regulator.<br><br>
+		
+		With 10µF on the outputs the slew rate is noticeable but not slow. I think if would sound cool if fed into a VCO.
+		</p>
+		
+		<h3>Improvements</h3>
+		<p>
+		&nbsp;&nbsp;&nbsp;- The pots are almost too close together for my thumb to fit between the knobs. You definitely have to use
+		your fingertips to turn them. I should make the face plate wider and squish the jacks down so I can move the pots apart.<br>
+		&nbsp;&nbsp;&nbsp;- The switches are almost too close together for the nuts to coexist. You couldn't use a socket to tighten them.
+		They should be spaced further apart.<br>
+		&nbsp;&nbsp;&nbsp;- It might be more useful to only have half the inputs and make the module half as wide.<br>
+		&nbsp;&nbsp;&nbsp;- If there was only one output per pot it would space everything out more.<br>
+		&nbsp;&nbsp;&nbsp;- I could adjust the output caps so each pot has one fast and one slow slew output. 
+		</p>
+		
+		<p>
+		Overall I'm pretty happy with how this one turned out.
+		</p>
+		
+		<a href="../projects.html">Back to Projects.</a>
+		
+		  </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a>
+    </div>
+  </div>
+</body>
+</html>
