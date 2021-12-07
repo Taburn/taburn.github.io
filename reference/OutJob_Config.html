@@ -2,12 +2,12 @@
 <html>
 
 <head>
-  <title>Adam Gulyas - Photography</title>
+  <title>Adam Gulyas - Theory</title>
   <meta name="description" content="Personal website of Adam Gulyas" />
   <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
-  
+
   <!-- Favicon stuff -->
 	<!-- ****** faviconit.com favicons ****** -->
 	<link rel="shortcut icon" href="flavicon/favicon.ico">
@@ -31,7 +31,17 @@
 	<meta name="msapplication-TileImage" content="flavicon/favicon-144.png">
 	<meta name="msapplication-config" content="flavicon/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
-
+	
+	
+	<!--Tutorial for website LaTeX: http://docs.mathjax.org/en/latest/basic/mathematics.html 
+		$$...$$ and \[...\] for displayed mathematics
+		\(...\) for in-line mathematics
+	
+	
+	-->
+	<title>MathJax example</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
 </head>
 
 <body>
@@ -49,9 +59,9 @@
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li><a href="index.html">Home</a></li>
           <li><a href="projects.html">Projects</a></li>
-		  <li><a href="reference.html">Reference</a></li>
-          <li class="selected"><a href="photography.html">Photography</a></li>
-		  <li><a href="journal.html">Journal</a></li>
+		  <li class="selected"><a href="reference.html">Reference</a></li>
+		  <li><a href="photography.html">Photography</a></li>
+          <li><a href="journal.html">Journal</a></li>
 		  <li><a href="stories.html">Stories</a></li>
 		  <li><a href="book_list.html">Book List</a></li>
         </ul>
@@ -71,12 +81,116 @@
       </div>
       <div id="content">
         <!-- insert the page content here -->
-        <h1>Photography</h1>
-        <p>I have experience as an amateur photographer. My full album can be found at <a href="https://www.deviantart.com/taburnssummer">Deviant Art</a>.</p>
-		<span class="left"><img src="photography/LowLight.png" alt="Low Light" /></span>
-		<span class="left"><img src="photography/Age.png" alt="Age" /></span>
-		<span class="left"><img src="photography/Breath.png" alt="Breath" /></span>
-		<span class="left"><img src="photography/Fog.png" alt="Fog" /></span>
+        
+		<span class="center"><img src="pictures/under-construction_small.png" alt="Come back later!" /></span>
+		
+		<h1>Theory</h1>
+		
+		<hr style="border: 1px solid black;" />
+		<h2>BJTs</h2>
+		<span class="center"><img src="pictures\theory\BJT\01 NPN and PNP symbols.svg" alt="BJT Symbols" /></span>
+		<span class="center"><img src="pictures\theory\BJT\02 Modes of Operation.svg" alt="BJT Symbols" /></span>
+		
+		
+		<h3>BJT Symbol</h3>
+		
+		<h3>Modes of Operation</h3>
+		
+		<table>
+		<thead>
+			<tr>
+				<th>Mode</th>
+				<th>EBJ</th>
+				<th>CBJ</th>
+				<th>\(V_{CB}\)</th>
+				<th>\(V_{BE}\)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cutoff</td>
+				<td>Reverse</td>
+				<td>Reverse</td>
+				<td>Positive</td>
+				<td>Negative</td>
+			</tr>
+			<tr>
+				<td>Active</td>
+				<td>Forward</td>
+				<td>Reverse</td>
+				<td>Positive</td>
+				<td>Positive</td>
+			</tr>
+			<tr>
+				<td>Saturation</td>
+				<td>Forward</td>
+				<td>Forward</td>
+				<td>Negative</td>
+				<td>Positive</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		
+		
+		
+		
+		
+		
+		<p>
+		This is an inline equation: \(ax^2 + bx + c = 0\). See, it's inline.
+		
+		<h1>See Chapter 6 of Sedra/Smith</h1>
+		
+		
+		$$\beta = \frac{i_C}{i_B}$$
+		$$\beta \gg 1$$
+		$$\alpha_F = \frac{i_C}{i_E}$$
+		$$\alpha_F=\frac{\beta_F}{\beta_F+1}  $$
+		$$\alpha_F \approx 1$$
+		</p>
+		
+		<h3>Forward Active Mode (FAM)</h3>
+		
+		<h4>Ebers-Moll Equation</h4>
+		<p>
+		$$i_C=I_S e^{v_{EB}/V_T}$$
+		where \(I_S\) is the <u>Saturation Current</u>
+		$$I_S=\frac{q A_E D_n n_i^2}{N_{AB} W_B}$$
+		Define the rest of the terms here
+		</p>
+		<p>
+		$$\beta_F=\frac{N_{DE} D_n W_E}{N_{AB} D_p W_B}$$
+		I think \(\beta_F\) is the regular \(\beta\) in FAM.
+		</p>
+		
+		<h3>Small Signal Models: Pi and T</h3>
+		
+		
+		<h3>Amplifier Configurations</h3>
+		See Practical Electronics for Inventors for solutions to input/output impedance
+		<h4>Common Emitter</h4>
+		<h4>Common Collector</h4>
+		<h4>Common Base</h4>
+		
+		
+		<h3>Darlington Pair</h3>
+		
+		<h3>Differential Amplifier</h3>
+		<h3>Current Mirror</h3>
+		<h3>Multivibrators</h3>
+		p448 PEFI
+		
+		<!--
+		Good bias discussion: http://www.zen22142.zen.co.uk/Design/bjtbias.htm
+		https://forum.allaboutcircuits.com/threads/saturation-of-a-bjt.60153/
+		https://www.allaboutcircuits.com/textbook/semiconductors/chpt-4/bipolar-junction-transistors-bjt/
+		http://web.engr.oregonstate.edu/~traylor/ece112/beamer_lectures/bjt_reg_of_op.pdf
+		https://www.tutorialspoint.com/basic_electronics/basic_electronics_transistor_regions_operation.htm
+		https://www.circuitbread.com/tutorials/different-regions-of-bjt-operation
+		https://www.pitt.edu/~qiw4/Academic/ME2082/Transistor%20Basics.pdf
+		-->
+		
       </div>
     </div>
     <div id="footer">
