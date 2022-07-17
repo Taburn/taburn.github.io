@@ -72,24 +72,274 @@
       <div id="content">
         <!-- insert the page content here -->
 		
-		<span class="center"><img src="../pictures/under-construction_small.png" alt="Come back later!" /></span>
-		
         <h1>Nixie Heart</h1>
 		
 		<!-- <p><a href="https://github.com/Taburn/Audio-IO-Switch" target="_blank">Github repo.</a></p> -->
 		
 		<p>
-		A present for my wife.
-		</p>
+		A gift for my wife. The custom nixie tube was made by 
+		<a href="https://www.daliborfarny.com/" target="_blank">Dalibor Farny</a>, who was kind enough to humor me. The schematic
+		was based on a boost regulator by <a href="https://desmith.net/NMdS/Electronics/NixiePSU.html" target="_blank">Nick de Smith</a>.
+		The wooden enclosure was made by a CNC shop from plans I drew. The whole thing was 3D modeled to make sure it would fit together.
+		<a href="projects/Nixie_Heart.html">Project Log.</a>
+        </p>
 		
 		<span class="center"><img src="../pictures/projects/Nixie_Heart/cover_photo.jpg" alt="UI" /></span>
 		
-		<h2>Nixie Tube</h2>
+		<h2>Driver Schematic</h2>
 		
-		<h2>Driver</h2>
+		<p>Nixie tubes are usually driven with 170V. I hadn't implemented a voltage convertor
+		with such a high output before, so the first thing I did was look around the web for nixie drivers.
+		Eventually I found one by <a href="https://desmith.net/NMdS/Electronics/NixiePSU.html" target="_blank">Nick de Smith</a>
+		that was pretty simple. I basically just implemented that with parts I could get. Apparently if
+		you just use a regular boost convertor driver without an integrated inductor or switches, calculate
+		the feedback resistors correctly, then make sure all the components are rated for high voltage
+		everything works out.</p>
 		
 		<span class="center"><img src="../pictures/projects/Nixie_Heart/schematic.png" alt="Schematic" /></span>
+		
+		<p> I didn't have a good idea of the I-V curve of the nixie tube, so I didn't know what value
+		its series resistor should be for a specific current. I also wasn't sure how much current would
+		be needed for a good level of glow, except that it would be around 10 or 20 mA. I didn't want
+		to order a bunch of values of high voltage resistors to test with, so I just added a bunch of
+		resistor footprints in parallel and chose two resistor values that, if the tube was shorted,
+		would give approximately 1mA and 5mA. I could then just keep adding resistors until the tube
+		was bright enough.</p>
+		
+		<!--
+		 -->
+		
+		<h2>Driver Layout</h2>
+		
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/pcb_design.png" alt="PCB Layout" /></span>
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/pcb_component_placement.png" alt="PCB Component Placement" /></span>
+		
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/driver_dimensions.png" alt="Driver Dimensions" /></span>
+		
+		<p>Since this was a one-off project, I didn't try to optimize efficiency, EMI, or cost. Nixie tubes are pretty
+		forgiving loads, so the output didn't even have to be particularly noiseless. I did try to make the layout
+		and footprints easy to solder since I would be doing it by hand.</p>
+		
 		<span class="center"><img src="../pictures/projects/Nixie_Heart/driver_panel.png" alt="Driver Panel" /></span>
+		
+		<p>The pictures of the bare PCBs were taken with a scanner, which I hadn't tried before.
+		I think it worked great, except that the pads don't show up very well. Maybe it
+		would have been better if I'd used ENIG plating instead of HASL, or a different color
+		solder mask.</p>
+		
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/PCBA.png" alt="PCBA" /></span>
+		
+		<h2>Nixie Tube Characteristics</h2>
+		
+		<p>I ended up using six 100kΩ and two 27kΩ resistors, giving an equivalent series resistance of 7.46kΩ.
+		This resulted in a tube current of 5.8mA which implies an effective tube resistance of 21.9kΩ (at that current).</p>
+		
+		<p>Now that I have a bunch of data points from testing a bunch of resistor combinations, I can
+		plot the tube's V-I curve.</p>
+		
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/Tube_V_vs_I.png" alt="Tube Voltage vs Current" /></span>
+		
+		<p>It looks like it's close to a constant voltage device, which is good to know.</p>
+		
+
+		<p>There's a neat graphical trick that can be used to calculate the series resistance for a desired
+		current.</p>
+		
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/calculation_graph.png" alt="Tube Calculation Graph" /></span>
+		
+		
+		
+		<p>The blue dots and red line are data from the tube and its best fit line, respectively. The green line
+		is the V-I curve for the 7.5kΩ series resistor, but subtracted from 170V.</p>
+		
+		<p>Calculating a series resistance for a specific current works like this: You take two
+		measurements of the tube current and voltage with arbitrary	series resistance values
+		and use them to plot the red line. Then, with a green line that's pinned at the total voltage
+		on the y-axis, you sweep it along the red line until they intersect at your desired current.
+		The absolute value of the slope of the green line will be the series resistance you should use.</p>
+		
+		<p>This works because the current through the tube and the resistor are the same, and also the
+		voltage at the top of the tube and the total voltage minus the voltage across the resistor are
+		the same. That means that their two curves should intersect at the only physically 
+		realizable location on the graph.</p>
+		
+		<p>Even though the tube turned out to be linear, this kind of graphical calculation works with
+		non-linear circuit elements, if you need to put a resistance in series with them to get a
+		specific current.</p>
+		
+		<p>For future reference, here's the tube's resistance vs current:</p>
+		
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/tube_R_vs_I.png" alt="Tube Resistance vs Current" /></span>
+		
+		<h2>Electrical BOM</h2>
+		
+		<table>
+		<thead>
+		  <tr>
+			<th>Designator</th>
+			<th>Description</th>
+		    <th>Manufacturer</th>
+		    <th>Part Number</th>
+			<th>Quantity</th>
+			<th>Price/unit (CAD)</th>			
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>C1</td>
+		    <td>CAP TANT 100UF 20% 20V 2917</td>
+		    <td>AVX Corp</td>
+		    <td>TPSD107M020R0085</td>
+			<td>1</td>
+			<td>$2.42</td>
+		  </tr>
+		  <tr>
+		    <td>C2, C3</td>
+		    <td>CAP CER 0.1UF 50V Y5V 0805</td>
+		    <td>Yageo</td>
+		    <td>CC0805ZRY5V9BB104</td>
+			<td>2</td>
+			<td>$0.094</td>
+		  </tr>
+		  <tr>
+		    <td>C4</td>
+		    <td>CAP ALUM 10UF 20% 250V SMD</td>
+		    <td>Panasonic</td>
+		    <td>EEV-EB2E100Q</td>
+			<td>1</td>
+			<td>$3.18</td>
+		  </tr>
+		  <tr>
+		    <td>C5</td>
+		    <td>CAP TANT 10UF 10% 35V 2917</td>
+		    <td>AVX Corp</td>
+		    <td>TPSD106K035R0125</td>
+			<td>1</td>
+			<td>$2.77</td>
+		  </tr>
+		  <tr>
+		    <td>C6</td>
+		    <td>CAP FILM 0.1UF 5% 250VDC 2420</td>
+		    <td>Panasonic Electronic Components</td>
+		    <td>ECW-U2104V16</td>
+			<td>1</td>
+			<td>$2.60</td>
+		  </tr>
+		  <tr>
+		    <td>D1</td>
+		    <td>DIODE GEN PURP 300V 2A DO214AA</td>
+		    <td>Vishay Semi</td>
+		    <td>ES2F-E3/52T</td>
+			<td>1</td>
+			<td>$0.56</td>
+		  </tr>
+		  <tr>
+		    <td>L1</td>
+		    <td>FIXED IND 100UH 1.3A 160 MOHM</td>
+		    <td>Sumida America Components Inc.</td>
+		    <td>CDRH125NP-101MC</td>
+			<td>1</td>
+			<td>$2.32</td>
+		  </tr>
+		  <tr>
+		    <td>M1 - M10</td>
+		    <td>CONN PIN RCPT .035-.041 KNURL</td>
+		    <td>Harwin Inc.</td>
+		    <td>H3161-01</td>
+			<td>10</td>
+			<td>$0.40</td>
+		  </tr>
+		  <tr>
+		    <td>Q1</td>
+		    <td>MOSFET N-CH 600V 30A D2PAK</td>
+		    <td>Vishay Siliconix</td>
+		    <td>SIHB100N60E-GE3</td>
+			<td>1</td>
+			<td>$6.72</td>
+		  </tr>
+		  <tr>
+		    <td>R1</td>
+		    <td>RES SMD 11.8K OHM 1% 1/8W 0805</td>
+		    <td>Panasonic Electronic Components</td>
+		    <td>ERJ-6ENF1182V</td>
+			<td>1</td>
+			<td>$0.14</td>
+		  </tr>
+		  <tr>
+		    <td>R2</td>
+		    <td>RES SMD 1.5M OHM 5% 1W 2512</td>
+		    <td>Panasonic</td>
+		    <td>ERJ-1TYJ155U</td>
+			<td>1</td>
+			<td>$0.74</td>
+		  </tr>
+		  <tr>
+		    <td>R3 - R8</td>
+		    <td>RES SMD 100K OHM 1% 1/8W 0805</td>
+		    <td>Rohm Semiconductor</td>
+		    <td>KTR10EZPF1003</td>
+			<td>6</td>
+			<td>$0.25</td>
+		  </tr>
+		  <tr>
+		    <td>R16, R17</td>
+		    <td>RES SMD 27K OHM 1% 1/8W 0805</td>
+		    <td>Rohm Semiconductor</td>
+		    <td>KTR10EZPF2702</td>
+			<td>6</td>
+			<td>$0.25</td>
+		  </tr>
+		  <tr>
+		    <td>Rsense</td>
+		    <td>RES SMD 0.1 OHM 1% 2W 2512</td>
+		    <td>Stackpole Electronics Inc</td>
+		    <td>CSRN2512FTR100</td>
+			<td>1</td>
+			<td>$0.61</td>
+		  </tr>
+		  <tr>
+		    <td>T1</td>
+		    <td>Nixie Tube - Heart</td>
+		    <td>Dalibor Farny</td>
+		    <td>Custom</td>
+			<td>1</td>
+			<td>$190</td>
+		  </tr>
+		  <tr>
+		    <td>U1</td>
+		    <td>IC REG CTRLR BST/BUCK-BST 8SOIC</td>
+		    <td>Maxim Integrated</td>
+		    <td>MAX1771ESA+</td>
+			<td>1</td>
+			<td>$9.22</td>
+		  </tr>
+		  <tr>
+		    <td>VR1</td>
+		    <td>TRIMMER 5K OHM 0.25W GW SIDE ADJ</td>
+		    <td>Bourns Inc.</td>
+		    <td>3214G-1-502E</td>
+			<td>1</td>
+			<td>$4.04</td>
+		  </tr>
+		  <tr>
+		    <td>-</td>
+		    <td>PCB</td>
+		    <td>JLC PCB</td>
+		    <td>-</td>
+			<td>1</td>
+			<td>$3.68</td>
+		  </tr>
+		</tbody>
+		</table>
+		
+		<p>Total PCBA cost = $41.51</p>
+		
+		<h2>Mechanical Design</h2>
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_Bottom.png" alt="3D Bottom" /></span>
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_Exploded.png" alt="3D Exploded" /></span>
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_side.png" alt="3D Side" /></span>
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_bottom_no_base_plate.png" alt="3D Bottom No Base Plate" /></span>
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_top_no_enclosure.png" alt="3D Top No Enclosure" /></span>
 		
 		<h2>Back Plate</h2>
 		<span class="center"><img src="../pictures/projects/Nixie_Heart/mech_back_plate.png" alt="Back Plate Mechanical Drawing" /></span>
@@ -106,75 +356,178 @@
 		<a href="../pictures/projects/Nixie_Heart/Nixie_Tube_Enclosure_v3.0_CNC.pdf" target="_blank">Enclosure Mechanical Drawing</a>
 		<span class="center"><img src="../pictures/projects/Nixie_Heart/Enclosure_Bottom.png" alt="Enclosure Bottom" /></span>
 		
-		<h2>3D Model</h2>
-		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_Bottom.png" alt="3D Bottom" /></span>
-		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_side.png" alt="3D Side" /></span>
-		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_bottom_no_base_plate.png" alt="3D Bottom No Base Plate" /></span>
-		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_top_no_enclosure.png" alt="3D Top No Enclosure" /></span>
-		<span class="center"><img src="../pictures/projects/Nixie_Heart/3D_Exploded.png" alt="3D Exploded" /></span>
+		<p>This was actually the third version of the project. The main issue with the first two was
+		the producibility of the enclosure. The		
+		<a href="../pictures/projects/Nixie_Heart/mechanical_version_1.png" target="_blank">first version</a>
+		of the project called for a round wooden enclosure, turned on a wood lathe. I fully designed the thing,
+		but when I tried to turn the enclosure I found that it was pretty hard to get the dimensional accuracy
+		that I wanted. It was also overly complicated with two PCBs and a high voltage cable that went between
+		them.</p>
 		
+		<p>The second version was much like the first, but square. This would have been easier to build, but I had lost
+		access to a woodshop with precise tools. For the third version I gave up on making the enclosure myself
+		and designed something that I could contract out to any shop with a CNC mill. Almost all of the features
+		can be formed with a vertical cylindrical "wood disappearing" wand.</p>
 		
+		<p>I commissioned a CNC shop and since their quoted price was surprisingly low I asked for four of them.
+		I'm glad I did because three of them were unusable. In order to make the features on the back side,
+		instead	of mounting the piece vertically and cutting them out on the CNC, they cut them out by hand
+		with a chisel. As a result, the back plate would not fit in the recess of three of the four
+		enclosures. They also overcut at two points leaving two gaps around the base plate.</p>
 		
+		<p>When I was a carpenter, work that sloppy would have been professionally embarrassing. In hindsight
+		I could have given them samples of the back and	base plates so it would be obvious that their work
+		didn't match the drawing I gave them.</p>
 		
-		<h3>BOM</h3>
+		<p>Instead of screwing directly into the wood I epoxied round F-F threaded standoffs into holes.
+		In order to keep the epoxy out of the standoffs I put tape on either end and trimmed it flush.
+		I covered the enclosure in tape, swabbed some epoxy in each hole, then pushed the inserts in.
+		After the epoxy dried I cleaned up the excess and it turned out really clean.</p>
 		
-		<!--
+		<h3>Assembly</h3>
+		
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/assembly_without_enclosure.png" alt="Assembly Without Enclosure" /></span>
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/assembly_bottom.png" alt="Assembly Bottom" /></span>
+		
+		<h2>Mechanical BOM</h2>
 		
 		<table>
 		<thead>
 		  <tr>
-		    <th>Part</th>
+			<th>Item</th>
+			<th>Description</th>
 		    <th>Manufacturer</th>
 		    <th>Part Number</th>
-		    <th>Digi-Key Part Number</th>
 			<th>Quantity</th>
 			<th>Price/unit (CAD)</th>			
 		  </tr>
 		</thead>
 		<tbody>
 		  <tr>
-		    <td>Enclosure</td>
-		    <td>Hammond Manufacturing</td>
-		    <td>1593KBK</td>
-		    <td>HM355-ND</td>
+		    <td>Driver PCBA</td>
+			<td>-</td>
+		    <td>Me</td>
+		    <td>-</td>
 			<td>1</td>
-			<td>$5.42</td>
+			<td>$41.51</td>
+		  </tr>
+		  
+		  <tr>
+		    <td>Nixie Tube</td>
+			<td>Custom Heart Tube</td>
+		    <td>Dalibor Farny</td>
+		    <td>Custom</td>
+			<td>1</td>
+			<td>$190</td>
+		  </tr>
+		  <tr>
+		    <td>Standoffs</td>
+			<td>HEX STANDOFF M3 ALUMINUM 20MM</td>
+		    <td>Keystone Electronics</td>
+		    <td>24447</td>
+			<td>6</td>
+			<td>$0.83</td>
+		  </tr>
+		  <tr>
+		    <td>Screws</td>
+			<td>MACH SCREW PAN HEAD PHILLIPS M3</td>
+		    <td>B&F Fastener Supply</td>
+		    <td>MPMS 003 0005 PH</td>
+			<td>14</td>
+			<td>$0.10</td>
+		  </tr>
+		  <tr>
+		    <td>Base Plate</td>
+			<td>-</td>
+		    <td>JLC PCB</td>
+		    <td>-</td>
+			<td>1</td>
+			<td>$3.81</td>
+		  </tr>
+		  <tr>
+		    <td>Back Plate</td>
+			<td>-</td>
+		    <td>JLC PCB</td>
+		    <td>-</td>
+			<td>1</td>
+			<td>$1.93</td>
 		  </tr>
 		  <tr>
 		    <td>Switch</td>
+			<td>SWITCH ROCKER SPST 10A 125V</td>
 		    <td>E-Switch</td>
-		    <td>100DP1T1B1M6QE</td>
-		    <td>100DP1T1B1M6QE-ND</td>
-			<td>2</td>
-			<td>$4.74</td>
-		  </tr>
-		  <tr>
-		    <td>TRS Jack</td>
-		    <td>Switchcraft Inc.</td>
-		    <td>35RAPC2BV4</td>
-		    <td>SC1460-ND</td>
-			<td>4</td>
-			<td>$3.19</td>
-		  </tr>
-		  <tr>
-		    <td>Face Plate</td>
-		    <td>JLCPCB</td>
-		    <td>-</td>
-		    <td>-</td>
-			<td>2</td>
-			<td>$0.61</td>
-		  </tr>
-		  <tr>
-		    <td>Main Board</td>
-		    <td>JLCPCB</td>
-		    <td>-</td>
-		    <td>-</td>
+		    <td>R6ABLKBLKFF</td>
 			<td>1</td>
-			<td>$0.49</td>
+			<td>$2.78</td>
+		  </tr>
+		  <tr>
+		    <td>Power Jack</td>
+			<td>CONN PWR JACK 2.1X5.5MM SOLDER</td>
+		    <td>Tensility International Corp</td>
+		    <td>54-00063</td>
+			<td>1</td>
+			<td>$3.96</td>
+		  </tr>
+		  <tr>
+		    <td>Enclosure</td>
+			<td>Custom Wooden Enclosure</td>
+		    <td>The Original Workshop</td>
+		    <td>Custom</td>
+			<td>1</td>
+			<td>$60</td>
+		  </tr>
+		  <tr>
+		    <td>Threaded Inserts</td>
+			<td>ROUND STANDOFF M3X0.5 BRASS 8MM</td>
+		    <td>Harwin Inc.</td>
+		    <td>R30-5000802</td>
+			<td>7</td>
+			<td>$0.83</td>
+		  </tr>
+		  <tr>
+		    <td>Epoxy for Threaded Inserts</td>
+			<td>Generic Two Part Epoxy For Wood and Metal</td>
+		    <td>Canadian Tire</td>
+		    <td>-</td>
+			<td>1/4 Syringe</td>
+			<td>$2.50</td>
+		  </tr>
+		  <tr>
+		    <td>Feet</td>
+			<td>FOOT CYLINDRICAL 0.374" DIA BLK</td>
+		    <td>Essentra Components</td>
+		    <td>TB-3</td>
+			<td>5</td>
+			<td>$2.80</td>
+		  </tr>
+		  <tr>
+		    <td>Wire</td>
+			<td>HOOK-UP 22AWG STRAND</td>
+		    <td>Adafruit Industries LLC</td>
+		    <td>3111</td>
+			<td>4 inches</td>
+			<td>$0.06</td>
+		  </tr>
+		  <tr>
+		    <td>Power Supply</td>
+		    <td>AC/DC WALL MOUNT ADAPTER 12V 6W</td>
+			<td>CUI Inc.</td>
+		    <td>SWI5-12-N-P5R</td>
+			<td>1</td>
+			<td>$11.30</td>
 		  </tr>
 		</tbody>
 		</table>
-		-->
+		
+		<p>Total device cost without enclosure and nixie tube: $94.04</p>
+		<p>Total device cost: $344.04</p>
+		
+		<span class="center"><img src="../pictures/projects/Nixie_Heart/heart_glow.png" alt="Heart Glow" /></span>
+		
+		<p>A full sized version of the above picture can be found
+		<a href="../pictures/projects/Nixie_Heart/heart_glow_big.png" target="_blank">here</a>.
+		Feel free to use it under a CC BY-NC-SA 4.0 license.</p>
+		
 		
 		<a href="../projects.html">Back to Projects.</a>
 		
