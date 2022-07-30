@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Adam Gulyas - Theory</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+	
+	
+	<!--Tutorial for website LaTeX: http://docs.mathjax.org/en/latest/basic/mathematics.html 
+		$$...$$ and \[...\] for displayed mathematics
+		\(...\) for in-line mathematics
+	
+	
+	-->
+	<title>MathJax example</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Adam<span class="logo_colour"> Gulyas</span></a></h1>
+          <h2>Embedded Hardware Engineer (EIT)</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+		  <li class="selected"><a href="../reference.html">Reference</a></li>
+		  <li><a href="../photography.html">Photography</a></li>
+          <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../book_list.html">Book List</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+		<span class="center"><img src="../pictures/logo/logo.png" alt="logo" /></span>
+        <h3>Contact</h3>
+		<p>gulyas@ualberta.ca</p>
+		<p>adam.photonic@gmail.com</p>
+		<p><a href="https://hackaday.io/adamgulyas" target="_blank">Hackaday</a></p>
+		<p><a href="https://github.com/Taburn" target="_blank">GitHub</a></p>
+		<p><a href="https://www.youtube.com/channel/UCKB8dn85XFXTqpymt03P0VA" target="_blank">Youtube</a></p>
+		<p><a href="https://www.linkedin.com/in/adam-gulyas-ee/" target="_blank">LinkedIn</a></p>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        
+		<h1>Paste Ratio Calculator</h1>
+		
+		<p>Sometimes if a solder stencil aperture is too small (relative to the stencil thickness) the paste will remain
+		in the stencil when it's lifted off the PCB. This is because the paste's adhesion to the stencil is higher than
+		it's adhesion to the PCB. Since paste adhesion to a surface is porportional to the surface area contacting that surface,
+		the area ratio of the stencil opening can help you determine if this is likely to happen.</p>
+		
+		<p>The area ratio is the ratio of the surface area of the paste that's against the stencil to the area
+		that's against the PCB. Therefore, it's equation is:</p>
+		
+		$$\text{Area Ratio} = \frac{ \text{Area of Aperature Opening} }{ \text{Area of Aperature Walls} } = \frac{L*W}{2(L+W)*T}$$
+		
+		<p>Where L, W, and T and defined in the below figure:</p>
+		
+		<span class="center"><img src="../pictures/reference/Paste_Ratio/stencil_dimensions.png" alt="Stencil Dimensions" /></span>
+		
+		<p>Below you can quickly calculate the Area Ratio:</p>
+		
+		<span>Stencil Thickness:</span>
+		<input type="number" id="thickness" value="4" size="50"> <!-- the size field doesn't seem to be working-->
+		<span> mil</span>
+		<br>
+		<span>Pad Length:</span>
+		<input type="number" id="length" value="1" size="10">
+		<span> mm</span>
+		<br>
+		<span>Pad Width:</span>
+		<input type="number" id="width" value="0.6">
+		<span> mm</span>
+		<br>
+		<br>
+		<span>Area Ratio:</span>
+		<input type="number" id="AreaRatio" readonly="true">
+
+		<script>
+			//Get the input box objects by searching for their id
+			let inputBox1 = document.getElementById("thickness")
+			let inputBox2 = document.getElementById("length")
+			let inputBox3 = document.getElementById("width")
+			let outputBox1 = document.getElementById("AreaRatio")
+
+			//The function that generates the output
+			function generateNewOutput(){
+				let thickness = parseFloat(inputBox1.value) // .value is the string inside the textbox. Cast to integer so it's treated like a number
+				let length = parseFloat(inputBox2.value)
+				let width = parseFloat(inputBox3.value)
+				thickness = thickness * 0.0254 // convert from mil to mm
+				outputBox1.value = ((width*length) / (thickness*(2*width + 2*length))).toFixed(3)
+				
+			}
+
+			//when either of the inputs are changed, run the function again.
+			inputBox1.onchange = generateNewOutput
+			inputBox2.onchange = generateNewOutput
+			inputBox3.onchange = generateNewOutput
+
+			//run the function when the page loads so there's a value in the output.
+			generateNewOutput()
+		</script>
+		
+		<H1>Top Google Results for Area Ratio Guidelines</h1>
+		
+		<p>
+		<a href="https://macaos.com/support/techinfo/ratios" target="_blank">Macaos</a>: 
+		"This ratio should be at least 0.66."
+		</p>
+		
+		<p>
+		<a href="https://www.qualiecocircuits.co.nz/stencil-technology-other-aspects.htm" target="_blank">QualiEco Circuits</a>
+		"The generally accepted design guideline for acceptable paste release is [greater than] 0.66 for the area ratio..."
+		</p>
+		
+		<p>
+		<a href="https://www.indium.com/blog/formula-for-area-ratio-of-elongated-d.php" target="_blank">Indium Corp</a>
+		"A rule of thumb that still seems to hold is that the area ratio should be 0.66 or greater for the best printing result."
+		</p>
+		
+		<p>Without a more authoritative source, people seems to agree that the area ratio
+		should be at least 0.66 to give good release results.</p>
+		
+		<span class="center"><img src="../pictures/reference/Paste_Ratio/Solder_Paste_Printed_on_a_PCB.jpg" alt="Solder Paste" /></span>
+		<span class="center"><p><i>Solder paste applied to a PCB using a stencil.<br>
+		Image courtesy of <a href="https://en.wikipedia.org/wiki/Solder_paste#/media/File:Solder_Paste_Printed_on_a_PCB.jpg" target="_blank">Wikipedia</a>,
+		CC BY-SA 3.0</i></p></span>
+		
+		
+		
+      </div>
+    </div>
+    <div id="footer">
+      <!-- <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a> -->
+    </div>
+  </div>
+</body>
+</html>
