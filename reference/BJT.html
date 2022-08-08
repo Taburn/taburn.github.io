@@ -130,7 +130,9 @@
 		</table>
 		
 		
-		
+		<p>Thermal Voltage \(V_T\)<br>
+		https://angms.science/doc/EM/EM_45_Electronics_Equations.pdf
+		https://en.wikipedia.org/wiki/Boltzmann_constant#The_thermal_voltage
 		
 		
 		
@@ -162,14 +164,108 @@
 		I think \(\beta_F\) is the regular \(\beta\) in FAM.
 		</p>
 		
-		<h3>Small Signal Models: Pi and T</h3>
+		<h3>DC Analysis</h3>
+		<p>
+		Add stuff about beta, alpha
+		</p>
 		
+		<h3>Small Signal Models: Hybrid Pi and T</h3>
+		
+		<h4>Hybrid Pi Model</h4>
+		<span class="center"><img src="..\pictures\reference\BJT\03 Hybrid Pi Model.svg" alt="Hybrid Pi Model" /></span>
+		
+		<p>
+		$$g_m = \frac{I_C}{V_T}$$
+		\(I_C = \) DC collector current<br>
+		\(V_T = \) Thermal Voltage (add equation)
+		$$r_\pi = \frac{\beta}{g_m}$$
+		\(\beta = \) (refer to earlier section when it's written)<br>
+		\(g_m = \) ??
+		</p>
+		
+		<h4>Hybrid Pi Model with Early Effect</h4>
+		<span class="center"><img src="..\pictures\reference\BJT\04 Hybrid Pi Model with Early Effect.svg" alt="Hybrid Pi Model with Early Effect" /></span>
+		
+		<p>
+		$$r_o = ??$$
+		</p>
+		
+		<h4>T Model</h4>
+		<span class="center"><img src="..\pictures\reference\BJT\05 T Model.svg" alt="T Model" /></span>
+		
+		<p>
+		$$g_m = \frac{I_C}{V_T}$$
+		\(I_C = \) DC collector current<br>
+		\(V_T = \) Thermal Voltage (add equation)
+		$$r_\pi = \frac{\beta}{g_m}$$
+		\(\beta = \) (refer to earlier section when it's written)<br>
+		\(g_m = \) ??
+		</p>
+		
+		<h4>T Model with Early Effect</h4>
+		<span class="center"><img src="..\pictures\reference\BJT\06 T Model with Early Effect.svg" alt="T Model with Early Effect" /></span>
+		
+		<p>
+		$$r_o = ??$$
+		</p>
 		
 		<h3>Amplifier Configurations</h3>
-		See Practical Electronics for Inventors for solutions to input/output impedance
 		<h4>Common Emitter</h4>
-		<h4>Common Collector</h4>
+		<h4>Common Collector (Emitter Follower)</h4>
 		<h4>Common Base</h4>
+		
+		<h4>BJT Amplifier Formulas</h>
+		
+		<p>p446 Sedra/Smith</p>
+		
+		<table>
+		<thead>
+			<tr>
+				<th>Parameter</th>
+				<th>Common Emitter</th>
+				<th>Common Emitter with \( R_e \)</th>
+				<th>Common Base</th>
+				<th>Common Collector</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>\( R_{in} \)</td>
+				<td>\( ( \beta + 1)r_e \)</td>
+				<td>\( ( \beta + 1) (r_e + R_e)\)</td>
+				<td>\( r_e \)</td>
+				<td>\( (\beta +1)(r_e+R_L) \)</td>
+			</tr>
+			<tr>
+				<td>\( A_{vo} \)</td>
+				<td>\( -g_m R_C \)</td>
+				<td>\( - \frac{g_m R_C}{1+g_m R_e} \)</td>
+				<td>\( g_m R_C \)</td>
+				<td>\( 1 \)</td>
+			</tr>
+			<tr>
+				<td>\( R_o \)</td>
+				<td>\( R_C \)</td>
+				<td>\( R_C \)</td>
+				<td>\( R_C \)</td>
+				<td>\( r_e \)</td>
+			</tr>
+			<tr>
+				<td>\( A_v \)</td>
+				<td>\( -g_m (R_C || R_L) \) <br> \( -\alpha \frac{R_C || R_L}{r_e} \)</td>
+				<td>\( \frac{-g_m (R_C||R_L)}{1+g_m R_e} \) <br> \( -\alpha \frac{R_C||R_L}{r_e+R_e} \)</td>
+				<td>\( g_m(R_C||R_L) \) <br> \( \alpha \frac{R_C||R_L}{r_e} \)</td>
+				<td>\( \frac{R_L}{R_L+r_e} \)</td>
+			</tr>
+			<tr>
+				<td>\( G_v \)</td>
+				<td>\( -\beta \frac{R_C || R_L}{R_{sig} + (\beta + 1) r_e} \)</td>
+				<td>\( -\beta \frac{R_C || R_L}{R_{sig} + (\beta + 1) (r_e+R_e)} \)</td>
+				<td>\( \alpha \frac{R_C || R_L}{R_{sig}+r_e} \)</td>
+				<td>\( \frac{R_L}{R_L+r_e+R_{sig}/(\beta +1)} \) <br> \( G_{vo}=1 \) <br> \( R_{out} = r_e + \frac{R_{sig}}{\beta + 1} \)</td>
+			</tr>
+		</tbody>
+		</table>
 		
 		
 		<h3>Darlington Pair</h3>
