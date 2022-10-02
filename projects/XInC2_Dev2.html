@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Adam Gulyas - XInC2 Dev</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
+</head>
+
+		<!--
+		Add picture with grill off. Talk about passive radiator.
+		Add picture with front off.
+		-->
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Adam<span class="logo_colour"> Gulyas</span></a></h1>
+          <h2>Embedded Hardware Engineer (EIT)</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Home</a></li>
+          <li class="selected"><a href="../projects.html">Projects</a></li>
+		  <li><a href="../reference.html">Reference</a></li>
+          <li><a href="../photography.html">Photography</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../book_list.html">Book List</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+		<span class="center"><img src="../pictures/logo/logo.png" alt="logo" /></span>
+        <h3>Contact</h3>
+		<p>gulyas@ualberta.ca</p>
+		<p>adam.photonic@gmail.com</p>
+		<p><a href="https://hackaday.io/adamgulyas" target="_blank">Hackaday</a></p>
+		<p><a href="https://github.com/Taburn" target="_blank">GitHub</a></p>
+		<p><a href="https://www.youtube.com/channel/UCKB8dn85XFXTqpymt03P0VA" target="_blank">Youtube</a></p>
+		<p><a href="https://www.linkedin.com/in/adam-gulyas-ee/" target="_blank">LinkedIn</a></p>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>XInC2 Dev2</h1>
+		<p>This project is released under the <a href="https://creativecommons.org/licenses/by-sa/2.0/ca/" target="_blank">CC BY-SA license</a>.<br>
+		Files are available on <a href="https://github.com/Taburn/XInC2-Dev2" target="_blank">GitHub</a>.<br>
+		<!-- This project was paused due to the 2021 IC shortage and then canceled due to Eleven's inept communication. -->
+		</p>
+		
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/top_ISO.png" alt="XInC2 Dev2 Render" /></span>
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/Top.png" alt="XInC2 Dev2 Render" /></span>
+		
+		<h4>Description</h4>
+		<p>
+		XInC2 Dev2 is a development board for the <a href="https://elevenengineering.com/products/xinc2-processors/" target="_blank">XInC2</a>,
+		a microcontroller made by <a href="https://www.elevenengineering.com/" target="_blank">Eleven Engineering</a>. It brings out all the XInC2's
+		user pins, yielding 44 GPIO (4 have PWM output), 4 ADC pins, and 1 pin dedicated to its own timer. It ships with a 24.576 MHz crystal for use
+		with 48 kHz audio applications, which can be increased to 100MHz. It's powered and programmed via USB Type-C, using an STM32F042F4P6 as a USB
+		to SPI convertor. Onboard are two tactile buttons and an RGB LED, enabling the user to get up and running without any additional hardware.
+		Also included is a reset button and 2 MBits of Flash. There are population options to enable software control of the crystal frequency using
+		one of the timer peripherals (called crystal pulling). The target audience is hobbyists, but also the capstone groups from the UofA that 
+		Eleven sponsors.
+		</p>
+		
+		<h4>Block Diagram</h4>
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/block_diagram.png" alt="Block Diagram" /></span>
+		<p>
+		* Either population option possible.<br>
+		** A common crystal footprint enable other crystal frequencies.</p>
+		
+		<p>The XPD3 (XInC2 Programming Device) is Eleven's USB to SPI bridge used to program the XInC2.</p>
+		
+		<p>
+		This board is basically just a XInC2 and its minimum support circuitry, the circuitry from an XPD, some general use UI and memory,
+		and headers that provide easy access to the XInC2's GPIO. It follows the same design philosophy	as Arduino,
+		<a href="https://www.ti.com/tool/EK-TM4C123GXL" target="_blank">TI's LaunchPad</a>, or the 
+		<a href="https://www.st.com/en/evaluation-tools/nucleo-l476rg.html" target="_blank">STM32 Nucleo-64</a>.
+		</p>
+		
+		<p>A three colour LED was chosen so that any demo showing PWM functionality would be more impressive than a single colour
+		getting brighter and dimmer. Two buttons were chosen because one seemed too few and three seemed too many.</p>
+		
+		<h4>Schematic</h4>
+		<p>
+		<a href="../pictures/projects/XInC2_Dev2/XInC2_Dev_Sch_v2.0.0.pdf" target="_blank">[Schematic PDF]</a><br>
+		</p>
+		
+		<p>
+		Since the minimum support circuitry for the XInC2 and the circuitry for the XPD were already proven to work, there wasn't much
+		circuit design effort needed for this project. It was basically just adding a lot of detail to the block diagram.
+		</p>
+		
+		<p>I added a header to the SPI bus between the XPD and the XInC2 so that you could easily probe it with a logic analyzer.</p>
+		
+		<p>There are two pins on the XInC2 labeled NTC0 and NTC1. I believe they are internal thermistors that would enable you to
+		monitor the core temperature of the microcontroller, but no information about them exists in the XInC2 datasheet or user guide.
+		In any case, I brought them out to test points that someone motivated could tap into and experiment with.</p>
+		
+		<p>A linear regulator was chosen over a buck regulator because of BOM and assembly costs. The reduced noise is also nice for
+		audio projects. The AP2114 was chosen for its low cost, high current output, and familiarity to the client.</p>
+		
+		<p>A through hole USB jack was chosen over a surface mount one for the added mechanical strength, despite taking longer to solder.</p>
+		
+		<p>0603 components were chosen over anything smaller because it's the smallest size that has values printed on the resistors.
+		They're also easier to work with.</p>
+		
+		<p>I made sure there were resistors that could be disconnected to isolate the UI elements from the GPIO,
+		in case a user wanted to repurpose those pins.</p>
+		
+		<p>The LED resistors were chosen semi-randomly with the intent to tune their values during bring up. Currently the LED is
+		probably too bright and the colors are probably out of balance.</p>
+		
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/pin_out.png" alt="Pin Out" /></span>
+		
+		<p>I made sure that the GPIO signals were assigned to the large headers in a somewhat logical/sequential order.
+		Some boards like the LaunchPad don't do this and it's a chore to find the pin you want. I also made sure to keep the PWM
+		capable signals away from the ADC pins to avoid crosstalk.</p>
+		
+		<h4>PCB Design</h4>
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/Board_Layout.png" alt="PCB Layout" /></span>
+		
+		<p>The PCB layout also followed the same design language as Arduino/LaunchPad/Nucleo-64. Power comes in at the top
+		near the programmer, the main microcontroller is in the center, large headers are on either side, and some
+		basic UI hardware is at the bottom.
+		</p>
+		
+		<p>
+		It was important to me to copy the design language of the Arduino. Compared to v2.0, the old design was... cluttered.
+		A lot of board space was devoted to extra circuitry you would rarely use. I think the new design is a lot more approachable,
+		especially for someone already familiar with any other common hobbyist dev board.
+		</p>
+		
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/PCB_routing.png" alt="PCB Routing" /></span>
+		
+		<p>
+		It's a two layer single sided 1.6mm thick PCB, which should make it cheap to produce and easy to assemble. I designed it to
+		tolerances that any board house should be able to easily meet (0.2 mm trace/space, 0.3/0.6 mm vias).
+		The overall board size is 60 x 80 mm, which is good because the board house I used starts charging more above 100 x 100 mm.
+		</p>
+		
+		<p>
+		I was lucky that the pins of the XinC2 are on a 0.4mm pitch and the pads are 0.2mm wide. I was able to choose 0.2mm width traces
+		and work on a 0.2mm grid. It was nice to have things snap automatically to the right position and made routing much faster.
+		</p>
+		
+		<p>
+		One feature requested by Eleven was RC filters on the GPIO that could be assigned to the I2S bus, which are usually used for
+		reducing EMI to pass FCC certification. Since very few (if any) hobbyists will be putting their dev board projects through
+		FCC certification, I didn't really want to add them. They make the board more cluttered and I was aiming for a clean first impression.
+		However, it's important to accommodate reasonable client change requests so I added footprints for them.
+		I didn't want them to be populated by default since most people won't use them and it would decrease BOM and assembly costs. I
+		designed an 0603 footprint with an easily removeable jumper across the pads, a solution which was approved by Eleven. It should
+		be easy for anyone who decides RC filters are needed to peel off the jumper and solder them in.
+		</p>
+		
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/0603_Jumper.png" alt="0603 Footprint with removeable jumper" /></span>		
+		
+		<p>Ground traces were routed between each ADC trace to reduce cross talk.</p>
+		
+		<p>The large header pads were slightly thinned so I could route traces between them.</p>
+		
+		<p>Every pin in the large headers were labeled on both sides of the PCB to make the user's life easier.</p>
+		
+		<p>Crystal caps are an area of disagreement. I've read whitepapers that swear they should be between the crystal and the microcontroller, and
+		others that swear they should be on the far side of the crystal. In this case I followed Eleven's standard convention
+		and did the former.</p>
+		
+		<p>The USB connector was placed so it protrudes past the edge of the board. This should make it easier to design cases for the
+		dev board.</p>
+		
+		<p>The mounting holes have area around them reserved for the bolt head. Some boards (like the Arduino Uno) seem to treat mounting
+		holes like they'll only be used for locating pegs and put components or silkscreen labels right next to the edge of the hole. They also
+		put the holes right next to the edge of the PCB, which increases the risk that the milling bit that's cutting out the PCB
+		will break through.</p>
+		
+		<p>I didn't panelize the board because Eleven never panelizes their boards.</p>
+		
+		<p>If I had to do it again, I'd probably round the corners.</p>
+		
+		<h4>Bare PCBs</h4>
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/Bare_PCB_top.png" alt="Bare PCB top" /></span>
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/Bare_PCB_bottom.png" alt="Bare PCB bottom" /></span>
+		
+		<p>
+		After receiving the circuit boards I asked Eleven to send me the parts they'd agreed to at the beginning of the project
+		so I could assemble the PCBAs and test everything. Unfortunately this was just at the beginning of the pandemic IC shortage and Eleven was
+		having trouble getting enough STM microcontrollers to build XPDs. Since the dev board was just a XInC2 and XPD,
+		they couldn't afford to send me anything. The project was put on hold.
+		</p>
+		
+		<p>
+		Some time later I was able to source the missing microcontrollers and asked Eleven to send me the rest of the parts.
+		I was told that the project had been canceled.
+		</p>
+		
+		<p>
+		All the design files are available on <a href="https://github.com/Taburn/XInC2-Dev2" target="_blank">GitHub</a>,
+		released under the <a href="https://creativecommons.org/licenses/by-sa/2.0/ca/" target="_blank">CC BY-SA license</a>.
+		If Eleven ever does decide to build some, it would be nice if they let me know how they turned out.
+		</p>
+		
+		<h4>LED Board</h4>
+		
+		<p>
+		As a side project, I also made an LED shield/feather/hat for the dev board. It just connected an LED to each of the GPIO and could be used for
+		scrolling text, an audio EQ display, or just interesting patterns. It also connected all the ADC pins to voltage dividers so you
+		could practice taking ADC measurements.
+		</p>
+		
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/LED_Board_Top.png" alt="Bare PCB bottom" /></span>
+		<span class="center"><img src="../pictures/projects/XInC2_Dev2/LED_Board_Iso.png" alt="Bare PCB bottom" /></span>
+		
+		
+		<p><a href="../projects.html">Back to Projects.</a></p>
+		
+		  </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a>
+    </div>
+  </div>
+</body>
+</html>
