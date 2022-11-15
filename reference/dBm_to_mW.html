@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>dBm to mW Conversion</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+	
+	<!-- Enables LaTeX formulas -->
+	<title>MathJax example</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
+	
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Adam<span class="logo_colour"> Gulyas</span></a></h1>
+          <h2>Embedded Hardware Engineer (EIT)</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+		  <li class="selected"><a href="../reference.html">Reference</a></li>
+		  <li><a href="../photography.html">Photography</a></li>
+          <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../book_list.html">Book List</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+		<span class="center"><img src="../pictures/logo/logo.png" alt="logo" /></span>
+        <h3>Contact</h3>
+		<p>gulyas@ualberta.ca</p>
+		<p>adam.photonic@gmail.com</p>
+		<p><a href="https://hackaday.io/adamgulyas" target="_blank">Hackaday</a></p>
+		<p><a href="https://github.com/Taburn" target="_blank">GitHub</a></p>
+		<p><a href="https://www.youtube.com/channel/UCKB8dn85XFXTqpymt03P0VA" target="_blank">Youtube</a></p>
+		<p><a href="https://www.linkedin.com/in/adam-gulyas-ee/" target="_blank">LinkedIn</a></p>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        
+		<h1>dBm to mW</h1>
+		
+		<h4>Formula</h4>
+		<p>The formula to convert dBm to mW is:<p>
+		
+		$$P\mathrm{[mw]}=10^{P\mathrm{[dBm]}/10}$$
+		
+		<h4>Calculator</h4>
+		
+		<span>Power [dBm]:</span>
+		<input type="number" id="input" value="0"> <!-- default value is 0 -->
+		<br>
+		<br>
+		<span>Power [mW]:</span>
+		<input type="number" id="output" readonly="true"> <!-- readonly so the answer can't be manually changed -->
+
+		<script>
+			//Get the input box objects by searching for their id
+			let inputBox = document.getElementById("input")
+			let outputBox = document.getElementById("output")
+
+			//The function that generates the output
+			function generateNewOutput(){
+				let input = parseInt(inputBox.value) // .value is the string inside the textbox. Cast to integer so it's treated like a number
+				outputBox.value = 10**(input/10)
+			}
+
+			//when either of the inputs are changed, run the function again.
+			inputBox.onchange = generateNewOutput
+
+			//run the function when the page loads so there's a value in the output.
+			generateNewOutput()
+		</script>
+		<p><br></p>
+		
+		<h4>Chart</h4>
+		<table>
+		<thead>
+			<tr>
+				<th>dBm</th>
+				<th>mW</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>-50</td>
+				<td>0.000 01</td>
+			</tr>
+			<tr>
+				<td>-40</td>
+				<td>0.000 1</td>
+			</tr>
+			<tr>
+				<td>-30</td>
+				<td>0.001</td>
+			</tr>
+			<tr>
+				<td>-20</td>
+				<td>0.01</td>
+			</tr>
+			<tr>
+				<td>-19</td>
+				<td>0.012 6</td>
+			</tr>
+			<tr>
+				<td>-18</td>
+				<td>0.015 8</td>
+			</tr>
+			<tr>
+				<td>-17</td>
+				<td>0.019 95</td>
+			</tr>
+			<tr>
+				<td>-16</td>
+				<td>0.025 1</td>
+			</tr>
+			<tr>
+				<td>-15</td>
+				<td>0.031 6</td>
+			</tr>
+			<tr>
+				<td>-14</td>
+				<td>0.039 8</td>
+			</tr>
+			<tr>
+				<td>-13</td>
+				<td>0.050 1</td>
+			</tr>
+			<tr>
+				<td>-12</td>
+				<td>0.063 1</td>
+			</tr>
+			<tr>
+				<td>-11</td>
+				<td>0.079 4</td>
+			</tr>
+			<tr>
+				<td>-10</td>
+				<td>0.100</td>
+			</tr>
+			<tr>
+				<td>-9</td>
+				<td>0.126</td>
+			</tr>
+			<tr>
+				<td>-8</td>
+				<td>0.158</td>
+			</tr>
+			<tr>
+				<td>-7</td>
+				<td>0.199 5</td>
+			</tr>
+			<tr>
+				<td>-6</td>
+				<td>0.251</td>
+			</tr>
+			<tr>
+				<td>-5</td>
+				<td>0.316</td>
+			</tr>
+			<tr>
+				<td>-4</td>
+				<td>0.398</td>
+			</tr>
+			<tr>
+				<td>-3</td>
+				<td>0.501</td>
+			</tr>
+			<tr>
+				<td>-2</td>
+				<td>0.631</td>
+			</tr>
+			<tr>
+				<td>-1</td>
+				<td>0.794</td>
+			</tr>
+			<tr>
+				<td>0</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>1.259</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>1.585</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>1.995</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>2.512</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>3.162</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>3.981</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>5.012</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td>6.310</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td>7.943</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td>12.59</td>
+			</tr>
+			<tr>
+				<td>12</td>
+				<td>15.85</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>19.95</td>
+			</tr>
+			<tr>
+				<td>14</td>
+				<td>25.12</td>
+			</tr>
+			<tr>
+				<td>15</td>
+				<td>31.62</td>
+			</tr>
+			<tr>
+				<td>16</td>
+				<td>39.81</td>
+			</tr>
+			<tr>
+				<td>17</td>
+				<td>50.12</td>
+			</tr>
+			<tr>
+				<td>18</td>
+				<td>63.10</td>
+			</tr>
+			<tr>
+				<td>19</td>
+				<td>79.43</td>
+			</tr>
+			<tr>
+				<td>20</td>
+				<td>100</td>
+			</tr>
+			<tr>
+				<td>30</td>
+				<td>1000</td>
+			</tr>
+			<tr>
+				<td>40</td>
+				<td>10,000</td>
+			</tr>
+			<tr>
+				<td>50</td>
+				<td>100,000</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<p><a href="../reference.html">Back to Reference.</a></p>
+		
+		
+		
+      </div>
+    </div>
+    <div id="footer">
+      <!-- <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a> -->
+    </div>
+  </div>
+</body>
+</html>
