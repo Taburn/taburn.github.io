@@ -32,6 +32,11 @@
 	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
 	<!-- ****** faviconit.com favicons ****** -->
 
+	<!-- Enables LaTeX formulas -->
+	<title>MathJax example</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
+
 </head>
 
 <body>
@@ -74,21 +79,108 @@
 		
         <h1>Atari Punk Console</h1>
 		
-		<span class="center"><img src="../pictures/under-construction_small.png" alt="Come back later!" /></span>
+		<!-- <span class="center"><img src="../pictures/under-construction_small.png" alt="Come back later!" /></span> -->
 		
-		<p><a href="https://github.com/Taburn/APC" target="_blank">Github repo.</a></p>
+		<!-- <p><a href="https://github.com/Taburn/APC" target="_blank">Github repo.</a></p> -->
 		
-		
+		<span class="center"><img src="../pictures/projects/APC/device.jpg" alt="Atari punk console" /></span>
 		
 		<h2>Background</h2>
-		<span class="center"><img src="../pictures/projects/Audio_IO_Switch/UI_v1.jpg" alt="UI" /></span>
-		<a href="https://commons.wikimedia.org/wiki/File:Mandala_52.svg" target="_blank">Mandala_52</a>
+		<p>The Atari Punk Console is a well known circuit developed in the early 70's by Forest M. Mims who called it
+		(more usefully) a Stepped Tone Generator. Because of its low component count and retro sound, it is often 
+		one of the first circuits built by people interested in audio synthesis.</p>
+		
+		<p>Its name references the fact that it sounds like the old Atari game console. I'm not sure where
+		the "punk" comes from. I had thought it was a term that referred to hacking (not necessarily software related,
+		"to punk a system"), but couldn't find any reference to that usage online. I was probably thinking of
+		<a href="https://www.landley.net/history/mirror/jargon.html#phreaking" target="_blank">phreaking</a>.</p>
+		
+		<p>A lot has been written elsewhere on the internet about its history and how it works. The best reference I found was from 
+		<a href="https://www.notesandvolts.com/2011/12/atari-punk-console-how-it-works.html" target="_blank">Notes and Volts</a>,
+		which contains a thorough explanation about how it works and a video that shows how the waveforms change when the potentiometers
+		are adjusted.</p>
+		
+		<p>Here's some other references:<br>
+		<a href="https://en.wikipedia.org/wiki/Forrest_Mims#Stepped-tone_generator_(Atari_Punk_Console)" target="_blank">Wikipedia</a><br>
+		<a href="https://www.youtube.com/watch?v=Oi3dmSMpjsU" target="_blank">Collin's Lab: Atari Punk Console</a> (Youtube)<br>
+		<a href="https://www.youtube.com/watch?v=Icf3cNClc6w" target="_blank">Atari Atari Atari Punk Punk Punk Console</a> (Youtube)<br>
+		<a href="https://www.adafruit.com/product/3459" target="_blank">Adafruit kit</a> (discontinued)<br>
+		<a href="https://www.jameco.com/Jameco/workshop/diy/ataripunkconsole-kit.html" target="_blank">Jameco Electronics kit</a><br>
+		<a href="https://www.rakits.co.uk/product/mini-atari-punk-console/" target="_blank">Rakits kit</a><br>
+		</p>
+		
+		<p>I had been wanting to try making my own version of an APC for several years. The motivation to finally
+		do it came when I was looking for something to make 20 of for Christmas.</p>
 		
 		<h2>Breadboard</h2>
-		<h2>Schematic</h2>
-		<h2>PCB</h2>		
+		<span class="center"><img src="../pictures/projects/APC/breadboard.jpg" alt="Schematic" /></span>
 		
-		<h3>BOM</h3>
+		<p>The first step was to actually build one myself so I 
+		<a href="https://upload.wikimedia.org/wikipedia/commons/f/fa/APC_with_2_555_%28pin_out%29_and_bridge_added.png" target="_blank">found a schematic on Wikipedia</a>
+		and assembled it on a breadboard with parts I had on hand. The above picture was taken after the
+		project was done and I'd partially disassembled it so the volume pot, button, and speaker output are missing.</p>
+		
+		<p>It worked right away and the frequency range sounded good so I didn't adjust any of the part values.</p>
+		
+		
+		<h2>Schematic</h2>
+		<span class="center"><img src="../pictures/projects/APC/schematic.png" alt="Schematic" /></span>
+		
+		<p>The next step was to import the circuit on the breadboard into an Altium schematic. Since there wasn't much actual
+		circuit design this was mostly just making the library symbols and connecting them correctly, making sure to draw it
+		in a way that's easy to understand.</p>
+		
+		<p>I didn't include 100nF caps next to the 555 timer pins. This is usually done to reduce noise from an IC's sudden current draws,
+		but the breadboard version sounded fine without them and it would have been two more components to solder. I did buy some and
+		worst case could have bodged them in since the power and ground pins were next to each other. In retrospect I should have included
+		the footprint and then just not populated them.</p>
+		
+		<p>How to manage power was a big consideration. I initially wanted to include both a dedicated power switch and a button that would
+		connect the audio signal to the output but I was having trouble fitting all the UI elements into the enclosure. The faceplate
+		had room for three pots and a jack (all required), and I could only fit one UI element on the top of the box while still having room
+		for the battery and PCB. I couldn't find anywhere for the power switch. I considered just leaving the oscillator always running,
+		but the requirement I set for that option was that it had to run for three years on a 9V cell and it didn't even come close.</p>
+		
+		<p>Then I realised the button that I had right before the audio output could be a power button instead. In other words,
+		between each note the whole circuit shuts off and starts up again when the button is pressed again. I was initially hesitant
+		because I was worried there would be some startup audio distortion whenever the power was turned on but testing on the breadboard
+		showed that it sounded fine.</p>
+		
+		In the end I was able to get rid of the power switch entirely by moving the button connection, which reduced BOM cost and assembly
+		time.</p>
+		
+		
+		<h2>PCB</h2>
+		<p>This is where most of the design effort was spent. I wanted to make this a polished product that was as
+		close to a consumer product as I could get without spending too much. That meant putting it in an 
+		off the shelf enclosure.</p>
+		
+		<p>I had used the Hammond 1593KBK enclosure in a <a href="Audio_IO_Switch.html">previous project</a> and it seemed suited to
+		this one as well. The parts of the enclosure were well made with good fit/finish and without mold flashing.</p>
+		
+		<p>The next step was deciding where all the UI components would be placed (see discussion above).
+		I was kind of restrained by the enclosure, since the PCB had to mount to the enclosure bottom and
+		the button had to be on the enclosure top.</p>
+		
+		<p>After that was decided I wrapped the PCB into the remaining space, leaving room for the 9V battery, then put the
+		components where they fit. There weren't any high speed signals, so controlled impedance traces weren't needed
+		and parts could be put mostly wherever. Solder points for the button and battery were put in places I thought
+		would be easy to solder, but they ended up a bit close together.</p>
+		
+		<span class="center"><img src="../pictures/projects/APC/PCB.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_routing.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_top.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_bottom.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_render_iso.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_render_top.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_render_bottom.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_render_enclosure.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_with_FP.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_MB_dimensions.png" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_real_top.jpg" alt="Schematic" /></span>
+		<span class="center"><img src="../pictures/projects/APC/PCB_real_bottom.jpg" alt="Schematic" /></span>
+		
+		<h3>PCBA BOM</h3>
 		<table>
 		<thead>
 		  <tr>
@@ -102,39 +194,71 @@
 		</thead>
 		<tbody>
 		  <tr>
-		    <td>Enclosure</td>
-		    <td>Hammond Manufacturing</td>
-		    <td>1593KBK</td>
-		    <td>HM355-ND</td>
+		    <td>RES SMD 1K OHM 1% 1/10W 0603</td>
+		    <td>Yageo</td>
+		    <td>RC0603FR-071KL</td>
+		    <td>311-1.00KHRCT-ND</td>
 			<td>1</td>
-			<td>$5.42</td>
+			<td>$0.04</td>
 		  </tr>
 		  <tr>
-		    <td>Switch</td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-			<td></td>
-			<td></td>
+		    <td>POT 1K OHM 1/20W CARBON LINEAR</td>
+		    <td>Bourns Inc.</td>
+		    <td>PTV09A-2020U-B102</td>
+		    <td>PTV09A-2020U-B102-ND</td>
+			<td>1</td>
+			<td>$0.89</td>
 		  </tr>
 		  <tr>
-		    <td>TRS Jack</td>
-		    <td>Switchcraft Inc.</td>
+		    <td>POT 500K OHM 1/20W CARBON LINEAR</td>
+		    <td>Bourns Inc.</td>
+		    <td>PTV09A-2020F-B504</td>
+		    <td>PTV09A-2020F-B504-ND</td>
+			<td>2</td>
+			<td>$0.86</td>
+		  </tr>
+		  <tr>
+		    <td>CAP CER 10000PF 25V X7R 0603</td>
+		    <td>Yageo</td>
+		    <td>CC0603KRX7R8BB103</td>
+		    <td>311-1360-1-ND</td>
+			<td>2</td>
+			<td>$0.03</td>
+		  </tr>
+		  <tr>
+		    <td>CAP CER 10UF 16V X5R 0805</td>
+		    <td>Samsung</td>
+		    <td>CL21A106KOQNNWE</td>
+		    <td>1276-2894-1-ND</td>
+			<td>1</td>
+			<td>$0.11</td>
+		  </tr>
+		  <tr>
+		    <td>CONN JACK STEREO 3.5MM R/A</td>
+		    <td>Switchcraft</td>
 		    <td>35RAPC2BV4</td>
 		    <td>SC1460-ND</td>
-			<td>4</td>
-			<td>$3.19</td>
+			<td>1</td>
+			<td>$2.53</td>
 		  </tr>
 		  <tr>
-		    <td>Face Plate</td>
-		    <td>JLCPCB</td>
-		    <td>-</td>
-		    <td>-</td>
+		    <td>IC OSC SGL TIMER 100KHZ 8-SOIC</td>
+		    <td>Texas Instruments</td>
+		    <td>NE555PSRE4</td>
+		    <td>NE555PSRE4-ND</td>
 			<td>2</td>
-			<td>$0.61</td>
+			<td>$0.51</td>
 		  </tr>
 		  <tr>
-		    <td>Main Board</td>
+		    <td>BATT CONN SNAP 9V 1 CEL 6" LEADS</td>
+		    <td>Keystone Electronics</td>
+		    <td>233</td>
+		    <td>36-233-ND</td>
+			<td>1</td>
+			<td>$0.63</td>
+		  </tr>
+		  <tr>
+		    <td>Main Board PCB</td>
 		    <td>JLCPCB</td>
 		    <td>-</td>
 		    <td>-</td>
@@ -144,13 +268,356 @@
 		</tbody>
 		</table>
 		
-		<p>The PCBs came from <a href="https://jlcpcb.com/" target="_blank">JLCPCB</a> as part of a larger order, so the shipping and import fees cost maybe $5
-		per set of 3 boards?</p>
+		<p>The total cost for the PCBA was <b>$6.89 CAD</b> when parts for 20 boards were ordered.
+		The price would come down a bit if I ordered enough for 50 or 100 units.</p>
 		
-		<p>In total, the unit cost of one Audio IO Switch was $35. However, if I built a run of 100, it would drop to $26.50. According to 
-		<a href="https://www.youtube.com/watch?v=UwrkfHadeQQ&t=57s" target="_blank">Dave from EEVblog</a>, that means I should charge $65/unit. I think
-		the build quality is high enough that it will last years (the weakest link is probably the jacks), but I'm not sure if there would be enough demand.
-		I suppose I could try selling on <a href="https://www.tindie.com/" target="_blank">Tindie</a> to see if anyone else was interested.</p>
+		<h3>PCB Assembly</h3>
+		<p>Done with a soldering iron.</p>		
+		<span class="center"><img src="../pictures/projects/APC/SMT_populated.jpg" alt="Come back later!" /></span>
+		
+		<h3>Faceplate</h3>
+		<p>Instead of drilling holes in the faceplates that came with the enclosure, I designed a PCB that was the same size
+		with holes in the right position. The line art was vaguely inspired by sound waves and what it would look like if you
+		dropped three stones in a pond at the same time.</p>
+		
+		<span class="center"><img src="../pictures/projects/APC/faceplate.png" alt="Come back later!" /></span>
+		<span class="center"><img src="../pictures/projects/APC/faceplate_render_iso.png" alt="Come back later!" /></span>
+		
+		<p>The line across the back of the PCB (green rectangle) lined up with the main PCB, which made calculating
+		the hole height easier. The height was also confirmed by referring to the 3D model assembly.</p>
+		
+		<span class="center"><img src="../pictures/projects/APC/faceplate_hole_alignment_render.png" /></span>
+		
+		<h3>Enclosure Modifications</h3>
+		<p>I was kind of disappointed with the quality of the enclosures. I had ordered this part before for a different project
+		and they were clean and fit together well. This time there was injection mold flashing left behind which I had to trim.	Worse yet, the
+		enclosure came with two faceplate options and the one I wanted to use had weird gaps and wasn't flush. I had to use the
+		other one that didn't look as nice.</p>
+		
+		<p>I had to drill the hole in the lid for the button. In order to make sure the button lined up with the PCB I made a template
+		that let me center punch the lid accurately. Then since the hole was a bit large for a twist drill bit I used a stepped bit.
+		I also drilled out two of the standoffs to make room for the battery.</p>
+		<span class="center"><img src="../pictures/projects/APC/enclosure_mech.jpg" alt="Come back later!" /></span>
+		
+		<h3>Battery Retention</h3>
+		<p>Figuring out how to mount a battery in the enclosure was challenging. Ideally the enclosure would have a built in battery
+		compartment. Those are pretty expensive though, so after a bit of thinking the final solution was to use some compressible foam
+		with adhesive on one side attached to the enclosure top, which would keep the battery pressed against the bottom of the enclosure.
+		I ended up using weather stripping since it comes in multiple thicknesses and was readily available.</p>
+		
+		<p>Even though there was no adhesive on the surface touching the battery, the weather stripping gripped it. This unexpected benefit
+		meant that I didn't have to add extra foam to stop it rattling around.</p>
+		
+		<h3>Sticker</h3>
+		
+		<span class="center"><img src="../pictures/projects/APC/Sticker.png" alt="Sticker" /></span>
+		<p>In the past I've used Avery full page sticker project paper, but the end result was a bit blurry and the blacks weren't deep.</p>
+		
+		<p>This time I ordered some glossy sticker paper and the result looked pretty good. Unfortunately the sticker itself was pretty thin.
+		Usually this wouldn't be a problem, but when I put the sticker on the enclosure and tightened the button, the button would spin a bit.
+		This spinning caused the sticker to warp, which looked pretty bad. I couldn't stop the button from spinning and didn't want to leave
+		a large enough hole in the sticker to avoid the button completely. I couldn't see any way to make the glossy stickers work, so I went
+		back to the paper ones.</p>
+		
+		<p>The UI labels were slanted so the button lip didn't cover FREQ and the name of the device was wrapped around the button.
+		After that, there was a bunch of white space remaining, so I tried a few graphic details before choosing one I liked.
+		Here are some of the alternatives I tried.</p>
+
+		<span class="center"><img src="../pictures/projects/APC/label_curves.png" alt="Label Curves" /></span>
+		
+		<p>All the damped sinusoids were rendered in Inkscape using their equations. They were generally of the form:</p>
+		
+		$$y=e^{-ax}\sin(\pi(x+b))$$
+		
+		<p>where <i>a</i> controls how fast the curve shrunk and <i>b</i> controls the phase of the sinusoid.</p>
+		
+		<h3>Device Assembly</h3>
+		<p>Device assembly went pretty well with two main issues. The first one was that I forgot to add polarity markings on the PCB
+		for the battery connection, so I had to refer to the source files.</p>
+		
+		<p>The second issue was that, once everything was all together, some of the knobs wouldn't turn. They were rubbing
+		on the side of the faceplate holes. it only happened when the enclosure screws were very tight, so I slightly
+		loosened the screws on the ones that were rubbing and the knobs were able to turn easily again.</p>
+		
+		<p>I'm still not sure exactly what was causing the rubbing, but it could have been a few things. The dimensions of the
+		physical part could have been different from the drawing and 3D model. It could also be caused by only using two
+		mounting bosses for the PCB, which creates an axis that the PCB rotated around, moving the knobs out of position.
+		I could also have just made a mistake with the calculations or aligning the 3D models.</p>
+		
+		<p>In any case, finding the root cause is a moot point since I don't plan on making another run of these and I
+		found a workable solution. If I have time in the future I think I'll use a laser cutter to make a prototype faceplate first.</p>
+		<span class="center"><img src="../pictures/projects/APC/assembled_open.jpg" alt="Come back later!" /></span>
+		<span class="center"><img src="../pictures/projects/APC/assembled_open_batch.jpg" alt="Come back later!" /></span>
+		
+		<h3>Box</h3>
+		<p>I wasn't willing to have custom boxes made, so finding a box that was the right size involved a lot of searching online, shifting
+		through the default box sizes and types available. Ideally it would have been a snug fit but I could only find something that was
+		slightly larger. Since I didn't want the device to rattle around and didn't want to use packing peanuts or tissue paper, I
+		designed a box insert.</p>
+		
+		<h3>Box Insert</h3>
+		
+		<p>Influenced by the packaging cellphones come in, I though a box insert would make the whole thing seem cleaner and
+		more intentional as opposed to using some sort of padding.</p>
+		
+		<p>Based on the size of the box, the insert would have to provide padding both horizontally and vertically
+		(when looking down into the box). I decided to center the device horizontally, but move it all the way down
+		vertically. Adding the extra space at the top would provide more padding for the knobs and make it easier for
+		a finger to get between the lip of the device and the box wall to pull it out. Not adding a bottom wall
+		also reduced the complexity and assembly time of the insert, which is great for something you're making 20 of.</p>
+		
+		<p>I also wanted the insert to lift the device up, away from the bottom of the box. Although I got lucky with the
+		default box	sizes that were available and ended up lifting it only 5 mm, I still wanted to include this feature so
+		I'd know how to make it work in	future projects if I had to. It would look pretty bad if the device was at the
+		bottom of a box 2-3 times its height, swallowing it up. It makes it look like the packaging is guarding
+		the device from the user instead of offering it up to the user.</p>
+		
+		<p>I thought about adding circular cutouts on the side walls so the user could use a thumb and finger to hold the sides of the
+		device and pull it out, but it was another manufacturing step and I didn't have a way to make precise hole cutouts
+		that were clean enough for the user to see. In the final design almost all the edges the user sees are folded, making it look
+		clean and precise, and I didn't want to disrupt that.</p>
+		
+		<p>Making the insert would have been an ideal application for 
+		<a href="https://en.wikipedia.org/wiki/Vacuum_forming" target="_blank">vacuum forming</a>, but I didn't have access
+		to a vacuum former or a way of making the mold. I decided to try folded cardstock instead since that was what a lot of
+		phone packaging uses and all I needed was a printer and scissors.</p>
+		
+		<p>Without much experience in designing paper objects, I sat down with
+		<a href="https://www.qcad.org" target="_blank">QCAD</a>	(a 2D drafting program) and tried to make
+		something that could be cut out and folded into a form that would provide support in the right places. I ended up making
+		4 prototypes. Throughout the process, as I found flaws in the first three designs, there were a lot of moments of "Oh,
+		of course it would do that."</p>
+		
+		<span class="center"><img src="../pictures/projects/APC/box_insert_versions.jpg" alt="Box insert prototypes" /></span>
+		
+		<p>The first one was pretty naive. The side walls didn't support the floor of the insert, slumping down until
+		it touched the floor of the box. Also, I didn't account for the width of the top wall when drawing the floor of the insert,
+		so the base of the top wall was squished to zero width.</p>
+		
+		<p>For the second prototype, I accepted that I would probably have to use tape, an additional
+		production step I was hoping to avoid. I added some tabs that would fold under the left and
+		right walls of the insert and tape into place,	providing support to keep the walls folded
+		at right angles instead of slumping down. To provide space for the top wall, after some debate
+		I inset the top wall past the left and right sides instead of the other way around since
+		continuing the vertical lines looked cleaner.</p>
+		
+		<p>After making the second prototype, I saw that the support feature I had added to separate the
+		floor of the insert from the floor of the box along the top wall was bending open and looked
+		bad, despite taping it closed at the edges. Also, the tabs	weren't long enough to have enough
+		leverage to maintain the wall bend angles.</p>
+		
+		<p>For the third prototype, I realized I could extend the support tabs all the way to the floor
+		of the box by moving them from the inner side to the outer side of each wall. This would keep
+		the top inner corners of the walls a set distance from the floor of the box. which was
+		a more direct form of support than trying to keep the wall bend angles constant. I also
+		made the tabs longer, extending the support all the way along the wall.</p>
+		
+		<p>Additionally, support tabs were added to the top wall which allowed the removal of the support
+		feature that was bending open.</p>
+		
+		<p>Given all the extra support I was adding, I removed the flaps from the top wall and the bottom
+		of the floor of the insert that would fold under the insert. I thought the support from the left
+		and right walls	would be enough to keep the bottom edge of the insert's floor away from the box's
+		floor.</p>
+
+		<p>After making the third prototype, I saw that the bottom edge of the insert floor was bending
+		towards the box floor, but that	was pretty much the only issue. I also realized that, since
+		I was already printing lines on the cardstock, I could also include the version number.</p>
+		
+		<p>The fourth prototype added back the bottom tab. It didn't have any issues when I built it, so
+		that's what I went into production with. I added some basic information then got down to cutting.</p>
+		
+		<span class="center"><img src="../pictures/projects/APC/box_insert.jpg" alt="Box Insert" /></span>
+		
+		<p>After that it was just folding, taping, then putting the inserts into the boxes.</p>
+		
+		<span class="center"><img src="../pictures/projects/APC/box_insert_in_box.jpg" alt="Box insert in box" /></span>
+		
+
+		<h3>Stamp</h3>
+		<p>I wanted some way to add my symbol to the packaging that was faster and more precise than a stencil
+		so I ordered a stamp from
+		<a href="https://dominionstamps.com/products/colop-printer-q24-self-inking-stamp-2/" target="_blank">Dominion Rubber Stamps & Engraving</a>.
+		It was surprisingly cheap and easy.</p>
+		
+		<span class="center"><img src="../pictures/projects/APC/stamp.jpg" alt="Custom logo stamp" /></span>
+				
+		<p>Unfortunately the gloss finish on the boxes didn't absorb the ink like regular paper or cardboard would, so I had
+		to stamp them then let them dry for a week before they were smudge resistant. I thought about putting it in the middle of the 
+		floor of the box insert, but I had already made the inserts by this point and it would have damaged them.</p>
+		
+		<span class="center"><img src="../pictures/projects/APC/stamped_boxes.jpg" alt="Boxes with Stamped Logo" /></span>
+
+		
+		<h3>Information Insert</h3>
+		
+		<p>One of these was included in each box. I wanted to explain how the device worked to people with no
+		electronics knowledge, but when I showed it to some people they usually had questions and needed more
+		information. I think I missed the mark and should have added more detail, but it was pretty space constrained.
+		I didn't want to deal with the alignment issues that come with double sided printing on a cheap inkjet and 
+		I didn't want it to look overly busy and chaotic.
+		
+		<span class="center"><img src="../pictures/projects/APC/info_insert_text.png" alt="Come back later!" /></span>
+		<span class="center"><img src="../pictures/projects/APC/info_insert.jpg" alt="Come back later!" /></span>
+		
+		<h3>Bulk Packaging</h3>
+		<p>With all the packaging pieces finished, all that was left to do was put everything together.</p>
+		<span class="center"><img src="../pictures/projects/APC/devices_in_boxes.png" alt="Devices in Boxes" /></span>
+		
+		<h3>Cost Analysis</h3>
+		<b>Device BOM</b>
+		
+		<table>
+		<thead>
+		  <tr>
+		    <th>Part</th>
+		    <th>MFG</th>
+		    <th>MFG PN</th>
+		    <th>Vendor</th>
+			<th>Vendor PN</th>
+			<th>Quantity</th>
+			<th>Price/unit (CAD)</th>			
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>PCBA</td>
+		    <td>-</td>
+		    <td>-</td>
+			<td>-</td>
+		    <td>-</td>
+			<td>1</td>
+			<td>$6.89</td>
+		  </tr>
+		  <tr>
+		    <td>Face Plate PCB</td>
+		    <td>JLCPCB</td>
+		    <td>-</td>
+			<td>-</td>
+		    <td>-</td>
+			<td>1</td>
+			<td>$0.61</td>
+		  </tr>
+		  <tr>
+		    <td>SWITCH PUSH SPST-NO 6A 125V</td>
+		    <td>CW Industries</td>
+		    <td>GPB507A05BB</td>
+		    <td>Mouser</td>
+			<td>629-GPB507A05BB</td>
+			<td>1</td>
+			<td>$4.60</td>
+		  </tr>
+		  <tr>
+		    <td>BATT ALKALINE 9V</td>
+		    <td>Duracell</td>
+		    <td>MN1604</td>
+		    <td>Mouser</td>
+			<td>613-MN1604</td>
+			<td>1</td>
+			<td>$2.25</td>
+		  </tr>
+		  <tr>
+		    <td>BOX ABS BLACK 2.647"L X 2.607"W</td>
+		    <td>Hammond Manufacturing</td>
+		    <td>1593KBK</td>
+		    <td>Mouser</td>
+			<td>546-1593KBK</td>
+			<td>1</td>
+			<td>$4.26</td>
+		  </tr>
+		  <tr>
+		    <td>SCREW FOR MNT PC BOARD</td>
+		    <td>Hammond Manufacturing</td>
+		    <td>1593ATS50</td>
+		    <td>Mouser</td>
+			<td>546-1593ATS50</td>
+			<td>2</td>
+			<td>$0.18</td>
+			</tr>
+		  <tr>
+		    <td>Rubber Foam (Battery Retention)</td>
+		    <td>Frost King</td>
+		    <td>Black R734C</td>
+		    <td>Canadian Tire</td>
+			<td>#064-0951-4</td>
+			<td>1</td>
+			<td>$0.32</td>
+		  </tr>
+		  <tr>
+		    <td>Sticker Project Paper 1/12 sheet</td>
+		    <td>Avery</td>
+		    <td>0.3383</td>
+		    <td>Staples</td>
+			<td>522226</td>
+			<td>1</td>
+			<td>$0.09</td>
+		  </tr>
+		</tbody>
+		</table>
+		
+		<p>The total cost for the device was <b>$19.38 CAD</b>.</p>
+		
+		<b>Packaging BOM</b>
+		
+		<table>
+		<thead>
+		  <tr>
+		    <th>Part</th>
+		    <th>MFG</th>
+		    <th>MFG PN</th>
+			<th>Staples PN</th>
+			<th>Quantity</th>
+			<th>Price/unit (CAD)</th>			
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>Jewellery Boxes - White - 3-1/2" x 3-1/2" x 1-1/2"</td>
+		    <td>Staples</td>
+		    <td>695687</td>
+		    <td>695687</td>
+			<td>1</td>
+			<td>$0.56</td>
+		  </tr>
+		  <tr>
+		    <td>Box Insert Card Stock</td>
+		    <td>Staples</td>
+		    <td>733350</td>
+		    <td>733350</td>
+			<td>1</td>
+			<td>0.09</td>
+		  </tr>
+		  <tr>
+		    <td>Information Insert Paper</td>
+		    <td>Staples</td>
+		    <td>380480</td>
+		    <td>380480</td>
+			<td>1</td>
+			<td>0.01</td>
+		  </tr>
+		</tbody>
+		</table>
+		  
+		<p>The total cost for the packaging was <b>$0.66 CAD</b>.</p>
+		
+		<p>In total, the cost for one unit (device + packaging) was <b>$20.04</b>. According to 
+		<a href="https://www.youtube.com/watch?v=UwrkfHadeQQ&t=57s" target="_blank">Dave from EEVblog</a>,
+		that means I should charge <b>$50/unit</b>. The 2.5 multiplier pays for the time it takes to make the devices
+		and all the incidental costs.</p>
+		
+		
+		<h3>Ramping Up Production</h3>
+		<p>If I was going to start mass production, there are a few things I could do to decrease time and cost:
+		
+		<ul>
+		  <li>Pay for someone to print the sticker and information insert for me. Not having to print and cutout everything would save a 
+		  large amount of time. I could also double side the information insert and get a higher quality material for the sticker.</li>
+		  <li>Buy a custom made box that's the right size so I could skip the box insert. Or if I keep the box insert for aesthetic reasons,
+		  it could be die cut for quick assembly and include graphics.</li>
+		  <li>Getting the enclosure machined would save time.</li>
+		  <li>Panelizing the PCBs and having them populated at the factory would save a lot of time. I'd still probably want to populate
+		  the through hole parts myself to save money, depending on the quote.</li>
+		</ul>
 				
 		<a href="../projects.html">Back to Projects.</a>
 		
@@ -159,7 +626,7 @@
       </div>
     </div>
     <div id="footer">
-      <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a>
+      <!-- <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a> -->
     </div>
   </div>
 </body>
