@@ -75,6 +75,49 @@
 		
 		
 		<h1>Journal</h1>
+		
+		<hr style="border: 1px solid black;" />
+		<h4 id="20240204">FlexyPin</h4>
+		<h5>February 4, 2024</h5>
+		<p>
+		A company I once worked for designed a castellated module, which is a single sided PCBA with half cut vias around
+		the edges. It's meant to solder directly to a motherboard, which reduces the assembly cost since you don't have
+		to use headers or mezzanine connectors. At least that was the plan. During production of a product that used the module,
+		the modules ended up having to be hand soldered because the failure rate with reflow soldering was too high.
+		The production engineers weren't happy.</p>
+		
+		<span class="center"><img src="pictures/journal/castallated_module.png" alt="Castelated Module" /></span>
+		
+		<center><p><i>Image from 
+		<a href="https://learn.sparkfun.com/tutorials/how-to-solder-castellated-mounting-holes/all" target="_blank">Sparkfun</a>
+		showing a castellated module being soldered to a breakout board.
+		</i></p></center>
+		
+		<p>During development of the module, the hardware engineer looked for a way to easily and temporarily connect it to
+		a test jig but couldn't find anything. I was hired shortly after development finished and was told about this issue.
+		At the time I thought that you'd need some sort of specially designed wire fingers that could be placed around the 
+		perimeter of the module and touch each via individually. It would need some sort of bending jig to get each one the
+		same size, and then you'd have to work out how to mount them.</p>
+		
+		<p>I didn't pursue the idea because the module design was already done and I was assigned other projects. However, I
+		recently came across an off-the-shelf product that is a precisely bent wire finger meant to connect to castellated
+		modules called <a href="https://lectronz.com/products/flexypin-pack-of-100#" target="_blank">FlexyPin</a>.</p>
+		
+		<span class="center"><img src="pictures/journal/FlexyPin.png" alt="FlexyPin" /></span>
+		
+		<p>It's footprint is a bit odd, involving a TH pad that the wire is soldered to and a slot that allows the contact arm to
+		move.</p>
+		
+		<span class="center"><img src="pictures/journal/FlexyPin_Footprint.png" alt="FlexyPin Footprint" /></span>
+		<span class="center"><img src="pictures/journal/FlexyPin_Soldered.png" alt="FlexyPin In Use" /></span>
+		
+		<p>It's always fun to see someone independently have the same vague idea you did, but then put in the work to develop
+		it into something useable.</p>
+		
+		<p>P.S. I should point out that an easier to work with alternative to castellated modules is the		
+		<a href="https://en.wikipedia.org/wiki/M.2" target="_blank">M.2 form factor</a>, which is more expensive because it
+		required a mounting connector and more limiting because the size of your module is somewhat constrained.</p>		
+		
 		<hr style="border: 1px solid black;" />
 		
 		<h4 id="20220124">Identiconn</h4>
