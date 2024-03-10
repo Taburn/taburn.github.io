@@ -77,6 +77,30 @@
 		<h1>Journal</h1>
 		
 		<hr style="border: 1px solid black;" />
+		
+		<h4 id="20240309">WinMerge</h4>
+		<h5>March 9, 2024</h5>
+		<p>Since I started supporting PCBA designs over their lifecycle, I've been looking for a tool that can
+		compare the BOMs from two different revisions of a PCBA and give a straight forward summary of the changes.</p>
+		
+		<p>Previously, whenever I released a project I generated a BOM with each component on a seperate line. This let me
+		copy and paste two versions of the BOM beside each other in the same spreadsheet, move data slightly up and down to match
+		designators on the same row, then have a column that told me if the part number was the same. This worked, but it
+		still took a bit of effort.</p>
+		
+		<p>I was describing what I wanted to one of the programmers at work and they suggested 
+		<a href="https://winmerge.org" target="_blank">WinMerge</a>. It's meant for comparing git commits, but it has
+		a feature that compares spreadsheets.</p>		
+		
+		<span class="center";><img src="pictures/journal/WinMerge.png" alt="WinMerge comparing BOMs"/></span>
+		
+		<p>The above image shows it was able to detect that a different transistor was used and that one of the resistors changed value.</p>
+		
+		<p>It takes a bit of effort to interpert, and I really would just like a simple report, but this way seems like
+		it might involve less manual effort than directly manipulating spreadsheets.</p>
+		
+		<hr style="border: 1px solid black;" />
+		
 		<h4 id="20240204">FlexyPin</h4>
 		<h5>February 4, 2024</h5>
 		<p>
@@ -120,7 +144,7 @@
 		
 		<hr style="border: 1px solid black;" />
 		
-		<h4 id="20220124">Identiconn</h4>
+		<h4 id="20230313">Identiconn</h4>
 		<h5>March 13, 2023</h5>
 		<p>
 		The <a href="https://connectorbook.com/identification.html" target="_blank">Identiconn</a> page is the first tool I've
