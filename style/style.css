@@ -281,12 +281,12 @@ table
 { margin: 10px 0 30px 0;}
 
 table tr th, table tr td
-{ background: #3B3B3B;
-  color: #FFF;
+{ background: #00B0F0;				/* Top row background colour */
+  color: #0;						/* Font colour */
   padding: 7px 4px;
   text-align: left;}
   
 table tr td
-{ background: #F0EFE2;
-  color: #47433F;
+{ background: #d8e9f0;				/* Main table background colour */
+  color: #0;						/* Font color */
   border-top: 1px solid #FFF;}
