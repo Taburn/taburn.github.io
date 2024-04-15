@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Audio Cable Shield Connections</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="../index.html">Adam<span class="logo_colour"> Gulyas</span></a></h1>
+          <h2>Embedded Hardware Engineer (EIT)</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+		  <li class="selected"><a href="../reference.html">Reference</a></li>
+		  <li><a href="../photography.html">Photography</a></li>
+          <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../book_list.html">Book List</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+		<span class="center"><img src="../pictures/logo/logo.png" alt="logo" /></span>
+        <h3>Contact</h3>
+		<p>adamgulyas10@gmail.com</p>
+		<p><a href="https://hackaday.io/adamgulyas" target="_blank">Hackaday</a></p>
+		<p><a href="https://github.com/Taburn" target="_blank">GitHub</a></p>
+		<p><a href="https://www.youtube.com/channel/UCKB8dn85XFXTqpymt03P0VA" target="_blank">Youtube</a></p>
+		<p><a href="https://www.linkedin.com/in/adam-gulyas-ee/" target="_blank">LinkedIn</a></p>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        
+		<h1>Audio Cable Shield Connections</h1>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>Shielded Enclosures</h2>
+		
+		<p>The designated shield contact and the shell of the equipment connector shall have a
+		direct-current connection to the shielding enclosure via the lowest impedance path possible.
+		This connection should be to the outside of the enclosure shield. It should have the lowest
+		practical RF impedance (generally achieved with a short, wide conductor).</p>
+		
+		<span class="center"><img src="../pictures/reference/Cable_Shield/Figure 1.png" style = "width:100%" alt="Figure 1" /></span>
+		<p style="text-align:center">Figure 1: Connections with a Shielded Enclosure</p>
+		
+		<p>EMI rejection circuitry should return EMI currents to the interface shield connection point with
+		the lowest practicle impedance.</p>
+		
+		<p>You should locate the 'Star Point', the connectors, and the signal circuitry as close
+		as possible to each other in order to gain the greatest benefit from the cable shielding.</p>
+		
+		<p>EMI filtering circuitry shown is optional and application dependant.</p>
+		
+		<h2>Unshielded Connectors</h2>
+		
+		<p>One type of unshielded connector is a terminal strip.</p>
+		
+		<p>Cable-mounted connectors should be located outside the enclosure shield. The smallest practical
+		opening in the shield should be made in order to allow them to connect to the equipment connector.
+		Maximize the spacing between openings, which minimizes the path for EMI energy into or out of the
+		enclosure. When possible, each connector should have its own opening.</p>
+		
+		<span class="center"><img src="../pictures/reference/Cable_Shield/Figure 2.png" alt="Figure 2" /></span>
+		<p style="text-align:center">Figure 2: Unshielded Connectors with a Shielded Enclosure</p>
+		
+		<p>Figure 2A is the ideal case, where the cable shield connects directly the the enclsoure sheild
+		on the outside. If this isn't possible, like with an XLR connector, refer to Figure 2B. Here,
+		the connection between cable shield and enclosure shield is as direct and low impedance as possible.</p>
+		
+		<p>EMI rejection circuitry should return EMI currents to the interface shield connection point
+		through as low an impedance as possible.</p>
+		
+		<p>Three common problems with unshielded connectors:</p>
+		<ul>
+			<li>Since the connectors are unshielded, signal conductors can both recieve and radiate electromagnetic interferance.</li>
+			<li>It's common for the connection from the cable shield to the enclosure to be relatively long,
+			and for the shields of several lines to be joined together before connecting to the enclosure.
+			This allows noise on the connection to radiate inside the equipment, with the connection acting
+			as an antenna.</li>
+			<li>It's common for the connection between the cable shield and the enclosure to pass through
+			an opening in the enclosure shield. This opening provides a path for interferance to enter or
+			exit the enclosure.</li>
+		</ul>
+		
+		<p>The shield terminal has commonly been identified as "G" in older equipment designs.</p>
+		
+		<h2>Unshielded Enclosures</h2>
+		
+		<span class="center"><img src="../pictures/reference/Cable_Shield/Figure 3.png" style = "width:100%" alt="Figure 3" /></span>
+		<p style="text-align:center">Figure 3: Connections with an Unshielded Enclosure</p>
+		
+		<p>When the enclosure is unshielded, each designated shield contact and each connector should
+		have a DC connection to the star point through a minimized impedance.</p>
+		
+		<p>EMI rejection circuitry should return RF currents to the interface shield connection point.</p>
+		
+		<h2>Shield Interruptions</h2>
+		
+		<p>Sometimes a cable shield is disconnected (i.e. to remove ground loop noise). If this is done,
+		it should be outside the enclosure shield. It should also only be at the receiving end of the cable
+		(see Whitlock 1995).</p>
+		
+		
+		<h2>Problem Examples</h2>
+		
+		<p>Here's some examples of common problems.</p>
+		
+		<h3>Example 1</h3>
+		<span class="center"><img src="../pictures/reference/Cable_Shield/Figure 4.png" alt="Figure 4" /></span>
+		<p style="text-align:center">Figure 4: Effect of the Impedance of the Connection Between Cable and Enclosure Shields</p>
+		
+		<p>Common mode voltage increases linearly with increasing impedance between the cable shield and the enclosure (Z).
+		The impedance of the connection between the cable shield and the enclosure should be minimized.</p>
+		
+		<p>When the connection is inside the enclosure, it behaves like an antenna and couples RF energy into the enclosure.
+		Minimize the coupling by making the connection as short and wide as possible.</p>
+		
+		<h3>Example 2</h3>
+		<span class="center"><img src="../pictures/reference/Cable_Shield/Figure 5.png" alt="Figure 5" /></span>
+		<p style="text-align:center">Figure 5: Common Impedance Coupling 1</p>
+		
+		<p>The connection of the signal reference to the connector shield contact instead of directly to the
+		enclosure at the star point makes the impedance from the impedance form the cable shield to the enclosure
+		a common impedance between the cable shield current and the signal circuitry. Stray capacitance
+		between signal circuitry and the enclosure completes the current loop.</p>
+		
+		<p>Normally current isn't supposed to flow from the signal circuitry to the enclosure (its connection
+		is a voltage reference, not a current return), but the stray capacitance forms a loop it can flow around.</p>
+		
+		<h3>Example 3</h3>
+		<span class="center"><img src="../pictures/reference/Cable_Shield/Figure 6.png" alt="Figure 6" /></span>
+		<p style="text-align:center">Figure 6: Common Impedance Coupling 2</p>
+		
+		<p>Here, cable shield current gets to the enclosure through two different paths (highlighted blue and green).
+		Path 1 (green) is from the cable shield to the enclosure through the pin 1 connection. Path 2 (blue) is through
+		the signal reference and it's connection to the star point. Common impedance coupling occours in both these paths.
+		The impedance of each section of these paths changes based on its geometry.</p>
+		
+		<p>The voltages induced by the cable shield currents flowing through these path impedances will be coupled into
+		the signal circuitry.</p>
+		
+		<h3>Example 4</h3>
+		<span class="center"><img src="../pictures/reference/Cable_Shield/Figure 7.png" style = "width:100%" alt="Figure 7" /></span>
+		<p style="text-align:center">Figure 7: EMI Circuitry Grounded to Signal Reference</p>
+		
+		<p>Make sure that EMI Filter Circuitry is grounded directly to the enclosure. It shouldn't be connected directly to
+		the signal circuitry ground.</p>
+		
+		<h2>Sources</h2>
+		<ul>
+			<li>AES48-2019: AES standard on interconnections - Grounding and EMC practices -
+				Shields of connectors in audio equipment containing active circuitry
+				<a href="https://www.aes.org/publications/standards/search.cfm?docID=44" target="_blank">(link)</a></li>
+			<li>Rane, RaneNote 110: Sound System Interconnection (written 1985, last revised 11/15)
+				<a href="https://www.ranecommercial.com/kb_article.php?article=2107" target="_blank">(link)</a></li>
+			<li>B. Whitlock "Balanced Lines in Audio Systems: Fact, Fiction, and Transformers", J. Audio Eng. Soc.,
+			June 1995, vol. 43, pp. 454-464 (1995 June)
+			<a href="https://www.aes.org/e-lib/browse.cfm?elib=7944" target="_blank">(link)</a></li>	
+				
+		</ul>		
+		
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a>
+    </div>
+  </div>
+</body>
+</html>
