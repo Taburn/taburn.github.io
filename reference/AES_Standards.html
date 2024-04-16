@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Audio Cable Shield Connections</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="../index.html">Adam<span class="logo_colour"> Gulyas</span></a></h1>
+          <h2>Embedded Hardware Engineer (EIT)</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+		  <li class="selected"><a href="../reference.html">Reference</a></li>
+		  <li><a href="../photography.html">Photography</a></li>
+          <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../book_list.html">Book List</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+		<span class="center"><img src="../pictures/logo/logo.png" alt="logo" /></span>
+        <h3>Contact</h3>
+		<p>adamgulyas10@gmail.com</p>
+		<p><a href="https://hackaday.io/adamgulyas" target="_blank">Hackaday</a></p>
+		<p><a href="https://github.com/Taburn" target="_blank">GitHub</a></p>
+		<p><a href="https://www.youtube.com/channel/UCKB8dn85XFXTqpymt03P0VA" target="_blank">Youtube</a></p>
+		<p><a href="https://www.linkedin.com/in/adam-gulyas-ee/" target="_blank">LinkedIn</a></p>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        
+		<h1>Useful AES Standards</h1>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<p>The Audio Engineering Society (AES) is a professional organization that publishes standards
+		relevant to the audio industry. Below is a list of the ones I've found personally relevant.
+		Access is free if you are an AES member.</p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES3</h2>
+		<p><b>AES standard for digital audio engineering - Serial transmission format for two-channel linearly represented digital audio data</b></p>
+		<p>AES3 provides for the serial digital transmission of two channels of periodically sampled and
+		uniformly quantized audio signals on various media. This revision comprises four parts - also
+		available separately - and includes all amendments prior to 2009.</p>
+
+		<p>Part 1 specifies the semantics of the audio data, including the "validity" flag. It also
+		specifies the sampling frequency by reference to AES5, AES recommended practice for professional
+		digital audio - Preferred sampling frequencies for applications employing pulse-code modulation.</p>
+
+		<p>Part 2 specifies the information transmitted with the audio data: principally the "channel
+		status" but also user data and the use of the auxiliary bits to carry a co-ordination signal.</p>
+
+		<p>Part 3 specifies the framing and channel coding for transmission on a unidirectional
+		point-to-point physical link. The specified format minimizes the direct-current (DC) component
+		on the transmission line, facilitates clock recovery from the data stream, and makes the interface
+		insensitive to the polarity of connections.</p>
+
+		<p>Part 4 specifies the physical signals that convey the bit stream specified in Part 3. The
+		current version covers electrical signals on twisted-pair and co-axial cables. Other media,
+		including fibre optic, are under consideration.</p>
+		
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=13" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES-2id</h2>
+		<p><b>AES information document for digital audio engineering — Guidelines for the use of the AES3 interface</b></p>
+		<p>This document provides guidelines for the use of AES3, AES Recommended Practice for Digital
+		Audio Engineering - Serial transmission format for two-channel linearly represented digital audio
+		data, together with AES5, AES Recommended Practice For professional digital audio applications
+		employing pulse-code modulation - Preferred sampling frequencies, AES11, AES Recommended Practice
+		for Digital Audio Engineering - Synchronization of digital audio equipment in studio operations,
+		and AES18, AES Recommended Practice for Digital Audio Engineering - Format for the user data
+		channel of the AES digital audio interface.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=2" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES14</h2>
+		<p><b>AES standard for professional audio equipment - Application of connectors, part 1, XLR-type polarity and gender</b></p>
+		<p>This Audio Engineering Society (AES) standard specifies a common scheme for wiring the
+		connectors used in audio systems, particularly to avoid the inversion of absolute polarity
+		among the items in the analog signal chain.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=19" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES68</h2>
+		<p><b>AES standard for audio connectors - XL Connectors to Improve Electromagnetic Compatibility</b></p>
+		<p>This standard specifies a variant of the standard XLR connector that provides improved
+		shell-to-shell connection to aid the rejection of RF interference. While maintaining
+		compatibility with existing XLR connectors, a circumferential connection between the
+		connector shells is added.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=97" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES62</h2>
+		<p><b>AES standard for audio connectors - Modified XLR-3 Connector for Digital Audio</b></p>
+		<p>This standard covers new connector types in order to identify AES3 equipment, signals and
+		transmission circuits (tie lines). By extension, the same connectors will also identify AES42
+		microphone connections. The new "digital" connectors are based on the conventional analogue
+		three pole XLR-type connectors with the difference of additional keying. The keying is realized
+		in a manner as to prevent mating with conventional XLR-type connectors. Furthermore new
+		"compatible" connectors that mate with both "digital" and conventional types are being
+		specified.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=86" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES72</h2>
+		<p><b>AES standard on interconnections - Application of RJ45-type connectors and quad twisted pair cable for audio interconnections</b></p>
+		<p>This standard documents 8P8C (RJ45) pin-outs commonly used in analog and digital
+		professional audio applications to carry four links, including channel/link order,
+		signal polarity and phantom power compatibility. Type numbers are assigned to these
+		variations, allowing manufacturers to easily specify which wiring standard is used
+		in a particular piece of equipment. Users may use these type numbers to assess
+		compatibility of disparate equipment in a given application. This standard also
+		documents practical application details of interest to users of this technology.
+		Conformance with this standard will identify mutually compatible devices, enabling
+		users to avoid problems when employing equipment from multiple manufacturers.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=108" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES59</h2>
+		<p><b>AES standard for professional audio - Audio application of 25-way D-type connectors in balanced circuits</b></p>
+		<p>This document describes a standard contact assignment and gender convention for users
+		of the 25-contact D-type connector as a multi-channel balanced audio interconnection,
+		in analogue or AES3 digital form, to facilitate interconnection of equipment from different
+		suppliers using standardized cables. The intent is to simplify the rapid and reliable
+		interconnection of equipment in temporary installations, perhaps using rented equipment,
+		although the method may be extended to permanent installations where appropriate.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=92" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		
+		<h2>AES20</h2>
+		<p><b>AES recommended practice for professional audio - Subjective evaluation of loudspeakers</b></p>
+		<p>This Standard is a set of recommendations for subjective evaluation of high-performance
+		loudspeaker systems. It is believed that, for certain audio components including loudspeakers,
+		subjective evaluation is a necessary adjunct to objective measurements. The strong influence
+		of listening conditions, program material and of individual evaluators is recognized. This
+		document seeks, therefore, to assist in avoiding testing errors rather than to attempt to
+		establish a correct procedure.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=24" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES75</h2>
+		<p><b>AES standard for acoustics — Measuring loudspeaker maximum linear sound levels using noise</b></p>
+		<p>This standard details a procedure for measuring maximum linear sound levels of a
+		loudspeaker system or driver using a test signal called Music-Noise. In order to measure
+		maximum linear sound levels meaningfully and repeatably, a signal is required whose RMS
+		and peak levels as functions of frequency have been shown to be representative of program
+		material. Various existing standards define noise-based test signals which, like Music-Noise,
+		have incorporated the knowledge that typical program material has a diminishing RMS level
+		with increasing frequency, but Music-Noise uniquely also features a relatively constant
+		peak level as a function of frequency, so that the crest factor (peak level – RMS level)
+		increases with frequency, which an analysis on a large variety of music and other content
+		has revealed is an important additional characteristic of typical program material. The
+		specified procedure determines a loudspeaker’s maximum linear sound levels by incrementally
+		increasing the Playback Level of Music-Noise until a stop condition is met: either an
+		unacceptable change in the transfer function’s magnitude or an unacceptable change in the
+		coherence of the transfer function.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=116" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES26</h2>
+		<p><b>AES recommended practice for professional audio — Conservation of the polarity of audio signals</b></p>
+		<p>This document standardizes the polarity of the signals at the various interface points between
+		different items of equipment, in particular from the acoustical, electrical, mechanical, digital,
+		and magnetic aspects. Each item of equipment complies separately with the polarity requirements
+		for the input and output signals.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=28" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES54</h2>
+		<p><b>AES standard on interconnections - Grounding and EMC practices</b></p>
+		<p>This standard has three parts:
+			<ul>
+				<li><b>1: Connection of cable shields within connectors attached to portable balanced audio cables</b><br>
+				This standard specifies requirements for, and summarizes general considerations relative to, the
+				connection of cable shields within connectors attached to portable balanced cables for the
+				transmission of audio, taking into account measures commonly necessary for the preservation
+				of electromagnetic compatibility (EMC) at both audio and radio frequencies.
+				<a href="https://www.aes.org/publications/standards/search.cfm?docID=69" target="_blank">(link)</a></li>
+				<li><b>2: Shields of balanced audio wiring within fixed and portable passive connector panels,jack fields, and passive microphone splitters</b><br>
+				This standard specifies requirements for, and summarizes general considerations relative to,
+				the shielding of balanced audio interconnections within fixed and portable connector panels,
+				jack fields (patch bays), and passive microphone splitters, taking into account measures commonly
+				necessary for the preservation of electromagnetic compatibility (EMC) at both audio and radio
+				frequencies.
+				<a href="https://www.aes.org/publications/standards/search.cfm?docID=70" target="_blank">(link)</a></li>
+				<li><b>3: Shields of balanced microphone-level outputs of active equipment other than microphones</b><br>
+				This standard specifies requirements for, and summarizes general considerations relative to,
+				the shielding of balanced microphone-level outputs of audio equipment, taking into account
+				measures commonly necessary for the preservation of electromagnetic compatibility (EMC) at
+				both audio and radio frequencies.
+				<a href="https://www.aes.org/publications/standards/search.cfm?docID=71" target="_blank">(link)</a></li>
+			</ul>
+		</p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		
+		
+		<h2>AES-12id</h2>
+		<p><b>AES Information Document for digital audio measurements - Jitter performance specifications</b></p>
+		<p>The question of sample-clock quality is a perennial one for digital audio equipment designers,
+		yet most chip makers provide very little information about the jitter performance of their products.
+		Consequently, equipment designers are sometimes caught out by jitter issues. The increasing use of
+		packet-based communications and class-D amplification is throwing these matters into sharper relief.</p>
+		
+		<p>This information document reviews various ways of characterizing and quantifying jitter, and
+		refines several of them for audio purposes. It also attempts to present a common, unambiguous
+		terminology. Its focus includes wideband jitter, baseband jitter, jitter spectra, period jitter,
+		long-term jitter and jitter signatures. Comments are made on jitter transfer through phase-locked
+		loops and on the jitter susceptibility of audio converters.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=57" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h2>AES-R2</h2>
+		<p><b>AES project report for articles on professional audio and for equipment specifications — Notations for expressing levels</b></p>
+		<p>This document describes the style for levels standardized in IEC 60027-3, Letter symbols to be
+		used in electrical technology -- Part 3: Logarithmic Quantities and Units, and the power and voltage
+		level clauses of IEC 60268-2 Sound system equipment -- Part 2: Explanation of general terms and
+		calculation methods, and summarizes and reviews the presently-used notations for expressing levels
+		in condensed or abbreviated form, what expressions are used, and what quantities and reference
+		quantities are implied. The original document of 1998 was revised 2004-02 to delete considering the
+		adoption of 1 V as the reference quantity for new work in audio engineering.</p>
+		<p><a href="https://www.aes.org/publications/standards/search.cfm?docID=9" target="_blank">(link)</a></p>
+		
+		<hr style="border: 1px solid black;" />
+		
+		<p><a href="../reference.html">Back to Reference.</a></p>
+		
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a>
+    </div>
+  </div>
+</body>
+</html>
