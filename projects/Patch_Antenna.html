@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Patch Antenna</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
+	<!-- Enables LaTeX formulas -->
+	<title>MathJax example</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Adam<span class="logo_colour"> Gulyas</span></a></h1>
+          <h2>Embedded Hardware Engineer (EIT)</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Home</a></li>
+          <li class="selected"><a href="../projects.html">Projects</a></li>
+		  <li><a href="../reference.html">Reference</a></li>
+          <li><a href="../photography.html">Photography</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../book_list.html">Book List</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+		<span class="center"><img src="../pictures/logo/logo.png" alt="logo" /></span>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+		
+        <h1>Patch Antenna</h1>
+		
+		<h4>Design Goals</h4>
+		<p>I have implemented antennas in products fairly often, however I've never designed one.
+		I thought it would be a fun personal project to see what I could do. Since this wasn't
+		an official for a company, I didn't have access to an RF chamber, 
+		full 3D simulation software, or a substrate with well controlled permittivity.
+		I did have access to a VNA, without which designing an antenna would have been impractacle.</p>
+		
+		<p>Given those limitations, I still wanted to see how far I could get. I chose the
+		simplest type of antenna to start with: a patch antenna.
+		My (fairly arbitrary) design goals were:
+		<ul>
+			<li>Use a PCB as its main component, since they're cheap and easy to design.</li>
+			<li>Input impedance of 50 Ω.</li>
+			<li>Transmit 90% of the input energy (S11  ≤ -10 dB) over the ISM band (2.40 - 2.48 GHz),
+			which is what Bluetooth and Wi-Fi use.</li>
+		</ul>
+		I'll have to ignore antenna losses since I don't know of a way to measure them without an RF chamber.
+		</p>
+		
+		<h4>Substrate Choice</h4>
+		<p>I've heard a few times that FR4 has a poorly controlled dielectric constant and that there are special RF grade
+		substrates for PCBs. I wasn't looking to spend too much money on a side project, so I decided to see how far
+		I could get with whatever the board house gave me.</p>
+		
+		<h3>Design - Version 1</h3>
+		
+		<p>I found some design equations in the textbook Antenna Theory: Analysis and Design 3rd Edition, pp 816-820,
+		equations 14-1 to 14-7. I created a spreadsheet titled Patch Antenna Calculator to calculate them
+		(<a href="../pictures/projects/Patch_Antenna/Patch Antenna Calculator.xls" target="_blank">download here</a>),
+		which yielded the following results:</p>
+
+		<table><thead>
+			<tr>
+				<th>INPUTS</th>
+				<th></th>
+			</tr></thead>
+		<tbody>
+			<tr>
+				<td>relative dielectric constant of the substrate</td>
+				<td>4.7 (FR-4)</td>
+			</tr>
+			<tr>
+				<td>dielectric height</td>
+				<td>1.6 mm</td>
+			</tr>
+			<tr>
+				<td>frequency</td>
+				<td>2.44 GHz</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<table><thead>
+			<tr>
+				<th>OUTPUTS</th>
+				<th></th>
+			</tr></thead>
+		<tbody>
+			<tr>
+				<td>width</td>
+				<td>36.415 mm</td>
+			</tr>
+			<tr>
+				<td>length</td>
+				<td>28.021 mm</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<p>
+		These results agree with an online calculator:
+		<a href="https://www.emtalk.com/mpacalc.php?er=4.7&h=1.6&h_units_list=hmm&fr=2.44&Operation=Synthesize&La=&L_units_list=Lmm&Wa=&W_units_list=Wmm&Rin=" target="_blank">emtalk.com/mpacalc</a>.
+		</p>
+		
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/Patch_Dimensions.png"/></span>
+		<span class="center"><p><i>Dimensional drawing from the online calculator, linked above.</i></p></span>
+		
+		<p>I designed a PCB with these dimensions in Altium. To feed the antenna I chose a method I'd seen
+		in a few different places, including the above picture: connect the waveguide directly to the edge of the antenna.
+		This turned out to be a bad idea (more on that later).</p>
+		
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_PCB_Design.png"/></span>
+		<span class="center"><p><i>PCB Design - Version 1</i></p></span>
+		
+		<p>The dimensions of the PCB and the ground plane were chosen somewhat arbitrarily. I'd read enough
+		about waveguides to suspect that it should extend at least several times the thickness of the dielectric
+		past the antenna to ensure most of the electric field lines connected to it cleanly. I went over
+		that by quite a bit just to be safe since I wasn't imposing any size constraints on myself.</p>
+		
+		<p>The length of the waveguide feeding the patch antenna was chosen arbitrairly, since it, the connector,
+		and the cable supplying the signal should all be 50 Ω until the patch.</p>
+		
+		<p>The edge connector details are:</p>
+		<table><tbody>
+			<tr>
+				<td>Digi-Key Part Number</td>
+				<td>SAM8857-ND</td>
+			</tr>
+			<tr>
+				<td>Manufacturer</td>
+				<td>Samtec Inc.</td>
+			</tr>
+			<tr>
+				<td>Manufacturer PN</td>
+				<td>SMA-J-P-H-ST-EM1</td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td>SMA Connector Jack, Female Socket<br>50Ohm Board Edge, End Launch Solder</td>
+			</tr>
+			<tr>
+				<td>price/unit @1<br>(Nov 25, 2019, Digi-Key)</td>
+				<td>$4.33</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<p>The PCB was added to an order going to JLCPCB, so it only cost $2 to get 5 samples.</p>
+		
+		<h4>Results</h4>
+		<p>Connecting the antenna to a VNA gave the following plots. Markers 1, 2, and 3 show the target frequency band.
+		Markers 4 and 5 show unexpected resonances.</p>
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_VNA_Mag.png"/></span>
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_VNA_Pol.png"/></span>
+		
+		<p>It can be seen that, while the antenna is resonant at 2.44 GHz (Marker 2), S11 is only around -5 dB
+		and the input impedance is 123 + j57 Ω, which are both way too high.  Surprisingly, the antenna
+		is also resonant at 3.767 GHz and 4.66 GHz, both of which show a better S11 and input impedance
+		than the target frequency.</p>
+		
+		<p>The low S11 means that the energy at those two higher unexpected frequencies is disappearing into
+		the antenna, but is it actually being radiated? The patch should be the wrong dimensions to
+		do that well. Ideally this would be tested in an antenna chamber. Instead, I roughly tested
+		if they were radiating by connecting antenna samples to both ports of the VNA and put them
+		next to each other. 2.44 GHz had the highest S21 value, with the other
+		two frequencies responding much more weakly. Since an antenna's transmit and recieve efficiency
+		vs frequency is the same, this means that both the first antenna wasn't transmitting AND the second
+		antenna wasn't recieving at those unwanted frequencies. The only other place that energy could
+		be going was into antenna losses.</p>
+		
+		<p>Again, this test wasn't nearly as rigourous as using a test chamber, but it's what I had.</p>
+		
+		<p>So now that I had an idea what was happening, I had to figure out why.</p>
+		
+		<h4>Simulation</h4>
+		
+		<p>The next thing I did was to simulate the antenna in Keysight Genesys, yielding
+		this S11 plot:</p>
+		
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_Genesys_Mag.png"/></span>
+		
+		<p>It's resonant at 2.46 GHz instead of 2.44 GHz. It also shows the three resonant dips at
+		roughly the same frequencies, although the higher frequency results differ wildly.</p>
+		
+		<h4>Researching Further</h4>
+		
+		<p>Searching online for answers led to the Antenna Theory website which had
+		<a href="http://www.antenna-theory.com/antennas/patches/patch3.php" target="_blank">this to say</a>:</p>
+		
+		<p>“Previously, the patch antenna was fed at the end. Since this typically
+		yields a high input impedance, we would like to modify the feed. Since the current is low
+		at the ends of a half-wave patch and increases in magnitude toward the center, the input
+		impedance (Z=V/I) could be reduced if the patch was fed closer to the center."</p>
+		
+		
+		<p>Also, from <a href="http://www.antenna-theory.com/antennas/patches/patch4.php" target="_blank">here</a>:
+		<ul>
+			<li>The length of the patch L controls the resonant frequency</li>
+			<li>Increasing the height of the substrate increases the bandwidth</li>
+			<li>The width W controls the input impedance and the radiation pattern (wider = lower input impedance)</li>
+		</ul>
+		</p>
+		
+		<p>Based on this information, I decided that a better way to feed the antenna was needed.
+		Once again, antenna-theory.com had some good information, showing two promising methods:
+		Inset Feed and Coaxial Cable Feed</p>
+		
+		<h4>Inset Feed</h4>
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/Inset_Feed.png"/></span>
+		
+		<p>Here the transmission line is extended into the antenna by a distance R. This method seemed
+		less ideal to me since it disrupts the geometry of the patch and I suspect that having the
+		patch adjacent to the waveguide for the distance R would affect its impedance. One unanswered
+		question was how wide those slots that are cut into the patch should be.</p>
+		
+		<p>I could have played around in the simulation to find potential dimensions, but Antenna Theory
+		suggested a second feed method that seemed better.</p>
+		
+		<h4>Coaxial Cable Feed</h4>
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/Cable_Feed.png"/></span>
+		
+		<p>Here a coax cable is stripped back in such a way that the outer conductor stops at the ground plane
+		and the central conductor continues up to connect to the patch. The inner insulator ideally extends at
+		least partway into the substrate in order to stop the inner conductor from contacting the ground plane.</p>
+		
+		<p>This method doesn't disrupt the geometry of the patch and there were no unexplained dimensions.
+		It was also easier to test by drilling a hole in one of my samples as opposed to trying to cut
+		away copper precisely. The only dimension I had to determine was the feed point inset distance R.</p>
+		
+		<h4>Finding the Feed Location</h4>
+		<p>Antenna Theory gave an equation for the antenna input impeance as a function of the feed point inset distance R.
+		It's explained <a href="http://www.antenna-theory.com/antennas/patches/patch3.php" target="_blank">here</a>.</p>
+		
+		$$Z_{in}(R)=\cos^2(\pi \frac{R}{L})Z_{in}(0)$$
+		
+		<p>Noting that the desired Zin is 50Ω and rearranging a bit:</p>
+		
+		$$\frac{50\Omega}{Z_{in}(0)}=\cos^2(\pi \frac{R}{L})$$
+		
+		<p>Let's think about this equation a bit. Looking at the R/L term, R will never be larger than L, so <br>R/L ≤ 1.
+		Here's a graph of cos<sup>2</sup>(πx) from x = 0 to 1.<p>
+		
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/cos_squared.png"/></span>
+		
+		<p>You can see that cos<sup>2</sup>(πx) will never be larger than 1. Therefore we can write:</p>
+		
+		$$\frac{50\Omega}{Z_{in}(0)}=[0..1]$$
+		
+		<p>In other words, <b>Zin(0) will be between 50 and infinity ohms and have no imaginary component.</b></p>
+		
+		<p>In order to find the correct value of R I need to measure Zin(0), divide 50 by it, and then find what value
+		of R gives that same value to make both sides of this equation equal.<p>
+		
+		$$\frac{50\Omega}{Z_{in}(0)}=\cos^2(\pi \frac{R}{L})$$
+		
+		<p>In order to measure Zin(0) I removed the waveguide from one of my antenna samples, drilled a hole at the
+		edge of the patch, and soldered on a coax cable.</p>
+		
+		<p>The available drill bits were a bit larger than I would have liked, so I tried to compensate for the hole
+		in the ground plane by soldering the coax ground around its entire perimeter.</p>
+		
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_Edge_Feed_top.png"/></span>
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_Edge_Feed_bottom.png"/></span>
+		
+		<p>The VNA plots looked like this:</p>
+		
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_Edge_Feed_Mag.png"/></span>
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_Edge_Feed_Pol.png"/></span>
+		
+		<p>Looking at the smith chart, the impedance at 2.44GHz is 87.367 - j10.984 Ω. In other words,
+		<br><b>Zin(0) = 87.367 - j10.984 Ω</b>.</p>
+		
+		<p>This gave me a bit of pause. The previous analysis of the above equation indicated that Zin(0) should be real, not complex.
+		Was this just measurement error? Was this from calibrating the VNA at the wrong location? Was this caused by the little
+		bit of coax center conductor that goes through the substrate for a bit before getting to the patch?</p>
+		
+		<p>At this point I was kind of out of my depth but decided to move forwards anyways to
+		see how far I could get. The worst thing that could happen was wasting a few hours and
+		a small amount of money. If I was doing this project for an employer I would have been
+		trying to get some feedback from a more senior designer.</p>
+		
+		<p>I decieded to just ignore the imaginary part of Zin(0). I maybe should have taken the magnitude (88.05 Ω),
+		but it and the real part were very close enough and at this point I'd lost any claim to precision due to the drilling.</p>
+		
+		<p>So, taking Zin(0) = 87.367 (and L = 28.021 mm), the equation becomes:</p>
+		
+		$$\frac{50\Omega}{87.367\Omega}=0.5723=\cos^2(\frac{\pi R}{28.021 mm})$$
+		
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/cos_squared_solved.png"/></span>
+		
+		<p>Drawing a line at 0.5723 across our graph of cos<sup>2</sup>(πx) show that there's two values of x
+		that give a value of cos<sup>2</sup>(πx) = 0.5723. For a coaxial cable feed they're the same since
+		they would result in the same antenna, just mirrored. The solution we'll use is x = 0.2269.<p>
+		
+		</p>So now we just need to solve x = 0.2269 = R/L for R to find the feed location. L = 28.021, so
+		<b>R = 6.36 mm</b>.</p>
+
+		<p>In order to roughly test this, I took another antenna sample, removed the wave guide,
+		then drilled a hole as precisely as I could 6.36 mm from the edge of the patch antenna.</p>
+		
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_Mid_Feed_top.png"/></span>	
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_Mid_Feed_bottom.png"/></span>
+		
+		<p>It wasn't as precise as I'd like, but it did give these results. Markers 1 and 3 show
+		the target frequency range.</p>
+		
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_Mid_Feed_Mag.png"/></span>
+		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_Mid_Feed_Pol.png"/></span>
+		
+		<p>I was very suprised at how much the performance improved. S11 had a minimum of -31 dB in the
+		region I was targeting (at 2.412 GHz), which was great. The input impedance at 2.412 GHz was
+		52.47 + j1.39 Ω, close enough to 50Ω to make me happy.</p>
+		
+		<p> What wasn't great was that at the upper end of the frequency range, S11 was only -5.7dB.
+		Ideally the entire S11 curve would shift over and flatten out a bit in order to be below
+		-10dB over the entire range.</p>
+		
+		<p>To do that the patch should be made shorter (decrease L) to increase its resonant frequency
+		and its thickness should be increased in order to increase the bandwidth.</p>
+		
+		<h4>Future Work</h4>
+		
+		<p>With this result I was happy to declare the first version of the antenna a partial success.
+		I felt like I had learned enough to be able to modify the design in order to fix its remaining issues.</p>
+		
+		<p>In the future, if I ever get access to a VNA again, I'd like to make a second version of this project
+		and try to meet all the design goals.</p>
+				
+		<p><a href="../projects.html">Back to Projects.</a></p>
+		
+		  </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a>
+    </div>
+  </div>
+</body>
+</html>
