@@ -96,7 +96,7 @@ ol li
 {
   width: 80px;
   float: left;
-  margin-top: 20px;
+  margin-top: 27px;
 }
 
 #logo_right
@@ -151,7 +151,7 @@ ul#menu li a
   float: left; 
   height: 17px;
   margin: 10px 0 0 10px;
-  padding: 9px 26px 6px 26px;
+  padding: 9px 23px 6px 23px;
   text-align: center;
   color: #FFF;
   text-transform: uppercase;
@@ -195,7 +195,7 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 #content
 { text-align: left;
   float: left;
-  width: 595px;
+  width: 854px;
   padding: 0;}
 
 #content ul
