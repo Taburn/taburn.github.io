@@ -6,34 +6,47 @@ html
   padding: 0;}
 
 body
-{ font: normal .80em 'trebuchet ms', arial, sans-serif;
+{ font: normal 1em 'arial', arial, sans-serif;
   background: #F0EFE2 url(background.png) repeat;
   color: #000;}
 
 p
-{ padding: 0 0 20px 0;
+{ font: normal 1.0em arial, sans-serif;
+  padding-bottom: 20px;
   line-height: 1.4em;}
 
 img
 { border: 0;}
 
 h1, h2, h3, h4, h5, h6 
+{ color: #000;}
+
+h1
 { font: normal 175% 'century gothic', arial, sans-serif;
-  color: #000;
-  margin: 0 0 15px 0;
-  padding: 15px 0 5px 0;}
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;}
 
 h2
-{ font: normal 175% 'century gothic', arial, sans-serif;}
+{ font: normal 150% 'century gothic', arial, sans-serif;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 5px;}
 
-h4, h5, h6
-{ margin: 0;
-  padding: 0 0 5px 0;
-  font: normal 120% arial, sans-serif;}
+h3
+{ font: normal 125% 'century gothic', arial, sans-serif;
+  margin-bottom: 0px;
+  padding-bottom: 5px;}
+
+h4
+{ font: bold 100% 'century gothic', arial, sans-serif;
+  margin-bottom: 5px;
+  padding-bottom: 5px;}
 
 h5, h6
-{ font: italic 95% arial, sans-serif;
-  padding: 0 0 15px 0;}
+{ font: normal 100% arial, sans-serif;
+  margin-top: 5px;
+  padding-top: 5px;}
 
 a, a:hover
 { outline: none;
@@ -58,11 +71,13 @@ a:hover
   text-align: center;
   margin: 20px auto;}
 
+/* I don't use block quotes in my website
 blockquote
 { margin: 20px 0; 
   padding: 10px 20px 0 20px;
   border: 1px solid #E5E5DB;
   background: #FFF;}
+*/
 
 ul
 { margin: 2px 0 22px 17px;}
@@ -97,17 +112,18 @@ ol li
   width: 80px;
   float: left;
   margin-top: 27px;
+  margin-left: 10px;
 }
 
 #logo_right
 {
-  margin-left: 80px;
+  margin-left: 90px;
   margin-top: -9px;
 }
 
 #logo #logo_text 
 { position: absolute; 
-  top: 20px;
+  top: 15px;
   left: 0;}
 
 #logo h1, #logo h2
@@ -169,6 +185,9 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   padding: 0 24px 20px 20px;
   background: #FFF;} 
 
+/* I got rid of the sidebar.
+   I should be able to remove this part from the CSS.
+
 .sidebar
 { float: right;
   width: 210px;
@@ -191,6 +210,8 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 .sidebar li a.selected
 { color: #7E2451;
   text-decoration: none;} 
+
+*/
 
 #content
 { text-align: left;
@@ -227,18 +248,22 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 { color: #FFF;
   text-decoration: underline;}
 
+/*I don't use a search bar
 .search
 { color: #5D5D5D; 
   border: 1px solid #BBB; 
   width: 134px; 
   padding: 4px; 
   font: 100% arial, sans-serif;}
+*/
 
 #colours
 { height: 0px;
   text-align: right;
   padding: 66px 16px 0px 300px;}
-  
+
+/* I don't use forms on my website
+   Unless the paste area calculator counts?
 .form_settings
 { margin: 15px 0 0 0;}
 
@@ -282,6 +307,8 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   width: 14px;
   border: 0;
   background: none;}
+
+*/
 
 .separator
 { width: 100%;

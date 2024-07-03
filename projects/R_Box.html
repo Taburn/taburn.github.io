@@ -111,7 +111,7 @@
 		</ul>
 		</p>
 		
-		<H2>Resistor Power Ratings</h2>
+		<h2>Resistor Power Ratings</h2>
 		<p>
 		Here are the required resistor power ratings for up to 3A at 24V, taken from the previous table with an added safety factor.
 		</p>
@@ -145,7 +145,7 @@
 		
 		
 		<h2>Sourcing Parts</h2>
-		<h4>Resistors</h4>
+		<h3>Resistors</h3>
 		<p>There's three main ways to mount a resistor: surface mount, through hole, and chassis mount. Chassis mount is out because it
 		requires wiring, and through hole power resistors are dominated by TO-220 package variants that
 		either want heat sinks which take up room or need to have
@@ -162,12 +162,12 @@
 		the needed area, I chose two 5Ω chassis mount resistors in series, those golden ones with two tabs for bolts. I'll bolt it to
 		the bottom of the metal enclosure with some thermal paste, which should hopefully be enough to keep them cool.</p>
 		
-		<h4>Jacks</h4>
+		<h3>Jacks</h3>
 		<p>I used banana jacks in the first version and they worked really well. Banana cables are cheap, make a relatively low impedance
 		connection, and have a high enough ampacity. Cheap and robust jacks are available, and I already had some from a previous order.
 		You can also plug a banana cable directly into a multimeter, which is really convenient for the current measurements I'll be making.</p>
 		
-		<h4>Enclosure</h4>
+		<h3>Enclosure</h3>
 		<p>I originally wanted to use an enclosure similar to my 
 		<a href="http://adamgulyas.ca/projects/Audio_IO_Switch.html" target="_blank">Audio IO Switch</a>. It 
 		lets me use a PCB for the faceplate, so I don't have to do any machining, and having the UI
@@ -186,12 +186,12 @@
 		and I don't want to hand file 22 holes for the banana jacks, I'll have to find a CNC mill somewhere.</p>
 		
 		<h2>Design</h2>
-		<h4>Schematic</h4>
+		<h3>Schematic</h3>
 		<p>Here's the (very simple) schematic. A higher quality version is available on
 		<a href="https://github.com/Taburn/R-Box/blob/main/Releases/R%20Box%20-%20v1.0.0%2020210619/R%20Box%20-%20SCH%20v1.0.0%2020210619.pdf" target="_blank">Github</a>.</p>
 		<span class="center"><img src="../pictures/projects/R_Box/schematic.png" alt="R Box Schematic" /></span>
 		
-		<h4>Heatsinking</h4>
+		<h3>Heatsinking</h3>
 		<p>I ended up using short aluminum standoffs to hold the PCB to the lid, with one next to each resistor. Heat
 		should travel up the standoff and dissipate off the lid. I would have liked to make the standoffs shorter, but I had to choose ones
 		long enough to accommodate the banana jacks.</p>
@@ -203,7 +203,7 @@
 		into, assign material properties and heat sources, then run, but I haven't found a program that works well and isn't expensive.
 		I'll have to default to trying to over design it and then testing the result.</p>
 		
-		<h4>PCB</h4>
+		<h3>PCB</h3>
 		<p>The PCB design focuses on reducing resistance between the resistors and then trying to increase thermal dissipation. I could have removed
 		the thermals from the resistors and added heat transfer vias under them, but I wanted at least a chance of hand soldering.</p>
 		
@@ -214,14 +214,14 @@
 		<span class="center"><img src="../pictures/projects/R_Box/PCB_top.png" alt="R Box PCB Top" /></span>
 		<span class="center"><img src="../pictures/projects/R_Box/PCB_bottom.png" alt="R Box PCB Bottom" /></span>
 		
-		<h4>Mechanical</h4>
+		<h3>Mechanical</h3>
 		<span class="center"><img src="../pictures/projects/R_Box/3D_top_iso.png" alt="R Box Top Iso" /></span>
 		<span class="center"><img src="../pictures/projects/R_Box/3D_bottom_iso.png" alt="R Box Bottom Iso" /></span>
 		<span class="center"><img src="../pictures/projects/R_Box/3D_top.png" alt="R Box Top" /></span>
 		<span class="center"><img src="../pictures/projects/R_Box/3D_front.png" alt="R Box Front" /></span>
 		<span class="center"><img src="../pictures/projects/R_Box/3D_side.png" alt="R Box Side" /></span>
 
-		<h4>Faceplate</h4>
+		<h3>Faceplate</h3>
 		<p>I put the project name and website at the bottom so it would be less intrusive, but also be visible if the edge is peaking out from under
 		a pile of stuff. There's no colour because I only have a laser printer. The border has a black line so that, even if you cut it
 		out a bit crooked there will still be a crisp border. Also, a crooked edge should show up less against the black box.</p>
@@ -298,7 +298,7 @@
 		</table>
 		
 		
-		<h3>BOM</h3>
+		<h2>BOM</h2>
 		<table>
 		<thead>
 		  <tr>
@@ -378,7 +378,7 @@
 		</tbody>
 		</table>
 				
-		<a href="../projects.html">Back to Projects.</a>
+		<a href="../projects.html">Back to Projects</a>
 		
 		  </div>
         </form>
