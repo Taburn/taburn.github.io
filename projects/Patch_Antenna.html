@@ -71,7 +71,7 @@
 		
         <h1>Patch Antenna</h1>
 		
-		<h4>Design Goals</h4>
+		<h2>Design Goals</h2>
 		<p>I have implemented antennas in products fairly often, however I've never designed one.
 		I thought it would be a fun personal project to see what I could do. Since this wasn't
 		an official for a company, I didn't have access to an RF chamber, 
@@ -90,12 +90,12 @@
 		I'll have to ignore antenna losses since I don't know of a way to measure them without an RF chamber.
 		</p>
 		
-		<h4>Substrate Choice</h4>
+		<h2>Substrate Choice</h2>
 		<p>I've heard a few times that FR4 has a poorly controlled dielectric constant and that there are special RF grade
 		substrates for PCBs. I wasn't looking to spend too much money on a side project, so I decided to see how far
 		I could get with whatever the board house gave me.</p>
 		
-		<h3>Design - Version 1</h3>
+		<h2>Design - Version 1</h2>
 		
 		<p>I found some design equations in the textbook Antenna Theory: Analysis and Design 3rd Edition, pp 816-820,
 		equations 14-1 to 14-7. I created a spreadsheet titled Patch Antenna Calculator to calculate them
@@ -190,7 +190,7 @@
 		
 		<p>The PCB was added to an order going to JLCPCB, so it only cost $2 to get 5 samples.</p>
 		
-		<h4>Results</h4>
+		<h2>Results</h2>
 		<p>Connecting the antenna to a VNA gave the following plots. Markers 1, 2, and 3 show the target frequency band.
 		Markers 4 and 5 show unexpected resonances.</p>
 		<span class="center"><img src="../pictures/projects/Patch_Antenna/v1_VNA_Mag.png"/></span>
@@ -215,7 +215,7 @@
 		
 		<p>So now that I had an idea what was happening, I had to figure out why.</p>
 		
-		<h4>Simulation</h4>
+		<h2>Simulation</h2>
 		
 		<p>The next thing I did was to simulate the antenna in Keysight Genesys, yielding
 		this S11 plot:</p>
@@ -225,7 +225,7 @@
 		<p>It's resonant at 2.46 GHz instead of 2.44 GHz. It also shows the three resonant dips at
 		roughly the same frequencies, although the higher frequency results differ wildly.</p>
 		
-		<h4>Researching Further</h4>
+		<h2>Researching Further</h2>
 		
 		<p>Searching online for answers led to the Antenna Theory website which had
 		<a href="http://www.antenna-theory.com/antennas/patches/patch3.php" target="_blank">this to say</a>:</p>
@@ -248,7 +248,7 @@
 		Once again, antenna-theory.com had some good information, showing two promising methods:
 		Inset Feed and Coaxial Cable Feed</p>
 		
-		<h4>Inset Feed</h4>
+		<h2>Inset Feed</h2>
 		<span class="center"><img src="../pictures/projects/Patch_Antenna/Inset_Feed.png"/></span>
 		
 		<p>Here the transmission line is extended into the antenna by a distance R. This method seemed
@@ -259,7 +259,7 @@
 		<p>I could have played around in the simulation to find potential dimensions, but Antenna Theory
 		suggested a second feed method that seemed better.</p>
 		
-		<h4>Coaxial Cable Feed</h4>
+		<h2>Coaxial Cable Feed</h2>
 		<span class="center"><img src="../pictures/projects/Patch_Antenna/Cable_Feed.png"/></span>
 		
 		<p>Here a coax cable is stripped back in such a way that the outer conductor stops at the ground plane
@@ -270,7 +270,7 @@
 		It was also easier to test by drilling a hole in one of my samples as opposed to trying to cut
 		away copper precisely. The only dimension I had to determine was the feed point inset distance R.</p>
 		
-		<h4>Finding the Feed Location</h4>
+		<h2>Finding the Feed Location</h2>
 		<p>Antenna Theory gave an equation for the antenna input impeance as a function of the feed point inset distance R.
 		It's explained <a href="http://www.antenna-theory.com/antennas/patches/patch3.php" target="_blank">here</a>.</p>
 		
@@ -361,7 +361,7 @@
 		<p>To do that the patch should be made shorter (decrease L) to increase its resonant frequency
 		and its thickness should be increased in order to increase the bandwidth.</p>
 		
-		<h4>Future Work</h4>
+		<h2>Future Work</h2>
 		
 		<p>With this result I was happy to declare the first version of the antenna a partial success.
 		I felt like I had learned enough to be able to modify the design in order to fix its remaining issues.</p>
@@ -369,7 +369,7 @@
 		<p>In the future, if I ever get access to a VNA again, I'd like to make a second version of this project
 		and try to meet all the design goals.</p>
 				
-		<p><a href="../projects.html">Back to Projects.</a></p>
+		<p><a href="../projects.html">Back to Projects</a></p>
 		
 		  </div>
         </form>
