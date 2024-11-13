@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Adam Gulyas - Blinky</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <div id="logo_left">
+		    <img src="../pictures/logo/logo_white.svg">
+		  </div>
+		  <div id="logo_right">
+		    <h1><span class="logo_colour"><a href="index.html">Adam Gulyas</a></span></h1>
+			<h2>Embedded Hardware Engineer</h2>
+		  </div>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Resume</a></li>
+          <li class="selected"><a href="../projects.html">Projects</a></li>
+		  <li><a href="../reference.html">Reference</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+		
+        <h1>ADSR</h1>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_FP_populated.png"/></span>
+		
+		<p>This project was partly sponsored by <a href="https://www.pcbway.com" target="_blank">PCBWay</a>.
+		Scroll to the bottom for comments on the quality of the PCBs they sent me (or
+		<a href="https://www.adamgulyas.ca/projects/ADSR.html#PCBWay">click here</a>).</p>
+		
+		<h2>Motivation</h2>
+		<p>I've been slowly building a modular synthesizer for a few years now. It's a long term project becasue in
+		order to have something that's minimally useful you need multiple modules, and each one is its own project.
+		This module is an ADSR or an envelope generator, which makes a voltage waveform shaped like this:</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_parameters.png"/></span>
+		<p style="text-align:center"><i><a href="https://en.wikipedia.org/wiki/Envelope_(music)#/media/File:Casio_CZ_8stepENVchart_(CZ-1).jpg" target="_blank">Image from Wikipedia, CC BY-SA 3.0</a></i></p>
+		
+		<p>A, D, S, and R stand for attack, decay, sustain, and release. The above image suggests that you should think of
+		them in terms of periods of time (except for S), but I find it more intuitive to think of them as rates of increase or decrease.</p>
+		
+		<p>In a synthesizer it's used to control the loudness of a note based on how long you hold the keyboard key down.
+		This is done by feeding the note waveform into the input of a voltage controlled amplifier, whose amplification level is controlled by the ADSR.</p>
+		
+		<h2>Schematic</h2>
+		<p>Modular synthesizers have been around so long that there's lots of reference schematics
+		available for all the basic modules. I based this module on a
+		<a href="https://www.schmitzbits.de/adsr.html" target="_blank">schematic by Rene Schmitz from 1999</a>, who 
+		was expanding on a design from a book written by Barry Klein in 1982. I had previously built this circuit on a
+		breadboard several years ago and found that it worked well.</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_sch_snippet.png"/></span>
+		<p>The full schematics can be downloaded here:</p>
+		
+		<a href="../pictures/projects/ADSR/ADSR_MB_schematic.pdf" target="_blank">Motherboard Schematic (PDF)</a><br>
+		<a href="../pictures/projects/ADSR/ADSR_UI_schematic.pdf" target="_blank">UI Schematic (PDF)</a><br><br>
+		
+		<p>As a brief explanation, the BJTs condition the input Gate signal (see below waveforms), and the 555 timer provides
+		voltages for the different sections of the envelope. The three diodes and their pots use these "section voltages"
+		to charge and discharge a capacitor at the rate set by the pots at the correct times. The S pot is a bit unique in that it sets the
+		voltage level that the D pot discharges the cap to.</p>
+		
+		<p>I divided it into two PCBs, with all the core electronics on the motherboard and the pots and jacks on a UI board.
+		There were a couple reasons to do this:</p> 
+		
+		 <ul>
+			<li>The motherboard is 4 layers to accomidate good grounding and power planes. The UI board has to be a certain area to
+		 cover all the UI elements. Seperating them let me keep the more expensive 4 layer board small.</li>
+			<li>It's easier to place components and route if you don't have to avoid the larger UI TH components.</li>
+			<li>It's cheaper to replace just the UI board if a knob gets broken, or the motherboard if something gets shorted.</li>
+		</ul> 
+		
+		 <p>The downsides are that 100mil headers can be a bit expensive and an increase in assembly complexity.</p>
+		
+		<h2>Simulation</h2>
+		<p>The main point of the simulation was to determine the values of the pots and capacitor in the RC circuit
+		that shapes the output voltage.	I didn't want to order a bunch of pot values or fool around with breadboards
+		and TH resistors, so I simulated the circuit in LTspice. Here's the schematic I drew:</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_simulation_schematic.png"/></span>
+		<p>All the parts I needed were in the default library, which let me avoid importing anything.
+		I set each pot value as its full value scaled by a parameter, and then one at a time I changed which parameter
+		I used a .step command to vary.</p>
+		
+		<p>Here's each node's voltage. The bottom plot shos the envelope shape.</p>
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_sim_graphs.png"/></span>
+		
+		<p>Here's the stepped plots which show each pot at 20% rotation increments. I played with the pot and capacitor values,
+		targeting what was in stock at Digikey and Mouser, until I found a something that gave a good range of adjustability.</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_sim_Apot.png"/></span>
+		<p style="text-align:center"><i>A Pot. Note the linear spacing of the peaks.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_sim_Dpot.png"/></span>
+		<p style="text-align:center"><i>D Pot. Note the non-linear spacing of the decay lines.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_sim_Spot.png"/></span>
+		<p style="text-align:center"><i>S Pot. Note the non-linear spacing of the sustain levels.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_sim_Rpot.png"/></span>
+		<p style="text-align:center"><i>R Pot. Note the non-linear spacing of the release lines.</i></p>
+		
+		<p>I pointed out the linear or non-linear nature of the above lines becasue one of the decisions
+		I had to make was whether to use linear or logarithimic pots. It's nice if turning the pot a certain amount equals the same amount
+		of adjustment at any point in its travel. With the R pot, for example, the simulation shows that it's more sensitive at
+		the steeper end of the range. In other words, turning the pot slightly at that end will have a larger effect than turning it slightly
+		at its other end.</p>
+		
+		<p>One way to counteract this is to use a log pot instead of a linear pot. A log(arithmic) pot has a curved shape to its
+		resistance vs rotation curve, so as you turn the pot its resistance increases first slowly then more quickly. This sort of cancels
+		out the increased sensitivity so the adjustment you make over the whole rotation range is more even.</p>
+		
+		<p>Unfortunately this was all moot because Digikey only had linear pots in stock, so that's what I ordered.</p>
+		
+		<h2>PCB</h2>
+		<p>The main challenge for the PCB design was making sure they could interface with one another. The
+		footprints for the jacks and pots on the UI board had to be in the same relative poistion as their
+		mounting holes on the faceplate. I solved this by aligning the origin of the UI board footprints with the center of the
+		faceplate hole, then copy and pasting coordinates from the UI board to the faceplate.</p>
+				
+		<p>The signal headers that go between the motherboard and UI board had to have the signals
+		in the same order, which I solved by labeling every signal on both boards, then visually
+		checking that they were the same in the multiboard assembly.</p>
+		
+		<h3>Motherboard</h3>
+		<p>I was anticipating having to debug so I added testpoints to every node, ones big enough
+		to rest the tip of an oscilloscope probe in. I also added a hole I could clip the ground probe to.</p>
+		
+		<p>I chose to use 4 layers:</p>
+		
+		 <table>
+			<tr>
+				<td>Components, Signal</td>
+			</tr>
+			<tr>
+				<td>Ground</td>
+			</tr>
+			<tr>
+				<td>Power, short Signal traces</td>
+			</tr>
+			<tr>
+				<td>Ground</td>
+			</tr>
+		</table> 
+		
+		<p>This put a ground reference plane next to every signal trace. I thought about using just two layers, but there
+		would have been too many power traces crossing under signal traces.</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_MB_layers.png"/></span>
+		
+		<h3>UI Board</h3>
+		<p>There's not much to say about this one other than I had to get the UI components in the right position.
+		I did add a graphic of a cat:</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_cat.png"/></span>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_UI_render.png"/></span>
+		
+		
+		<h3>Faceplate</h3>
+		<p>Since the PCBs were being sponsored by PCBWay, I wanted to do something that showed off thier
+		manufacturing abilities that would be visable to the end user. I chose a pattern in the silkscreen
+		that exposes the golden ENIG finish of the copper layer beneith it.</p>
+		
+		<p>I ended up drawing the pattern in QCAD, then importing it as a DXF into Altium. See below for pictures.</p>
+		
+		<h2>Multiboard</h2>
+		
+		<p>Altium lets you import multiple PCBs into a Multiboard assembly in order to check that they align mechanically:</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_assembly_render_back.png"/></span>
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_assembly_render_front.png"/></span>
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_assembly_render_iso1.png"/></span>
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_assembly_render_iso2.png"/></span>
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_assembly_render_side.png"/></span>
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_assembly_render_top.png"/></span>
+		
+		<h2>Mechanical</h2>
+		<p>This module follows the eurorack standard, which mainly defines the size of the faceplate and what voltage
+		rails are available. I had already researched this for previous modules and made a faceplate template that I used
+		here to make sure it was the right size.
+		
+		<h2>Asssembly</h2>
+		<p>Assembly went without issue. The footprints I made were easy to solder to and there weren't any clearance issues.</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_FP_populated.png"/></span>
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_assembled_side.png"/></span>
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_MB_populated.png"/></span>
+		
+		<h2>Testing</h2>
+		<p>I was fortunate in that the first module I assembled worked right away. There were no mistakes
+		in my schematic or BOM, and my sodler joints were all good. Below are some screen captures from my
+		oscilloscope. The yellow trace is the clock signal I fed into the Gate input. The blue trace is the envelope from
+		the ENV output.</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_scope1.png"/></span>
+		<p style="text-align:center"><i>A standard output.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_scope2.png"/></span>
+		<p style="text-align:center"><i>A standard output, but with a sharper attack, higher sustain, and slower release.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_scope3.png"/></span>
+		<p style="text-align:center"><i>The sharpest attack and release with the highest sustain produce a square wave.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_scope4.png"/></span>
+		<p style="text-align:center"><i>A slow attack and no sustain produce a triangle/ramp wave.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_scope5.png"/></span>
+		<p style="text-align:center"><i>A sharp attack and release with no sustain produce an impulse.</i></p>
+		
+		<h2>Conclusion</h2>
+		<p>I think this project turned out pretty well. It will wait in my synth case until the other modules are ready.</p>
+		
+		
+		<h2 id="PCBWay">PCBWay</h2>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/PCBWay_logo.png"/></span>
+		
+		<p>This project was sponsored by <a href="https://www.pcbway.com/" target="_blank">PCBWay</a>,
+		who  provided for free the bare PCBs. The only thing they asked me to do was talk about my
+		impressions of the PCBs I recieved, so here's some pictures I captured from my microscope:</p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_microscope_PCB.png"/></span>
+		<p style="text-align:center"><i>A SOT23 footprint. You can see the indents on the pads where they used<br>
+		a flying probe to test for any unwanted continuity between all the seperate copper areas.</i></p>
+		
+		<p>Flying probe machines are pretty cool.
+		<a href="https://www.youtube.com/watch?v=2_4BJA-y50Q&t=33s" target="_blank">Here's a video showing one in action.</a></p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_microscope_swirl.png"/></span>
+		<p style="text-align:center"><i>Arbitrary soldermask shapes show good definition. Points aren't rounded off.</i></p>
+		
+		<p>I also included a font test on the UI board. Only the smallest text was starting to blur.</p>
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_font_test.png"/></span>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_microscope_font_0.6_0.12mm.png"/></span>
+		<p style="text-align:center"><i>Text: height = 0.6mm, stroke width = 0.12mm. Sufficiently legible.<br>
+		Seperation between characters and strokes is clear.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/ADSR/ADSR_microscope_font_0.5_0.1mm.png"/></span>
+		<p style="text-align:center"><i>Text: height = 0.5mm, stroke width = 0.1mm.<br>
+		Letters and strokes start to bleed into each other.</i></p>
+		
+		<p>One other detail that I appreciated was that the edge routing was smooth with no chatter or splinters,
+		unlike some other boards I've received in the past.</p>
+		
+		<p>Overall it was very easy to work with PCBWay and I'm happy with the quality of the boards they provided.
+		I'd recommend them to anyone looking to have their own PCB designs manufactured.</p>
+		
+		<a href="../projects.html">Back to Projects</a>
+		
+		  </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+	
+    </div>
+  </div>
+</body>
+</html>
