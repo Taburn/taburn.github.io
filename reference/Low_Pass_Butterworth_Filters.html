@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Adam Gulyas - Theory</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+	
+	
+	<!--Tutorial for website LaTeX: http://docs.mathjax.org/en/latest/basic/mathematics.html 
+		$$...$$ and \[...\] for displayed mathematics
+		\(...\) for in-line mathematics
+	
+	
+	-->
+	<title>MathJax example</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <div id="logo_left">
+		    <img src="../pictures/logo/logo_white.svg">
+		  </div>
+		  <div id="logo_right">
+		    <h1><span class="logo_colour"><a href="index.html">Adam Gulyas</a></span></h1>
+			<h2>Embedded Hardware Engineer</h2>
+		  </div>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Resume</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+		  <li class="selected"><a href="../reference.html">Reference</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+        <!-- insert the page content here -->
+        
+		<span class="center"><img src="../pictures/under-construction_small.png" alt="Come back later!" /></span>
+		
+		<h1>Second Order Low Pass Butterworth Op-Amp Filter</h1>
+		
+		<hr style="border: 1px solid black;" />
+				
+		<p>From Basic Engineering Circuit Analysis, 9th ed. p643 by J. David Irwin and R. Mark Nelms</p>
+		
+		<p>Transfer function of a second order low pass active filter (general form):</p>
+		$$H(s)=\frac{H_0 \omega_c^2}{s^2+2\zeta\omega_cs+\omega_c^2}$$
+		
+		<p>H<sub>0</sub> is the DC gain<br>
+		&omega;<sub>c</sub> is the ? [rad/s]<br>
+		&zeta; is the damping ratio
+		</p>
+		
+		<p>A circuit with this transfer function is:</p>
+		
+		<span class="center"><img src="../pictures/reference/Filter/Circuit.png"/></span>
+		
+		$$H(s)=\frac{V_O(s)}{V_{IN}(s)}=\frac{-(\frac{R_3}{R_1})(\frac{1}{R_3 R_2 C_1 C_2})}{s^2+s(\frac{1}{R_1 C_1}+\frac{1}{R_2 C_1}+\frac{1}{R_3 C_1})+\frac{1}{R_3 R_2 C_1 C_2}}$$
+		
+		<p>Comparing the previous 2 equations:</p>
+		
+		$$\omega_c = \frac{1}{\sqrt{R_3 R_2 C_1 C_2}}$$
+		$$\zeta = \frac{1}{2} \sqrt{\frac{C_2}{C_1}}(\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3})\sqrt{R_2 R_3}$$
+		$$H_0=-\frac{R_3}{R_1}$$
+		
+		<p>
+		Section 12.4: Scaling (p. 629-630)<br>
+		Used to adjust values of filter components of the cutoff frequency<br>
+		Prime values are old values
+		</p>
+		
+		
+		<p>Magnitude Scaling<br>
+		resonant frequency, quality factor (and therefore bandwidth) are unaffected</p>
+		
+		$$R' \rightarrow K_MR$$
+		$$L' \rightarrow K_ML$$
+		$$C' \rightarrow \frac{C}{K_M}$$
+		
+		<p>Frequency Scaling<br>
+		Resonant frequency and bandwidth are affected</p>
+		
+		$$R'  \rightarrow R$$
+		$$L'  \rightarrow \frac{L}{K_F}$$
+		$$C'  \rightarrow \frac{C}{K_F}$$
+		$$\omega'_0 = K_F \omega_0$$
+		
+		
+		<table>
+		<tr>
+			<th>Filter Order</th>
+			<th>Butterworth Polynomial Factors</th>
+		</tr>
+		<tr>
+			<td style='text-align:center'>1</td>
+			<td style='text-align:center'>(s+1)</td>
+		</tr>
+		
+		<tr>
+			<td style='text-align:center'>2</td>
+			<td style='text-align:center'>(s<sup>2</sup>+1.414s+1)</td>
+		</tr>
+		<tr>
+			<td style='text-align:center'>3</td>
+			<td style='text-align:center'>(s+1)(s<sup>2</sup>+s+1)</td>
+		</tr>
+		<tr>
+			<td style='text-align:center'>4</td>
+			<td style='text-align:center'>(s<sup>2</sup>+1.848s+1)(s<sup>2</sup>+0.7654s+1)</td>
+		</tr>
+		<tr>
+			<td style='text-align:center'>5</td>
+			<td style='text-align:center'>(s+1)(s<sup>2</sup>+1.618s+1)(s<sup>2</sup>+0.6180s+1)</td>
+		</tr>
+		<tr>
+			<td style='text-align:center'>6</td>
+			<td style='text-align:center'>(s<sup>2</sup>+1.932s+1)(s<sup>2</sup>+1.414s+1)(s<sup>2</sup>+0.5176s+1)</td>
+		</tr>
+		<tr>
+			<td style='text-align:center'>7</td>
+			<td style='text-align:center'>(s+1)(s<sup>2</sup>+1.802s+1)(s<sup>2</sup>+1.247s+1)(s<sup>2</sup>+0.4450s+1)</td>
+		</tr>
+		<tr>
+			<td style='text-align:center'>8</td>
+			<td style='text-align:center'>(s<sup>2</sup>+1.962s+1)(s<sup>2</sup>+1.663s+1)(s<sup>2</sup>+1.111s+1)(s<sup>2</sup>+0.3902s+1)</td>
+		</tr>
+
+		</table>
+		
+		
+		
+      </div>
+    </div>
+  </div>
+</body>
+</html>
