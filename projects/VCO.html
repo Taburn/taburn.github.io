@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Adam Gulyas - VCO</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <div id="logo_left">
+		    <img src="../pictures/logo/logo_white.svg">
+		  </div>
+		  <div id="logo_right">
+		    <h1><span class="logo_colour"><a href="index.html">Adam Gulyas</a></span></h1>
+			<h2>Embedded Hardware Engineer</h2>
+		  </div>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Resume</a></li>
+          <li class="selected"><a href="../projects.html">Projects</a></li>
+		  <li><a href="../reference.html">Reference</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+		
+        <h1>VCO</h1>
+		
+		<p>This page is under construction.</p>
+		
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R3_Picture_01.png"/></span>
+		
+		<p>VCO is a Eurorack compatible Voltage Controlled Oscillator. It's
+		based off of a magizine article I found from 1980. One input control voltage (CV)
+		controls the frequency of four in-phase output voltage waveforms.</p>
+		
+		<p>It is conventionally used, with a sequencer providing the input, to produce the base
+		notes of a synthesizer. (awk)</p>
+		
+		<h2>Source</h2>
+		<p>As near as I can tell (based on file metadata), I found the original schematic in December 2015.
+		(disclaimer about two issues with schematic, explain them after Theory of Operations).
+		Talk about hackathon.</p>
+		<p>Original circuit published in Electronic Design Issue 9, April 26, 1980</p>
+		<a href="../pictures/projects/VCO/Original_Schematic.pdf" target="_blank">Original Magazine Article</a>
+		
+		<h2>Description of Operation</h2>
+		<p>The center of the circuit is a common technique called a triangle core oscillator.</p>
+		
+		<span class="center"><img src="../pictures/projects/VCO/Block_Diagram_Core.png" /></span>
+		
+		<p>(Descriptions of how the above image works.) Note that the square wave amplitude is rail to rail,
+		while the triangle amplitude is less - whatever you set the comparator threshold at.</p>
+		
+		<p>The saw wave uses switches to alternatively connect the triangle wave and an inverted triangle wave
+		to the saw output.</p>
+		
+		<p>The jag wave (I couldn't think of a better name for it) is just the triangle wave, but it's grounded when
+		the square wave is low.</p>
+		
+		<h2>Issues with Original Schematic</h2>
+		<p>When I tried to build this circuit for the first time using the magazine article schematic at the hackathon, it didn't work.
+		Fixing it was actually a pretty good debugging experience. Since the central circuit is a feedback loop,
+		I had to break the loop a different places and artifically add the correct signal to get the circuit to still work.</p>
+		
+		<p>It's been quite a while and I don't recall the details of the two issues I found. Broadly, the 555 timer was
+		connected incorrectly to function as a schmitt trigger (I think I ended up just using an op-amp instead) and
+		the BJT invertor wouldn't work until I removed one of the resistors.</p>
+		
+		<p>I'm not going to go into too much depth on these issues since they're not present in my designs.
+		I'll just leave it with this picture I found in my old files that made me laugh:</p>		
+		
+		<span class="center"><img src="../pictures/projects/VCO/VCO_Source_Inverter_Wrong.png" /></span>
+		
+		
+		<hr style="border: 1px solid black;" />
+		<h1>Version 1</h1>
+		<p>Didn't actually make a module with this one, just lested with lab bench equipment.
+		Annular rings too small, TH parts, terrible for debugging, wires soldered sirectly to board, no headers.
+		I was able to get it fairly dense. OSHPark charged $5/square inch, so highly motivated to minimize board area.
+		Overlapping silkscreen.</p>
+		
+		<p>I still have this board, but these pictures are the only These pictures are the only </p>
+		
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R1_PCB.png" width="100%"/></span>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R1_PCBA.png" width="100%"/></span>
+		
+		<hr style="border: 1px solid black;" />
+		<h1>Version 2</h1>
+		
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R2_Device_Render.png"/></span>
+		
+		<p>Not every component has a 3D model. Started adding dates. The whole card form factor, not skiff friendly,
+		requires crimping connectors to wires. It has a faceplate now! The proper dimensions to fit a eurorack system!
+		I spent too much time finding the angle brackets and the proper length screws.
+		Semi-standardized on the power connector becasue I thought the standard eurorack one was inefficient.
+		Components are arranged a lot cleaner.
+		Included jumpers between each circuit block to help with debugging.</p>
+		
+		<p><a href="../pictures/projects/VCO/VCO_MB_R2_Schematic.pdf" target="_blank">Link to Schematic</a></p>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R2_MB_Routing.png" width="100%"/></span>
+		<p style="text-align:center"><i>Without ground planes to show routing.</i></p>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R2_MB_Render.png" width="100%"/></span>
+		
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R2_Picture_01.png"/></span>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R2_Picture_02.png"/></span>
+		
+		
+		<hr style="border: 1px solid black;" />
+		
+		<h1 id="Version_3">Version 3</h1>
+		<p>Why this revision? Differences from previous version. (eurorack skiff form factor, explain what those are) Also minimum width.
+		Proper power connector. Slightly thinner (how much?) R2 was 4HP/0.8 inches</p>
+		<h2>Motherboard</h2>
+		<h3>Schematic</h3>
+		<span class="center"><img src="../pictures/projects/VCO/MB_Schematic.png" width="100%"/></span>
+		<p>If you'd like a schematic that's higher resolution and a normal aspect ratio, 
+		<a href="../pictures/projects/VCO/VCO_MB_R3_Schematic.pdf" target="_blank">click here</a>.</p>
+		
+		<p>Minimum two pins per signal for reliability.</p>
+		
+		
+		<h3>PCB</h3>
+		<p>Lined up components neatly.</p>
+		<span class="center"><img src="../pictures/projects/VCO/MB_Layers.png" width="100%"/></span>
+		<span class="center"><img src="../pictures/projects/VCO/MB_TB_and_3D_Renders.png"/></span>
+		
+		<h2>UI Board</h2>
+		<h3>Schematic</h3>
+		<p>The UI board just connects the different UI elements (only jacks in this case) to the motherboard.</p>
+		
+		
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R3_UI_Schematic.png"/></span>
+		<p><a href="../pictures/projects/VCO/VCO_R3_UI_Schematic.pdf" target="_blank">PDF of Schematic</a></p>
+		
+		
+		<h3>PCB</h3>
+		<p>This board is pretty simple. In the last project I built I added a cat knocking a some text askew.
+		This time the cat came back and is actually (messing) with component placement. I rotated the jack
+		around the axis of its opening so the hole in the faceplate wouldn't be affected.</p>
+		
+		<p>I also added a text size legibility test for future reference.</p>
+		
+		<span class="center"><img src="../pictures/projects/VCO/UI_3D_Renders.png"/></span>
+		
+		
+		<h2>Faceplate</h2>
+		<p>I'm not sure how much I like this faceplate design. Instead of labeling the jacks
+		I added the actual waveshape around them. I couldn't think of what to do with the input, so
+		I just superimposed all of the outputs. It's not a true circular transform because
+		I didn't want to math that hard and I didn't think it would add that much.</p>
+		
+		<p>I always find the idea of a set of modules with art that merges between each module really compelling.
+		On this one, I think you could define 11 lines that go across the edges of each module and do interesting
+		things in the center. They could either all use the smae motif or do different things (awk).</p>
+		<span class="center"><img src="../pictures/projects/VCO/FP_3D_Render.png"/></span>
+		
+		<h2>Assembly</h2>
+		<p>Assembly was pretty straight forward. The thin aspect ratio made it easy to have 4 of them lined up
+		and populate the same component on each one quickly.</p>
+		
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R3_Picture_01.png"/></span>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R3_Picture_02.png"/></span>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_R3_Picture_03.png"/></span>
+		
+		
+		<h2>Testing</h2>
+		<h3>Waveform Shape</h3>
+		<p>Here's all 4 outputs at different frequencies. The higher frequencies round out a bit,
+		but not an egreous amount.
+		They're sharp at lower frequencies where you'd hear it in a LFO application.</p>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_Waveforms_54Hz.png"/></span>
+		<p style="text-align:center"><i>54 Hz</i></p>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_Waveforms_1kHz.png"/></span>
+		<p style="text-align:center"><i>1 kHz</i></p>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_Waveforms_5kHz.png"/></span>
+		<p style="text-align:center"><i>5 kHz</i></p>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_Waveforms_8kHz.png"/></span>
+		<p style="text-align:center"><i>8 kHz</i></p>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_Waveforms_13kHz.png"/></span>
+		<p style="text-align:center"><i>13 kHz</i></p>
+		
+		<h3>Linearity</h3>
+		<p>Extremely linear over a few volts. Very linear over its whole input range.</p>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_Response_High_Res.bmp"/></span>
+		<span class="center"><img src="../pictures/projects/VCO/VCO_Response_Full_Range.bmp"/></span>
+		<p>Is this 1V/oct? Shouldn't it be exponential then?</p>
+		<p>You can make this an LFO by increasing the integrator capacitor value. There's theoretically no lower
+		limit on the frequency.</p>
+				
+		
+		<h2>Cost Analysis</h2>
+		<p>Per unit prices are for quantity 100 VCOs. All prices in CAD.</p>
+		
+		<table>
+			<tr>
+				<td></td>
+				<td>MB</td>
+				<td>UI</td>
+				<td>FP</td>
+			</tr>
+			<tr>
+				<td>Components</td>
+				<td>$7.53</td>
+				<td>$2.86</td>
+				<td>$0.00</td>
+			</tr>
+			<tr>
+				<td>PCB</td>
+				<td>$3.06</td>
+				<td>$0.55</td>
+				<td>$0.57</td>
+			</tr>
+			<tr>
+				<td>Total</td>
+				<td>$10.59</td>
+				<td>$3.41</td>
+				<td>$0.57</td>
+			</tr>
+		</table>
+		
+		<p>PCB Shipping: $22.82 USD/100 = 0.2282</p>
+		
+		<p>Total device cost is $14.57 + PCB shipping of 0.2282 = $14.80 if I build 100.</p>
+		
+		
+
+		
+				
+		<a href="../projects.html">Back to Projects</a>
+		
+		  </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+	
+    </div>
+  </div>
+</body>
+</html>
