@@ -73,53 +73,90 @@
 		based off of a magizine article I found from 1980. One input control voltage (CV)
 		controls the frequency of four in-phase output voltage waveforms.</p>
 		
-		<p>It is conventionally used, with a sequencer providing the input, to produce the base
-		notes of a synthesizer. (awk)</p>
+		<p>In a conventional system, the input would be from a sequencer that outputs a
+		sequence of voltage that corresponds to the sequence of notes you want to play.</p>
+		
+		<p>It can also be used as a Low Frequency Oscillator (LFO) by adjusting the value of the integrator's
+		feedback capacitor.</p>
 		
 		<h2>Source</h2>
-		<p>As near as I can tell (based on file metadata), I found the original schematic in December 2015.
-		(disclaimer about two issues with schematic, explain them after Theory of Operations).
-		Talk about hackathon.</p>
-		<p>Original circuit published in Electronic Design Issue 9, April 26, 1980</p>
-		<a href="../pictures/projects/VCO/Original_Schematic.pdf" target="_blank">Original Magazine Article</a>
+		<p>This project started at a hackathon when I was still in university. I wanted to build a functioning VCO
+		so I looked up a few schematics, bought the components they used and a few other useful ones, packed up my lab,
+		and spent the weekend bread boarding. I ended up getting it to work, but it was a bit of a challenge.</p>
 		
+		<p>The schematic I chose to try building was originally published in Electronic Design Issue 9, April 26, 1980.
+		<a href="../pictures/projects/VCO/Original_Schematic.pdf" target="_blank">(Link to original magazine article.)</a>
+		It turned out to have two seperate issues that prevented it from oscillating, which took a few hours to solve.
+				
 		<h2>Description of Operation</h2>
-		<p>The center of the circuit is a common technique called a triangle core oscillator.</p>
+		<p>The center of the circuit uses a common technique called a triangle core oscillator.</p>
 		
 		<span class="center"><img src="../pictures/projects/VCO/Block_Diagram_Core.png" /></span>
 		
-		<p>(Descriptions of how the above image works.) Note that the square wave amplitude is rail to rail,
-		while the triangle amplitude is less - whatever you set the comparator threshold at.</p>
+		<p>Basically, the comparator presents a DC voltage to the integrator, either positive or negative.
+		The integral of a constant function is a line with a slope that's the same sign as the DC voltage.
+		When the integrator reaches one of the comparator's thresholds, the comparator changes the sign of its
+		outputs and the integrator's output starts going in the other direction. In other words, the comparator
+		wind of causes the integrator output to bounce back and fourth like a ball between two walls.</p>
 		
-		<p>The saw wave uses switches to alternatively connect the triangle wave and an inverted triangle wave
-		to the saw output.</p>
+		<p>The comparator must have some hysteresis on its input for the integrator to bounce between.
+		If its just a single threshold, the integrator would hit it once and then saturate.</p>
 		
-		<p>The jag wave (I couldn't think of a better name for it) is just the triangle wave, but it's grounded when
-		the square wave is low.</p>
+		<p>Note that the square wave amplitude is rail to rail,	while the triangle amplitude is
+		less - whatever you set the comparator threshold at.</p>
+		
+		<p>The other two waveforms are manipulations of the TRI and SQU waves. For the SAW wave,
+		the SQU wave is used to control whether the output is the original TRI wave or an inverted
+		version of it. For the JAG wave(which I couldn't think of a better name for), the
+		SQU wave is used to decide if the output is the TRI wave or nothing (grounded).</p>
+		
+		<p>If I ever revisit this project, I might replace the JAG wave with a SINE wave that's shaped from the TRI wave.
+		In a seperate project I've already worked out the math to get a high purity SINE shape.</p>
+		
 		
 		<h2>Issues with Original Schematic</h2>
-		<p>When I tried to build this circuit for the first time using the magazine article schematic at the hackathon, it didn't work.
-		Fixing it was actually a pretty good debugging experience. Since the central circuit is a feedback loop,
-		I had to break the loop a different places and artifically add the correct signal to get the circuit to still work.</p>
+		<p>When I tried to build this circuit for the first time using the schematic from the magazine
+		article at the hackathon, it didn't work. Fixing it was actually a pretty good debugging experience.
+		Since the central circuit is a feedback loop, I had to break the loop a different places and
+		artifically add the correct signal to get the circuit to operate and isolate the issues.
+		If it started working when I broke the loop at a specific place, then it was likely the output
+		of the circuit block before the break that was the issue.</p>
 		
 		<p>It's been quite a while and I don't recall the details of the two issues I found. Broadly, the 555 timer was
 		connected incorrectly to function as a schmitt trigger (I think I ended up just using an op-amp instead) and
 		the BJT invertor wouldn't work until I removed one of the resistors.</p>
 		
 		<p>I'm not going to go into too much depth on these issues since they're not present in my designs.
-		I'll just leave it with this picture I found in my old files that made me laugh:</p>		
+		I'll just leave this picture I found in my old files that made me laugh:</p>		
 		
 		<span class="center"><img src="../pictures/projects/VCO/VCO_Source_Inverter_Wrong.png" /></span>
 		
 		
 		<hr style="border: 1px solid black;" />
 		<h1>Version 1</h1>
-		<p>Didn't actually make a module with this one, just lested with lab bench equipment.
-		Annular rings too small, TH parts, terrible for debugging, wires soldered sirectly to board, no headers.
-		I was able to get it fairly dense. OSHPark charged $5/square inch, so highly motivated to minimize board area.
-		Overlapping silkscreen.</p>
 		
-		<p>I still have this board, but these pictures are the only These pictures are the only </p>
+		<p>This is actually the version I made after the hackathon (which was on a bread board),
+		so I guess technically it's version 2? I think it's from before I started researching the eurorack format,
+		so my only intention was to test it with lab bench equipment. Looking back, it has a lot of issues:</p>
+		
+		<ul>
+			<li>It uses TH parts, which are large and harder to rework than SMT parts. I should have at least
+			used sockets.</li>
+			<li>The annular rings are too small to solder easily.</li>
+			<li>Signal outputs are just wires soldered directly to the board instead of using a connector.</li>
+			<li>It would have been really hard to debug, although if I recall correctly if just worked since it
+			was based on the working breadboard prototype.</li>
+			<li>Overlapping silkscreen markings, which is just sloppy.</li>
+			<li>Power input pins unlabeled.</li>
+		</ul>
+		
+		<p>Some of those issues were caused by the lack of cheap PCB manufacturers. The best one I knew of at the time
+		was OSHpark (you can see their iconic purple soldermask) and they charged $5 per square inch. On a student budget I
+		was highly motivated to reduce board area. It's terrible for debugging, but I was happy with how compact I was able to
+		get it.</p>
+		
+		<p>Unfortunatly this is from before I started organizing my files well, so I don't have the original
+		design documents.</p>
 		
 		<span class="center"><img src="../pictures/projects/VCO/VCO_R1_PCB.png" width="100%"/></span>
 		<span class="center"><img src="../pictures/projects/VCO/VCO_R1_PCBA.png" width="100%"/></span>
@@ -129,12 +166,17 @@
 		
 		<span class="center"><img src="../pictures/projects/VCO/VCO_R2_Device_Render.png"/></span>
 		
+		<p>This was my first attempt to </p>
+		
+		
 		<p>Not every component has a 3D model. Started adding dates. The whole card form factor, not skiff friendly,
 		requires crimping connectors to wires. It has a faceplate now! The proper dimensions to fit a eurorack system!
 		I spent too much time finding the angle brackets and the proper length screws.
 		Semi-standardized on the power connector becasue I thought the standard eurorack one was inefficient.
 		Components are arranged a lot cleaner.
 		Included jumpers between each circuit block to help with debugging.</p>
+		Panel mounting holes are small and centered.
+		Power connector is non-standard.
 		
 		<p><a href="../pictures/projects/VCO/VCO_MB_R2_Schematic.pdf" target="_blank">Link to Schematic</a></p>
 		<span class="center"><img src="../pictures/projects/VCO/VCO_R2_MB_Routing.png" width="100%"/></span>
