@@ -69,11 +69,22 @@
 		
 		<span class="center"><img src="../pictures/projects/Light_Array_9/(cover photo).png"/></span>
 		
-		<p>Brief description of project, what it is.</p>
+		<p>Light Array 9 is a 3x3 RGB LED display powered by USB Type-C. A button and knob on the
+		back let the user change the displayed pattern and its speed (or other parameter). Its
+		design focused on ease of manufacturing.
 		
 		<h2>Motivation</h2>
-		<p>Why did I build this?<br>
-		Learn programming, first uC project I've made entirely by myself. Christmas gifts.</p>
+		<p>
+		<ul>
+			<li>Make something to give away at Christmas. This meant easy small batch production.</li>
+			<li>Gain more experience with product development. I designed the whole thing and had to
+				solve the mechanical/electrical/ID conflicts.</li>
+			<li>Practice STM32 firmware development. This is the first non-trivial project where I've
+				written all the code myself. It's also the first time I wrote a library.</li>
+			<li>Explore 3D modeling and printing. My company was kind enough to let
+				me use their printers. Who would turn that down?</li>
+		</ul>
+		</p>
 		
 		<!-- Example of image code
 		<span class="center"><img src="../pictures/projects/ADSR/ADSR_parameters.png"/></span>
@@ -81,7 +92,8 @@
 		-->
 		
 		<h2>Schematic</h2>		
-		<p>schematic snippet here (can probably fit whole thing), followed by PDF download link)</p>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/schematic.png" width="100%"/></span>
 		
 		<!--
 		<span class="center"><img src="../pictures/projects/ADSR/ADSR_sch_snippet.png"/></span>
@@ -91,14 +103,45 @@
 		<a href="../pictures/projects/ADSR/ADSR_UI_schematic.pdf" target="_blank">UI Schematic (PDF)</a><br><br>
 		-->
 		
-		<p>Explain schematic</p>
+		<p>The schematic is pretty straight forward. An STM32C011 is programmed via SWD to output colour information to
+		a 3.3 to 5V level translator which sends it ot the daisy chained programmable RGB LEDs. A button is used to change
+		the light pattern and a knob can control one of its parameters, usually speed. Power comes from a USB Type-C jack
+		which provides 5V to the LEDs and a 3.3V linear regulator that poweres the microcontroller.</p>
+		
+		<p>The STM32 uses its internal clock, so the only external components it needs is really just a 100nF cap and a
+		programming header. The button has a bit of debouncing I found was necissary during testing and the pot has a
+		probably unecissary low pass filter.
+ 		</p>
+		
+		<p>I picked the STM32C011J4M6 becasue there's soemthing really satisfying about using a low pin count µC and it
+		was the easiest package to solder.</p>
+		
+		<p>I wish I had picked the WS2812B instead of the WS2812C becasue it's a lot more popular. I'm planning to make
+		a much larger display and can only find LED strips that use the B variant. It shouldn't be too much of an issue
+		though, because it looks like I'll only have to adjust the bit timing parameter values.</p>
 		
 		<h2>PCB</h2>
-		<p>The main challenge for the PCB design was
-		 - keeping it to 2 layers</p>
+		<p>My main goal for the PCB was to keep it to 2 layers while also providing a solid ground plane under every trace.
+		I was mostly sucessful.</p>
 		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/PCB_3D_top.png" width="100%"/></span>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/PCB_3D_bottom.png" width="100%"/></span>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/PCB_3D_iso_top.png" width="100%"/></span>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/PCB_3D_iso_bottom.png" width="100%"/></span>
 		
 		<h2>Enclosure</h2>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/exploded_view.svg" width = "50%"/></span>
+		
+		
+		
+		
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/back_cover.png"/></span>
+		
+		
+		
+		
 		
 		<h3>Assembly</h3>
 		
@@ -112,15 +155,49 @@
 		
 		<p>Sanded Acrylic, translucent filament, different thicknesses. Picture of different things I printed. Thin white filament, seems strong enough.
 		Brighter is sides of cell lined with aluminum tape, but time consuming.</p>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_acrylic.png" width = "50%"/></span>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_translucent.png"/></span>
+		<p style="text-align:center"><i>Translucent filament samples with increasing layer count.</i></p>
+		
 		
 		<h3>Button</h3>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/button_cap.png"/></span>
 		<p>rubbing with enclosure due to seam in filament</p>
 		
 		
 		
 		<h3>Front Cover</h3>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/front_cover_iso_back.png" width="100%"/></span>
 		<h4>Heatset Inserts</h4>
-		<p>Part number, dimensions of hole</h4>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/heatset.png"/></span>
+		<p>Heatset insert information:</p>
+		<table>
+			<tr>
+				<td>MFG</td>
+				<td>Tri-Star Industries</td>
+			</tr>
+			<tr>
+				<td>MFG PN</td>
+				<td>M30X250H</td>
+			</tr>
+			<tr>
+				<td>Supplier</td>
+				<td>DigiKey</td>
+			</tr>
+			<tr>
+				<td>Supplier PN</td>
+				<td>2254-M30X250H-ND</td>
+			</tr>
+			<tr>
+				<td>Supplier Link</td>
+				<td><a href="https://www.digikey.ca/en/products/detail/tri-star-industries-inc/M30X250H/13535356" target="_blank">Link</a></td>
+			</tr>
+		</table>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/heatset_hole.png"/></span>
+		<p style="text-align:center"><i>Cross section of the heatset insert hole.</i></p>
+		
 		<h4>Variable Height Cover</h4>
 		<h4>Knob pin clearance</h4>
 		
@@ -146,7 +223,7 @@
 		
 		<h3>Debugging</h3>
 		<p>Talk about using logic probe, all issues. Show Logic screenshot of it working.</p>
-		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/saleae.png" width = "60%"/></span>
 		<h2>Patterns</h2>
 		
 		<h2>Cost Analysis</h2>
