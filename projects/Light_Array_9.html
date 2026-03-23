@@ -65,12 +65,10 @@
 		
         <h1>Light Array 9</h1>
 		
-		<p>This page is under construction.</p>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/title_image.png"/></span>
 		
-		<span class="center"><img src="../pictures/projects/Light_Array_9/(cover photo).png"/></span>
-		
-		<p>Light Array 9 is a 3x3 RGB LED display powered by USB Type-C. A button and knob on the
-		back let the user change the displayed pattern and its speed (or other parameter). Its
+		<p>Light Array 9 is a 3x3 RGB LED display powered by a USB Type-C jack. A button and knob on the
+		back lets the user change the displayed pattern and its speed (or other parameter). Its
 		design focused on ease of manufacturing.
 		
 		<h2>Motivation</h2>
@@ -95,34 +93,26 @@
 		
 		<span class="center"><img src="../pictures/projects/Light_Array_9/schematic.png" width="100%"/></span>
 		
-		<!--
-		<span class="center"><img src="../pictures/projects/ADSR/ADSR_sch_snippet.png"/></span>
-		<p>The full schematics can be downloaded here:</p>
-		
-		<a href="../pictures/projects/ADSR/ADSR_MB_schematic.pdf" target="_blank">Motherboard Schematic (PDF)</a><br>
-		<a href="../pictures/projects/ADSR/ADSR_UI_schematic.pdf" target="_blank">UI Schematic (PDF)</a><br><br>
-		-->
-		
 		<p>The schematic is pretty straight forward. An STM32C011 is programmed via SWD to output colour information to
-		a 3.3 to 5V level translator which sends it ot the daisy chained programmable RGB LEDs. A button is used to change
-		the light pattern and a knob can control one of its parameters, usually speed. Power comes from a USB Type-C jack
+		a 3.3V to 5V level translator which sends it to the daisy chained programmable RGB LEDs. A button is used to change
+		the light pattern and a knob can control one of the pattern's parameters, usually speed. Power comes from a USB Type-C jack
 		which provides 5V to the LEDs and a 3.3V linear regulator that poweres the microcontroller.</p>
 		
-		<p>The STM32 uses its internal clock, so the only external components it needs is really just a 100nF cap and a
+		<p>The STM32 uses its internal clock, so the only external components it needs is a 100nF cap and a
 		programming header. The button has a bit of debouncing I found was necissary during testing and the pot has a
-		probably unecissary low pass filter.
- 		</p>
+		probably unnecessary low pass filter.</p>
 		
-		<p>I picked the STM32C011J4M6 becasue there's soemthing really satisfying about using a low pin count µC and it
+		<p>I picked the STM32C011J4M6 becasue there's something really satisfying about using a low pin count µC and it
 		was the easiest package to solder.</p>
 		
-		<p>I wish I had picked the WS2812B instead of the WS2812C becasue it's a lot more popular. I'm planning to make
-		a much larger display and can only find LED strips that use the B variant. It shouldn't be too much of an issue
-		though, because it looks like I'll only have to adjust the bit timing parameter values.</p>
+		<p>I wish I had picked the WS2812B instead of the WS2812C because it's a lot more popular. I'm planning to make
+		a much larger display and can only find LED strips that use the B variant.</p>
 		
 		<h2>PCB</h2>
 		<p>My main goal for the PCB was to keep it to 2 layers while also providing a solid ground plane under every trace.
-		I was mostly sucessful.</p>
+		I was mostly sucessful. The central "E" shaped area on the LED side is the 5V power plane.</p>
+		
+		<p>THe location of the knob was a bit of a negotiation, since the TH pins were conflicting with the nearby LED.</p>
 		
 		<span class="center"><img src="../pictures/projects/Light_Array_9/PCB_3D_top.png" width="100%"/></span>
 		<span class="center"><img src="../pictures/projects/Light_Array_9/PCB_3D_bottom.png" width="100%"/></span>
@@ -135,57 +125,24 @@
 		<span class="center"><img src="../pictures/projects/Light_Array_9/PCB_close_up.png" /></span>
 		
 		<h2>Enclosure</h2>
-		
+		<p>Designed in FreeCAD. I put some thought into how to design the enclosure so that it wouldn't require supports when printing.
+		The overall design ensured a flat face for each piece with no lips that would require large central supported areas.
+		Any overhangs were chamfered at 45°.</p>
+		<p>My main regret was putting the screws at the central wall intersections instead of in the corners. I thought it would be too
+		crowded in the corners and block less light in the center, but in hindsight I probably could have made it work.
+		As it is, there's sometimes gaps between the enclosure pieces when assembled.</p>
 		<span class="center"><img src="../pictures/projects/Light_Array_9/exploded_view.svg" width = "50%"/></span>
-		
 		<span class="center"><img src="../pictures/projects/Light_Array_9/enclosure_open.png"/></span>
-		
-		<span class="center"><img src="../pictures/projects/Light_Array_9/front_cover_spacers.png"/></span>
-		
-		
-		<span class="center"><img src="../pictures/projects/Light_Array_9/back_cover.png"/></span>
-		
-		
-		
-		
-		
-		<h3>Assembly</h3>
-		
-		<p>Exploded view. Label parts and use those names throughout this journal.</p>
-		<p> Getting USB jack to line up with cover, some knobs pinched</p>
-		<p>Seam isn't tight, screw placement</p>
-		<p>Part printing orientation, don't want supports (mention first version that had support
-		over the entire front</p>
-		
-		<span class="center"><img src="../pictures/projects/Light_Array_9/five_units.png"/></span>
-		
-		<span class="center"><img src="../pictures/projects/Light_Array_9/device_back.png"/></span>
-		
-		<h3>Light Diffuser</h3>
-		
-		<p>Sanded Acrylic, translucent filament, different thicknesses. Picture of different things I printed. Thin white filament, seems strong enough.
-		Brighter is sides of cell lined with aluminum tape, but time consuming. I could have fallen down a deep rabbit hole
-		exploring different diffusor materials and techniques.</p>
-		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_acrylic.png" width = "50%"/></span>
-		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_acrylic_close_up.png" width = "50%"/></span>
-		
-		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_translucent.png"/></span>
-		<p style="text-align:center"><i>Translucent filament samples with increasing thickness.</i></p>
-		
-		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_white.png" width="50%"/></span>
-		
-		<h3>Button</h3>
-		<span class="center"><img src="../pictures/projects/Light_Array_9/button_cap.png"/></span>
-		<p>rubbing with enclosure due to seam in filament</p>
-		
-		
+		<p>The front cover was printed for the first 0.6mm (3 layers) with matte white PLA to form the light diffusor.</p>
 		
 		<h3>Front Cover</h3>
 		<span class="center"><img src="../pictures/projects/Light_Array_9/front_cover_iso_back.png" width="100%"/></span>
-		<span class="center"><img src="../pictures/projects/Light_Array_9/front_cover_reflectors.png" /></span>
-		<h4>Heatset Inserts</h4>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/front_cover.png"/></span>
+		<p>The cutouts in one of the walls accomidate the pot's TH pins. The 4 holes are for heatset inserts.</p>
+		
+				<h4>Heatset Inserts</h4>
 		<span class="center"><img src="../pictures/projects/Light_Array_9/heatset.png"/></span>
-		<p>Heatset insert information:</p>
+		
 		<table>
 			<tr>
 				<td>MFG</td>
@@ -212,16 +169,76 @@
 		<span class="center"><img src="../pictures/projects/Light_Array_9/heatset_hole.png"/></span>
 		<p style="text-align:center"><i>Cross section of the heatset insert hole.</i></p>
 		
-		<h4>Variable Height Cover</h4>
-		<h4>Knob pin clearance</h4>
+		<h3>Back Cover</h3>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/back_cover.png"/></span>
+		<p>The square recess provides clearance for the programing header.</p>
+		
+		<h3>Button</h3>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/button_cap.png"/></span>
+		<p>This was the first time I designed a button cap. I think it turned out well, with a good feel.</p>
+		
+		<h3>Assembly</h3>
+		<p>There were a few problems during assembly. The button cap didn't move freely in the hole in its hole.
+		This was the first time I'd heard of 3D printer seams. If I redesign the enclosure I'd add a small channel
+		down the side of the hole for the seam to go down and not protrude into the button cap.</p>
+		
+		<p>There was also a problem with getting the USB jack to line up with its hole, which I solved by just making
+		the hole bigger. I don't think this was the best solution since I was hoping for a tight fit to provide some
+		mechanical support.</p>
+		
+		<p>I also had a problem with, when the screws were fully tigntened, a few of the knobs rubbing with the enclosure,
+		which made them hard to move. I had to sand a bit and nudge things to get them to work.</p>
+		
+		<p>As mentioned earlier, some of the seams between the front and back pieces were gappy. It would have been better
+		to have the screws in the corners instead of close to the center.</p>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/five_units.png"/></span>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/device_back.png"/></span>
+		
+		<h3>Light Diffuser</h3>
+		
+		<p>Oh boy, could I have spent a lot of time fiddling around with the light diffusor. Every detail was up in the air.
+		For example, the sandpaper grit and sanding pattern when I was testing acrylic. Here's an example of a medium fine grit,
+		sanding horizontal on the front and vertical on the back.</p>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_acrylic.png" width = "50%"/></span>
+		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_acrylic_close_up.png" width = "50%"/></span>
+		
+		<p>Translucent filament seemed like the obvious choice, but I rejected it because the individual filament lines were visable.</p>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_translucent.png"/></span>
+		<p style="text-align:center"><i>Translucent filament samples with increasing thickness.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/diffusor_white.png" width="50%"/></span>
+		<p style="text-align:center"><i>Matte white PLA samples with increasing thickness. They were all too thick.</i></p>
+		
+		<p>I also spent some time fiddling with the front cover. I printed some spacers that could stack on top of each other
+		in order to change the distance between the diffusor and LEDs.</p>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/front_cover_spacers.png"/></span>
+		
+		<p>I also tried aluminum tape on the walls. This made that light noticably brighter, but it would have been
+		too much work to mass produce. Interestingly, the wrinkles in the aluminum tape were distinguishable.
+		To avoid that, one thing I'd like to try in the future is to get little 1x1" mirrors that could be glued
+		into recesses in the walls.</p>
+		
+		<span class="center"><img src="../pictures/projects/Light_Array_9/front_cover_reflectors.png" /></span>
+		
+		<p>This was an early prototype that required a large central support to enable the rim around the edge.
+		It was pretty annoying to remove, which motivated me to change the design to not require any supports.</p>
+		
+		<p>Also visable is a cable channel I was testing with the intent to make the whole thing tileable.
+		That idea was discarded for this first project.</p>
+		
+		<p>As an example of how deep diffusor design can suck you in, here's an interesting video that
+		shows a creator named Geeksmithing experimeting with black LED acrylic:
+		<a href="https://www.youtube.com/watch?v=WsO6myw9gNQ" target="_blank">Link to video</a>.</p>
 		
 		
-		<h3>Back Cover (Name?)</h3>
-		<h4>Programming Header clearance</h4>
-		
-		
-		 
 		<h2>Firmware</h2>
+		
+		Gamma info: https://mountainlizard.com/posts/gamma-ws2812/
 		
 		<h3>.ioc Configuration</h3>
 		
