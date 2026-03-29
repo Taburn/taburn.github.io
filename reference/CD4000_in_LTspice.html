@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>CD4000 in LTspice</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+	
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <div id="logo_left">
+		    <img src="../pictures/logo/logo_white.svg">
+		  </div>
+		  <div id="logo_right">
+		    <h1><span class="logo_colour"><a href="index.html">Adam Gulyas</a></span></h1>
+			<h2>Embedded Hardware Engineer</h2>
+		  </div>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Resume</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+		  <li class="selected"><a href="../reference.html">Reference</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+        <!-- insert the page content here -->
+        
+		<h1>Using CD4000 Series Components in LTspice</h1>
+		
+		<p>This is a duplication of the information found in
+		<a href="https://www.youtube.com/watch?v=4MIDWyavapY" target="_blank">this video</a> by 
+		<a href="https://www.youtube.com/@trevortjes" target="_blank">The Repair Cafe</a>.
+		This information is too valuable to risk losing it due to
+		<a href="https://en.wikipedia.org/wiki/Link_rot" target="_blank">link rot</a>.</p>
+		
+		<p>This guide will help you setup LTspice to use the following
+		<a href="https://en.wikipedia.org/wiki/4000-series_integrated_circuits" target="_blank">CD4000 series logic ICs</a>
+		in your simulations:</p>
+		
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Function</th>
+			</tr>
+			<tr>
+				<td>4000</td>
+				<td>3-input NOR gate</td>
+			</tr>
+			<tr>
+				<td>4001</td>
+				<td>2-input NOR gate</td>
+			</tr>
+			<tr>
+				<td>4002</td>
+				<td>4-input NOR gate</td>
+			</tr>
+			<tr>
+				<td>4008</td>
+				<td>4-bit binary full adder with fast carry</td>
+			</tr>
+			<tr>
+				<td>4011</td>
+				<td>2-input NAND gate</td>
+			</tr>
+			<tr>
+				<td>4012</td>
+				<td>4-input NAND gate</td>
+			</tr>
+			<tr>
+				<td>4013</td>
+				<td>D-type flip-flop, Q & Q outputs, positive-edge trigger, asynchronous set and reset</td>
+			</tr>
+			<tr>
+				<td>4017</td>
+				<td>Decade counter (5-stage Johnson counter) with 10-output decoder, active HIGH output</td>
+			</tr>
+			<tr>
+				<td>4020</td>
+				<td>14-stage binary ripple counter</td>
+			</tr>
+			<tr>
+				<td>4022</td>
+				<td>Octal counter (4-stage Johnson counter) with 8-output decoder, active HIGH output</td>
+			</tr>
+			<tr>
+				<td>4023</td>
+				<td>3-input NAND gate</td>
+			</tr>
+			<tr>
+				<td>4024</td>
+				<td>7-stage binary ripple counter</td>
+			</tr>
+			<tr>
+				<td>4025</td>
+				<td>3-input NOR gate</td>
+			</tr>
+			<tr>
+				<td>4027</td>
+				<td>J-K master-slave flip-flop, Q and Q outputs, positive-edge trigger, asynchronous set and reset</td>
+			</tr>
+			<tr>
+				<td>4029</td>
+				<td>Presettable up/down counter, binary or BCD-decade</td>
+			</tr>
+			<tr>
+				<td>4030</td>
+				<td>2-input XOR gate (replaced by 4070)</td>
+			</tr>
+			<tr>
+				<td>4040</td>
+				<td>12-stage binary ripple counter</td>
+			</tr>
+			<tr>
+				<td>4049</td>
+				<td>Inverting buffer</td>
+			</tr>
+			<tr>
+				<td>4050</td>
+				<td>Non-inverting buffer</td>
+			</tr>
+			<tr>
+				<td>4068</td>
+				<td>8-input NAND/AND gate (2 outputs)</td>
+			</tr>
+			<tr>
+				<td>4070</td>
+				<td>2-input XOR gate</td>
+			</tr>
+			<tr>
+				<td>4071</td>
+				<td>2-input OR gate</td>
+			</tr>
+			<tr>
+				<td>4072</td>
+				<td>4-input OR gate</td>
+			</tr>
+			<tr>
+				<td>4073</td>
+				<td>3-input AND gate</td>
+			</tr>
+			<tr>
+				<td>4075</td>
+				<td>3-input OR gate</td>
+			</tr>
+			<tr>
+				<td>4077</td>
+				<td>2-input XNOR gate</td>
+			</tr>
+			<tr>
+				<td>4081</td>
+				<td>2-input AND gate</td>
+			</tr>
+			<tr>
+				<td>4082</td>
+				<td>4-input AND gate</td>
+			</tr>
+			<tr>
+				<td>4093</td>
+				<td>2-input NAND gate, Schmitt-trigger inputs</td>
+			</tr>
+			<tr>
+				<td>4510</td>
+				<td>Presettable 4-bit BCD up/down counter</td>
+			</tr>
+			<tr>
+				<td>4516</td>
+				<td>Presettable 4-bit binary up/down counter</td>
+			</tr>
+			<tr>
+				<td>4538</td>
+				<td>Dual retriggerable precision monostable multivibrator, Q and Q outputs</td>
+			</tr>
+			<tr>
+				<td>14538</td>
+				<td>Retriggerable monostable multivibrator</td>
+			</tr>
+			<tr>
+				<td>40106</td>
+				<td>Inverter with Schmitt-trigger inputs</td>
+			</tr>
+		</table>
+		
+		<h2>Instructions</h2>
+		
+		<p>
+		Right click > Save Link As... these two files.<br>
+		
+		Save <a href="..\pictures\reference\CD4000_in_LTspice\CD4000.lib" target="_blank">CD4000.lib</a>
+		in (Program Files) > LTC > LTspiceXVII > lib > sub .<br>
+		
+		Save <a href="..\pictures\reference\CD4000_in_LTspice\CD4000.zip" target="_blank">CD4000.zip</a>,
+		unzipped, in (Program Files) > LTC > LTspiceXVII > lib > sym .
+		</p>
+		
+		<p>In your LTspice schematic, add an ".inc CD4000.lib" directive.</p>
+		
+		<p>In LTspice, the components will be in the CD4000 folder in the component menu.</p>
+		
+		<span class="center"><img src="../pictures/reference/CD4000_in_LTspice/component_menu_1.png"/></span>
+		<span class="center"><img src="../pictures/reference/CD4000_in_LTspice/component_menu_2.png"/></span>
+		
+		<p>Below is an example of a cascaded counter that uses the CD4017. Note the directive in the bottom left.</p>
+		
+		
+		
+		
+		
+		<span class="center"><img src="../pictures/reference/CD4000_in_LTspice/schematic.png"/></span>
+
+		<p><a href="../reference.html">Back to Reference.</a></p>
+		
+		
+      </div>
+    </div>
+    <div id="footer">
+      <!-- <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a> -->
+    </div>
+  </div>
+</body>
+</html>
