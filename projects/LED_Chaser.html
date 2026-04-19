@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Adam Gulyas - Blinky</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <div id="logo_left">
+		    <img src="../pictures/logo/logo_white.svg">
+		  </div>
+		  <div id="logo_right">
+		    <h1><span class="logo_colour"><a href="index.html">Adam Gulyas</a></span></h1>
+			<h2>Embedded Hardware Engineer</h2>
+		  </div>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Resume</a></li>
+          <li class="selected"><a href="../projects.html">Projects</a></li>
+		  <li><a href="../reference.html">Reference</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+		
+        <h1>LED Chaser</h1>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/cover_photo.png"/></span>
+		
+		<p>This was the very first personal project I built, back in university.
+		Now that I have more experience, I thought it would be fun to redo it.</p>
+		
+		<h2>First Version (2012)</h2>
+		
+		<p>I think I found the schematic online, bought the parts, and just started building without fully planning it out.
+		The schematic has, unfortunatly, been lost to time.</p>
+		
+		<p>Here's a video of it working: <a href="https://www.youtube.com/watch?v=iLp5wbzp930" target="_blank">Demo Video</a></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/old_06.png"/></span>
+		<p style="text-align:center"><i>The enclosure was a small cardboard box from an art store I painted black.<br>
+		It was also slightly too small. I could never close it fully.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/old_05.png"/></span>
+		<p style="text-align:center"><i>I don't think I used series resistors for the LEDs.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/old_01.png"/></span>
+		<p style="text-align:center"><i>Common ground wire ring grounded each negative LED pin.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/old_04.png"/></span>
+		<p style="text-align:center"><i>Zero planning was put into the wiring.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/old_02.png"/></span>
+		<p style="text-align:center"><i>The soldering is pretty passable for a novice.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/old_03.png"/></span>
+		
+		<h2>Second Version (2026)</h2>
+		
+		<h3>Schematic</h3>
+		<span class="center"><img src="../pictures/projects/LED_Chaser/schematic.png"/></span>
+		
+		<p>An astable 555 timer produces a clock for a		
+		<a href="https://www.ti.com/lit/ds/symlink/cd4017b.pdf" target="_blank">CD4017</a>,
+		which directly drives the LEDs. A linear regulator provides a 5V rail.
+		</p>
+		
+		<p>I chose the timer component values to give an LED cycle time of roughly 1 second, but due
+		to component variance and not wanting to fine tune each device, they're all slightly off.
+		R13 was included to make fine tuning somewhat easier.</p>
+		
+		<h3>PCB</h3>
+		<span class="center"><img src="../pictures/projects/LED_Chaser/PCB_top.png"/></span>
+		<span class="center"><img src="../pictures/projects/LED_Chaser/PCB_top_iso.png"/></span>
+		<span class="center"><img src="../pictures/projects/LED_Chaser/PCB_bot.png"/></span>
+		<span class="center"><img src="../pictures/projects/LED_Chaser/PCB_bot_iso.png"/></span>
+		
+		<h3>Enclosure</h3>
+		<span class="center"><img src="../pictures/projects/LED_Chaser/3D_model_iso_01.png"/></span>
+		
+		<p>Everything can be printed without supports except the battery holder roof. The holes the LEDs
+		go into are chamfered to help guide them in.</p>
+		
+		<p>The standoffs weren't large enough for heat set inserts, so I thought I'd try screwing
+		into the PLA plastic directly for the first time. I made a little test piece with holes
+		of decreasing diameter and tried screwing each one until I got a good hold, then used that
+		diameter for the enclosure's holes.</p>
+		
+		<p>These aren't high mating cycle parts, so the thread shouldn't wear out.</p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/3D_model_iso_02.png"/></span>
+		<p style="text-align:center"><i>The hole in the PCB lets the switch sit lower, which makes the whole device shorter.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/3D_model_iso_03.png"/></span>
+		<span class="center"><img src="../pictures/projects/LED_Chaser/3D_model_iso_04.png"/></span>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/3D_model_side.png"/></span>
+		<p style="text-align:center"><i>The limit on minimizing the total height was the battery and the switch.<br>
+		Visable in the bottom right are the little feet I made to stop the screw heads rubbing on the table.</i></p>
+		
+		<h2>Assembly</h2>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/soldering_jig.png"/></span>
+		<p style="text-align:center"><i>A soldering jig to keep the LEDs at the right height. I just clipped the
+		sides away from the regular enclosure and removed the chamfer around the LED holes.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/assembled_PCBs.png"/></span>
+		<span class="center"><img src="../pictures/projects/LED_Chaser/switch_installed.png"/></span>
+		<p >The main assembly issue was that the nut was hard to turn in the tight space.
+		If I had to make a dozen of these I'd probably print a socket of some sort that could accomidate the wires.</p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/battery_installed.png"/></span>
+		<p style="text-align:center"><i>Trying out a cable retention feature that doesn't require supports during printing.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/PCB_installed.png"/></span>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/assembled.png"/></span>
+		<p style="text-align:center"><i>This version is a lot easier to mass produce.</i></p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/demo.gif"/></span>
+		<p>Here's all three working. It's kind of fun to watch them go in and out of phase with each other.</p>
+		
+		<p>Current draw from the 9 V battery is around 2.3 mA. According to this
+		<a href="../pictures/projects/LED_Chaser/9V_battery_datasheet.pdf" target="_blank">9 V battery datasheet</a>,
+		a Duracell Coppertop 9 V battery can last 13.5 days with a constant current draw of 2 mA, so I'd guess the battery
+		would last at least 11 days at 2.3 mA? This is from full charge to 5.5 V, which is the dropout voltage
+		of the linear regulator I'm using.</p>
+		
+		<span class="center"><img src="../pictures/projects/LED_Chaser/rotating_shadow.gif"/></span>
+		
+		<p style="text-align:center"><i>The shadows it casts are kind of fun.<br>
+		Gifs made from video with
+		<a href="https://ezgif.com" target="_blank">Ezgif</a>.</i></p>
+		
+		
+		
+		<a href="../projects.html">Back to Projects</a>
+		
+		  </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+	
+    </div>
+  </div>
+</body>
+</html>
