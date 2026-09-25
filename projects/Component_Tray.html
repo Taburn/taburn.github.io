@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Component Tray</title>
+  <meta name="description" content="Personal website of Adam Gulyas" />
+  <meta name="keywords" content="Adam Gulyas, embedded engineer, hardware engineer, electronics" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" title="style" />
+
+  <!-- Favicon stuff -->
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../flavicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../flavicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../flavicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../flavicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../flavicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../flavicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../flavicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../flavicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="../flavicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../flavicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../flavicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../flavicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../flavicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../flavicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../flavicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../flavicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../flavicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../flavicon/favicon-144.png">
+	<meta name="msapplication-config" content="../flavicon/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <div id="logo_left">
+		    <img src="../pictures/logo/logo_white.svg">
+		  </div>
+		  <div id="logo_right">
+		    <h1><span class="logo_colour"><a href="index.html">Adam Gulyas</a></span></h1>
+			<h2>Embedded Hardware Engineer</h2>
+		  </div>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="../index.html">Resume</a></li>
+          <li class="selected"><a href="../projects.html">Projects</a></li>
+		  <li><a href="../reference.html">Reference</a></li>
+		  <li><a href="../journal.html">Journal</a></li>
+		  <li><a href="../stories.html">Stories</a></li>
+		  <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="site_content">
+      <div id="content">
+        <!-- insert the page content here -->
+		
+        <h1>Component Tray</h1>
+		
+		<p>
+		I wanted to start storing electronic components in uniform bags with uniform labels.
+		In search of a way to store the bags, I couldn't find any shoebox sized containers that were the right size.
+		I'd previously designed a folding carton [link here], so I decided to try making a basic cardboard box.
+		</p>
+		
+		<p>Here's what I came up with:</p>
+		
+		<span class="center"><img src="../pictures/projects/Component_Tray/box.png"/></span>
+		<span class="center"><img src="../pictures/projects/Component_Tray/box_with_components.png"/></span>
+		
+		<h2>Finding Cardboard</h2>
+		<p>I spent some time looking around for where I could buy cardboard in person in Calgary.
+		It turned out the only place I could find that would let me buy single sheets of cardboard was
+		<a href="https://www.leevalley.com/en-ca/shop/home/toys-and-games/crafts/112326-cardboard-sheet" target="_blank">Lee Valley (SKU 45K2072)</a>,
+		where a 2' x 3' sheet is $2.
+		</p>
+		
+		
+		<h2>Design</h2>
+		<p>I used the sketcher workbench in FreeCAD, since I wanted this to be a parametric design and it's the only
+		program I know that can do 2D parametric drawings. I started by defining all the parameters:</p>
+		
+		<span class="center"><img src="../pictures/projects/Component_Tray/variables.png"/></span>
+		
+		<p>Then I just tried drawing the design I had in mind, cut it out, and tried folding it.
+		I ended up doing 7 versions until I had something I was happy with: the walls ended up straight,
+		the end product matched the values of the parameters, and so on. Here's the final design.</p>
+		
+		
+		<span class="center"><img src="../pictures/projects/Component_Tray/freecad_outline.png" width=100%/></span>
+		<span class="center"><img src="../pictures/projects/Component_Tray/freecad_outline_constraints.png" width=100%/></span>
+		
+		<p>I don't think it's perfect, but the problems are small enough I won't notice them.</p>
+		
+		<p>It stays together with friction.</p>
+		
+		Tray_Design_File.FCStd
+		Tray_Passives.dxf
+		
+		<h2>Creasing Tools</h2>
+		<p>It turns out a good way to fold cardboard precisely is to crush it first. I ended up
+		3D printing two tools: a pointy one for 90° bends and a wider one for 180° bends.</p>
+		
+		<span class="center"><img src="../pictures/projects/Component_Tray/creasing_tool.png"/></span>
+		<span class="center"><img src="../pictures/projects/Component_Tray/creasing_tool_model.png"/></span>
+		<span class="center"><img src="../pictures/projects/Component_Tray/creasing_tool_profile.png"/></span>
+		
+		
+		
+		
+		<h2>Design Files</h2>
+		
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>File</th>
+				<th>Divider Size</th>
+			</tr>
+			<tr>
+				<td>FreeCad Design File</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Passives Tray</td>
+				<td></td>
+				<td>165 x 115 mm</td>
+			</tr>
+			<tr>
+				<td>ESD Tray</td>
+				<td></td>
+			</tr>
+		</table>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="https://jlcpcb.com/" target="_blank">JLCPCB</a><br>
+		
+		<a href="../projects.html">Back to Projects</a>
+		
+		  </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="http://www.html5webtemplates.co.uk" target="_blank">design from HTML5webtemplates.co.uk</a>
+    </div>
+  </div>
+</body>
+</html>
